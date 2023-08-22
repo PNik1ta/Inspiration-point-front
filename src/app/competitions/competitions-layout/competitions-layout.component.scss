@@ -1,0 +1,11 @@
+@import "../../../assets/styles/abstracts/mixins.scss";
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 30% 1fr;
+	overflow: hidden;
+
+	@include respond(tab) {
+		grid-template-columns: 1fr;
+	}
+}

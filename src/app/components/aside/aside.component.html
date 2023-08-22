@@ -1,0 +1,53 @@
+<aside>
+  <ul class="stages">
+    <li>3 Etapa Circuito Carioca</li>
+    <li>Foil</li>
+    <li>Senior</li>
+  </ul>
+
+  <h1 class="competition">Women's Individual</h1>
+
+  <div class="place-and-date">
+    <img class="place-and-date__flag" src="/assets/images/brazil.png" alt="competition country flag" />
+    <p class="place-and-date__text">BRA Rio de Janeiro 06.08 - 06.08</p>
+  </div>
+
+  <nav class="nav">
+    <ul class="nav__links">
+      <li><a routerLink="a" routerLinkActive="active">General</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Starter</a></li>
+      <li><a routerLink="FirstRound" routerLinkActive="active">First round</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Seeding</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Up / Down</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Direct elimination</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Results</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Medals Standing</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Referee Statistics</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Referees</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Documents</a></li>
+    </ul>
+  </nav>
+
+  <nav class="nav-mobile">
+    <div class="nav-mobile__menu">
+      <h2>First round</h2>
+
+      <div class="nav-mobile__burger" (click)="openBurger()"><span></span></div>
+    </div>
+
+
+    <ul class="nav-mobile__links" [ngClass]="{'active': isOpened}">
+      <li><a routerLink="a" routerLinkActive="active">General</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Starter</a></li>
+      <li><a routerLink="a" routerLinkActive="active">First round</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Seeding</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Up / Down</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Direct elimination</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Results</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Medals Standing</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Referee Statistics</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Referees</a></li>
+      <li><a routerLink="a" routerLinkActive="active">Documents</a></li>
+    </ul>
+  </nav>
+</aside>
