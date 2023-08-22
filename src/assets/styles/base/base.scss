@@ -17,3 +17,9 @@ html {
     font-size: 50%;
   }
 }
+
+body {
+	background-color: $main-bg;
+	color: $main-text-color;
+	padding: 1.5rem 3rem;
+}
