@@ -36,7 +36,7 @@ jobs:
         run: npm install
 
       - name: Build the application
-        run: ng build --base-href "https://pnik1ta.github.io/Inspiration-point-front/" --deploy-url="https://pnik1ta.github.io/Inspiration-point-front"
+        run: ng build --base-href "https://pnik1ta.github.io/Portfolio-Website/" --deploy-url="https://pnik1ta.github.io/Portfolio-Website/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
