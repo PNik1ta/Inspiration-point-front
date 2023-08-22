@@ -1,0 +1,25 @@
+html {
+	font-size: 62.5%;
+
+  @include respond(big-tab) {
+    font-size: 60%;
+  }
+
+  @include respond(tab) {
+    font-size: 57%;
+  }
+
+  @include respond(phone) {
+    font-size: 53%;
+  }
+
+  @include respond(small-phone) {
+    font-size: 50%;
+  }
+}
+
+body {
+	background-color: $main-bg;
+	color: $main-text-color;
+	padding: 1.5rem 3rem;
+}

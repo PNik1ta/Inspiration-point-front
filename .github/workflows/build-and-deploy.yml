@@ -1,0 +1,47 @@
+name: Build and deploy Portfolio Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "nikitap0zd3y3v@gmail.com"
+          git config --global user.name "PNik1ta"
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Install angular-cli-ghpages
+        run: npm install -g angular-cli-ghpages
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the application
+        run: ng build --base-href "https://pnik1ta.github.io/Portfolio-Website/" --deploy-url="https://pnik1ta.github.io/Portfolio-Website/"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: dist/portfolio-site
+          clean: true
+          token: ${{ secrets.INSPIRATION_POINT_GH_TOKEN }}
