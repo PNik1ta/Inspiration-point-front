@@ -1,5 +1,6 @@
 html {
 	font-size: 62.5%;
+  min-height: 100%;
 
   @include respond(big-tab) {
     font-size: 60%;
@@ -18,8 +19,14 @@ html {
   }
 }
 
+html, body {
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+
 body {
 	background-color: $main-bg;
 	color: $main-text-color;
 	padding: 1.5rem 3rem;
+  min-height: 100%;
 }
