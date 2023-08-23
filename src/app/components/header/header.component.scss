@@ -2,7 +2,7 @@
 @import "../../../assets/styles/abstracts/variables.scss";
 $header-background-mobile: #272b34;
 $logo-text-color: #fff;
-$links-color-hover: #c3c8ce;
+$links-color-hover: #fff;
 $profile-links-color: #c7cacf;
 $profile-links-color-hover: #b1b4b9;
 
@@ -15,8 +15,8 @@ $profile-links-color-hover: #b1b4b9;
 			grid-template-columns: auto auto;
 			justify-content: space-between;
 			background-color: $header-background-mobile;
-			margin: -1.5rem -3rem;
-			padding: 1.5rem 3rem;
+			margin: -1.8rem -3.2rem;
+			padding: 1.8rem 3.2rem;
 		}
 
 
@@ -24,19 +24,20 @@ $profile-links-color-hover: #b1b4b9;
 		.company {
 			display: flex;
 			align-items: center;
-			column-gap: 1.2rem;
+			column-gap: 1.6rem;
 
 			&__logo {
 				width: 3.2rem;
 				height: 3.2rem;
-				background-color: $gray;
-				border-radius: 100%;
 				object-fit: cover;
+        overflow: hidden;
 			}
 
 			&__name {
 				color: $logo-text-color;
-				font-size: 1.6rem;
+				font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.3;
 
 				@include respond(tab) {
 					display: none;
@@ -47,16 +48,16 @@ $profile-links-color-hover: #b1b4b9;
 		.links {
 			display: flex;
 			align-items: center;
-			margin: -1.5rem 0 -1.5rem 10rem;
+			margin: -1.8rem 0 -1.8rem 8.3rem;
 			color: $secondary-text-color;
 
 			@media screen and (max-width: 1064px) {
-				margin: -1.5rem 0 -1.5rem 6rem;
+				margin: -1.8rem 0 -1.8rem 6rem;
 			}
 
 			@include respond(tab) {
 				justify-content: center;
-				margin: -1.5rem 0 -1.5rem 0rem;
+				margin: -1.8rem 0 -1.8rem 0rem;
 			}
 
 			@include respond(phone) {
@@ -76,9 +77,10 @@ $profile-links-color-hover: #b1b4b9;
 					color: inherit;
 					height: 100%;
 					padding: 0 2rem;
+          line-height: 1.3;
 
-					border-bottom-left-radius: 1rem;
-					border-bottom-right-radius: 1rem;
+					border-bottom-left-radius: .8rem;
+					border-bottom-right-radius: .8rem;
 
 					transition: all .3s ease 0s;
 
@@ -116,6 +118,7 @@ $profile-links-color-hover: #b1b4b9;
 						color: $profile-links-color;
 						font-size: 1.6rem;
 						transition: all .3s ease 0s;
+            line-height: 1.3;
 
 						&:hover {
 							color: $profile-links-color-hover;
@@ -127,8 +130,8 @@ $profile-links-color-hover: #b1b4b9;
 			}
 
 			&__avatar {
-				width: 3rem;
-				height: 3rem;
+				width: 2.4rem;
+				height: 2.4rem;
 				border-radius: 100%;
 				object-fit: cover;
 			}
