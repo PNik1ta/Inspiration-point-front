@@ -11,7 +11,7 @@ import { CommonModule } from "@angular/common";
   ],
   declarations: [
     CompetitionsLayoutComponent,
-    AsideComponent
+    AsideComponent,
   ],
 })
 export class CompetitionsModule {}

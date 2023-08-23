@@ -1,0 +1,39 @@
+@import "../../../../assets/styles/abstracts/mixins.scss";
+@import "../../../../assets/styles/abstracts/variables.scss";
+
+.tables-dektop {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  margin-top: 1.5rem;
+  overflow: auto;
+  transition: all .3s ease 0s;
+
+  @media screen and (max-width: 1440px) {
+    max-width: 85rem;
+  }
+
+  @media screen and (max-width: 1260px) {
+    max-width: 75rem;
+  }
+
+  @media screen and (max-width: 1070px) {
+    max-width: 70rem;
+  }
+
+  @include respond(tab) {
+    display: none;
+  }
+}
+
+.tables-mobile {
+  margin-top: 1.5rem;
+  display: none;
+
+  @include respond(tab) {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}

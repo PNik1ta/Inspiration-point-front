@@ -1,0 +1,268 @@
+@import "../../../assets/styles/abstracts/mixins.scss";
+@import "../../../assets/styles/abstracts/variables.scss";
+$header-background-mobile: #272b34;
+$table-text-color: #c1c7ce;
+$table-green-text-color: #1e9117;
+$table-rows-color: #25282c;
+$table-head-color: #6e737a;
+$table-country-color: #888c95;
+
+.table-mobile {
+  background-color: $block-color;
+  padding: 2rem;
+  width: 100%;
+  height: fit-content;
+  border-radius: 1rem;
+
+  .table-header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    &__row {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      align-items: end;
+      column-gap: 1.5rem;
+
+      h3 {
+        color: $table-text-color;
+        font-size: 2.5rem;
+      }
+
+      p {
+        color: $table-text-color;
+        font-size: 1.7rem;
+        line-height: 1.5;
+      }
+
+      &:last-child {
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .table-main {
+    width: 100%;
+    height: fit-content;
+    margin-top: 3rem;
+
+    .navigation {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+
+      .prev,
+      .next {
+        border: solid $main-text-color;
+        border-width: 0 .4rem .4rem 0;
+        display: inline-block;
+        padding: 1rem;
+        cursor: pointer;
+        background: transparent;
+
+        &.disabled {
+          border-color: $dark-blue;
+        }
+      }
+
+      .prev {
+        transform: rotate(135deg);
+      }
+
+      .next {
+        transform: rotate(-45deg);
+      }
+
+      .circles {
+        display: flex;
+        justify-content: center;
+        column-gap: 2rem;
+        align-items: center;
+      }
+
+      .circle {
+        width: 1rem;
+        height: 1rem;
+        background-color: #1f1f1f;
+        border-radius: 100%;
+
+        &_active {
+          width: 1.5rem;
+          height: 1.5rem;
+          background-color: #fff;
+        }
+      }
+    }
+
+    .slider-container {
+      overflow: hidden;
+      position: relative;
+
+      .slides {
+        margin-top: 3rem;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        transition: all .3s ease-in-out 0s;
+
+        .slide {
+          flex: 0 0 100%;
+          padding: 2rem;
+          box-sizing: border-box;
+          transition: all .3s ease-in-out 0s;
+          width: 10rem;
+          overflow: auto;
+
+          @media screen and (max-width: 500px) {
+            padding: 2rem 1rem;
+            white-space: nowrap;
+          }
+
+
+          .countries {
+            .country {
+              display: grid;
+              grid-template-columns: auto 1fr;
+              grid-template-rows: auto auto;
+              grid-template-areas:
+                'number name'
+                '. flag';
+              column-gap: 2rem;
+              row-gap: 1rem;
+
+              border-top: .1rem solid $table-rows-color;
+              padding-top: .6rem;
+              padding-bottom: .5rem;
+              align-items: center;
+
+              small {
+                grid-area: number;
+                color: $table-head-color;
+                font-size: 1.7rem;
+              }
+
+              h5 {
+                grid-area: name;
+                font-size: 2.2rem;
+              }
+
+              .flag {
+                grid-area: flag;
+
+                display: flex;
+                align-items: center;
+                column-gap: 1rem;
+
+                img {
+                  width: 3.2rem;
+                  height: 2rem;
+                  object-fit: cover;
+                }
+
+                p {
+                  font-size: 2.2rem;
+                  color: $table-country-color;
+                }
+              }
+            }
+          }
+
+          .competition {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+            height: fit-content;
+            min-width: 40rem;
+
+
+            @media screen and (max-width: 600px) {
+              margin-top: 0.5rem;
+            }
+
+            @media screen and (max-width: 440px) {
+              margin-top: 0;
+            }
+
+            tr {
+              position: relative;
+            }
+
+            .head,
+            .number {
+              font-size: 1.5rem;
+              color: $table-head-color;
+              padding: .7rem 0;
+            }
+
+            .number {
+              width: 1.5rem;
+            }
+
+            .data {
+              font-size: 1.6rem;
+              color: $table-text-color;
+              padding: .7rem .2rem;
+              height: 6rem;
+              position: relative;
+              width: fit-content;
+
+              @media screen and (max-width: 475px) {
+                height: 7rem;
+              }
+
+              span {
+                position: absolute;
+                bottom: .8rem;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+
+              &_green {
+                color: $table-green-text-color;
+              }
+
+              &_empty {
+                background-color: $header-background-mobile;
+              }
+
+
+              &.bordered {
+                border: 1px solid $table-rows-color;
+              }
+            }
+
+            .name {
+              position: absolute;
+              top: .5rem;
+              left: 3%;
+              color: $main-text-color;
+              font-size: 2rem;
+
+              @media screen and (max-width: 600px) {
+                left: 5%;
+              }
+
+              @media screen and (max-width: 440px) {
+                left: 7%;
+                font-size: 1.7rem;
+                top: .7rem;
+              }
+            }
+
+            .green-circle {
+              display: block;
+              width: 1.2rem;
+              height: 1.2rem;
+              background: rgb(16, 255, 0);
+              background: radial-gradient(circle, rgba(16, 255, 0, 1) 78%, rgba(63, 140, 63, 1) 100%);
+              border-radius: 100%;
+              margin: 0 auto;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

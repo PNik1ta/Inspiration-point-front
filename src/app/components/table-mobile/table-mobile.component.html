@@ -1,0 +1,204 @@
+<div class="table-mobile">
+  <div class="table-header">
+    <div class="table-header__row">
+      <h3>No: 1</h3>
+      <p>Pi BLUE | Su 9:00 |</p>
+    </div>
+
+    <div class="table-header__row">
+      <p>Referee: </p>
+      <p>BARDENHAGEN Tim Claus ATTAR COHEN Adriana</p>
+    </div>
+  </div>
+
+  <div class="table-main">
+    <div class="navigation">
+      <button class="prev" (click)="prevSlide()" #btnPrev></button>
+      <div class="circles" #circles>
+        <div class="circle circle_active"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+      <button class="next" (click)="nextSlide()" #btnNext></button>
+    </div>
+
+    <div class="slider-container">
+      <div class="slides" #sliderContainer>
+        <div class="slide">
+          <div class="countries">
+            <div class="country">
+              <small>1</small>
+              <h5>REBOLLEDO Melissa</h5>
+              <div class="flag">
+                <img src="assets/images/jor-flag.jpg" alt="jor flag">
+                <p>JOR</p>
+              </div>
+            </div>
+
+            <div class="country">
+              <small>2</small>
+              <h5>SCRUGGS Lauren</h5>
+              <div class="flag">
+                <img src="assets/images/ind-flag.png" alt="ind flag">
+                <p>IND</p>
+              </div>
+            </div>
+
+            <div class="country">
+              <small>3</small>
+              <h5>ZAKARANI Youssra</h5>
+              <div class="flag">
+                <img src="assets/images/den-flag.png" alt="den flag">
+                <p>TUR</p>
+              </div>
+            </div>
+
+            <div class="country">
+              <small>3</small>
+              <h5>CIRIL RAJDEV Maria Akshita</h5>
+              <div class="flag">
+                <img src="assets/images/tur-flag.png" alt="tur flag">
+                <p>TUR</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <table class="competition">
+            <thead>
+              <th class="head"></th>
+              <th class="head">1</th>
+              <th class="head">2</th>
+              <th class="head">3</th>
+              <th class="head">4</th>
+              <th class="head">5</th>
+              <th class="head">6</th>
+              <th class="head">7</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="number">1</td>
+                <td class="data data_empty bordered"></td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data bordered"><span>D4</span></td>
+                <td class="data bordered"><span>D2</span></td>
+                <td class="data bordered"><span>D0</span></td>
+                <td class="data bordered"><span>D0</span> </td>
+                <td class="data data_green bordered"><span>V5</span> </td>
+                <td class="name">REBOLLEDO Melissa</td>
+              </tr>
+
+              <tr>
+                <td class="number">2</td>
+                <td class="data bordered"><span>D3</span></td>
+                <td class="data data_empty bordered"></td>
+                <td class="data bordered"><span>D3</span></td>
+                <td class="data bordered"><span>D2</span></td>
+                <td class="data bordered"><span>D1</span></td>
+                <td class="data bordered"><span>D1</span> </td>
+                <td class="data bordered"><span>D4</span> </td>
+                <td class="name">SCRUGGS Lauren</td>
+              </tr>
+
+              <tr>
+                <td class="number">3</td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data data_empty bordered"></td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data bordered"><span>D1</span></td>
+                <td class="data bordered"><span>D0</span> </td>
+                <td class="data data_green bordered"><span>V5</span> </td>
+                <td class="name">ZAKARANI Youssra</td>
+              </tr>
+
+              <tr>
+                <td class="number">4</td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data data_green bordered"><span>V5</span></td>
+                <td class="data bordered"><span>D2</span></td>
+                <td class="data data_empty bordered"></td>
+                <td class="data bordered"><span>D4</span></td>
+                <td class="data bordered"><span>D0</span> </td>
+                <td class="data data_green bordered"><span>V5</span> </td>
+                <td class="name">CIRIL RAJDEV Maria Akshita</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="slide">
+          <table class="competition">
+            <thead>
+              <th class="head"></th>
+              <th class="head">V</th>
+              <th class="head">TD</th>
+              <th class="head">TR</th>
+              <th class="head">I1</th>
+              <th class="head">I2</th>
+              <th class="head">RK</th>
+              <th class="head">RD</th>
+              <th class="head">0</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="number">1</td>
+                <td class="data bordered"><span>2</span></td>
+                <td class="data bordered"><span>16</span></td>
+                <td class="data bordered"><span>24</span></td>
+                <td class="data bordered"><span>0.33</span></td>
+                <td class="data bordered"><span>-8</span></td>
+                <td class="data bordered"><span>5</span> </td>
+                <td class="data bordered"><span>83</span> </td>
+                <td class="data bordered"><div class="green-circle"></div></td>
+                <td class="name">REBOLLEDO Melissa</td>
+              </tr>
+
+              <tr>
+                <td class="number">1</td>
+                <td class="data bordered"><span>0</span></td>
+                <td class="data bordered"><span>14</span></td>
+                <td class="data bordered"><span>30</span></td>
+                <td class="data bordered"><span>0.00</span></td>
+                <td class="data bordered"><span>-16</span></td>
+                <td class="data bordered"><span>7</span> </td>
+                <td class="data bordered"><span>105</span> </td>
+                <td class="data bordered"><div class="green-circle"></div></td>
+                <td class="name">SCRUGGS Lauren</td>
+              </tr>
+
+              <tr>
+                <td class="number">1</td>
+                <td class="data bordered"><span>5</span></td>
+                <td class="data bordered"><span>26</span></td>
+                <td class="data bordered"><span>21</span></td>
+                <td class="data bordered"><span>0.83</span></td>
+                <td class="data bordered"><span>5</span></td>
+                <td class="data bordered"><span>2</span> </td>
+                <td class="data bordered"><span>20</span> </td>
+                <td class="data bordered"><div class="green-circle"></div></td>
+                <td class="name">ZAKARANI Youssra</td>
+              </tr>
+
+              <tr>
+                <td class="number">1</td>
+                <td class="data bordered"><span>3</span></td>
+                <td class="data bordered"><span>21</span></td>
+                <td class="data bordered"><span>20</span></td>
+                <td class="data bordered"><span>0.50</span></td>
+                <td class="data bordered"><span>1</span></td>
+                <td class="data bordered"><span>4</span> </td>
+                <td class="data bordered"><span>58</span> </td>
+                <td class="data bordered"></td>
+                <td class="name">CIRIL RAJDEV Maria Akshita</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
