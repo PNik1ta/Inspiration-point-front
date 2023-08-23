@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { SocketIoModule } from 'ngx-socket-io';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SocketIoModule } from 'ngx-socket-io';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    // SocketIoModule.forRoot(socketConfig)
   ],
   bootstrap: [AppComponent]
 })

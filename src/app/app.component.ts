@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { WebSocketService } from '../core/services/websocket.service';
 
 @Component({
