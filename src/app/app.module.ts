@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { AppBaseHrefProvider } from '../core/utils/path.factory';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { AppBaseHrefProvider } from '../core/utils/path.factory';
     AppRoutingModule,
     CommonModule
   ],
-  providers: [AppBaseHrefProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
