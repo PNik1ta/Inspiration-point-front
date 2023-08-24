@@ -88,12 +88,14 @@ aside {
           &:hover {
             background-color: $block-color;
           }
+
+          &.active {
+            background-color: $block-color;
+          }
         }
       }
 
-      &_active {
-        background-color: $block-color;
-      }
+
     }
   }
 
