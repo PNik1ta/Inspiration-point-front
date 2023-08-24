@@ -30,8 +30,4 @@ body {
 	color: $main-text-color;
 	padding: 1.8rem 3.2rem;
   min-height: 100%;
-
-  @include respond(phone) {
-    padding: 1.8rem 1rem;
-  }
 }
