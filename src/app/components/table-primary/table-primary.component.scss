@@ -1,0 +1,84 @@
+@import "../../../assets/styles/abstracts/mixins.scss";
+@import "../../../assets/styles/abstracts/variables.scss";
+$table-text-color: #fff;
+$table-green-text-color: #1e9117;
+$table-rows-color: #25282c;
+$table-head-color: #6e737a;
+$table-country-color: #888c95;
+
+.table-primary {
+  width: 100%;
+  height: fit-content;
+  border-radius: 1.2rem;
+  background-color: $block-color;
+  padding: 2.6rem 3.2rem;
+  overflow: auto;
+
+  @include respond(small-phone) {
+    padding: 2rem 2.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;;
+    overflow: scroll;
+    height: fit-content;
+
+    tbody {
+
+      tr {
+        border-top: .1rem solid $table-rows-color;
+        border-bottom: 1px solid $table-rows-color;
+      }
+    }
+
+
+    th {
+      font-size: 1.2rem;
+      line-height: 2.7;
+      color: $table-head-color;
+    }
+
+
+
+    .main-data {
+      display: flex;
+      align-items: center;
+      column-gap: 1.7rem;
+      .country {
+        display: flex;
+        align-items: center;
+        column-gap: 0.73rem;
+
+        img {
+          width: 2.7rem;
+          height: 1.8rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+          color: $table-country-color;
+        }
+      }
+
+      .name {
+        font-size: 1.5rem;
+        color: $main-text-color;
+        text-align: left;
+      }
+    }
+
+
+
+    td {
+      font-size: 1.5rem;
+      color: $table-text-color;
+      text-align: center;
+      margin: .8rem 0;
+
+      @include respond(small-phone) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

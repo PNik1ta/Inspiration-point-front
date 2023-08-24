@@ -8,6 +8,7 @@ aside {
     display: flex;
     align-items: center;
     margin: 3rem 0;
+    flex-wrap: wrap;
 
     @include respond(tab) {
       margin-top: 5rem;
