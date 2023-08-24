@@ -204,7 +204,7 @@ aside {
 
           transition: all .3s ease 0s;
 
-          &:hover {
+          &.active {
             background-color: $block-color;
           }
         }
