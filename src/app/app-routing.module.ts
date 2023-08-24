@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: MainPageComponent
+  },
   {
     path: 'Competitions',
     loadChildren: () => import('./competitions/competitions.module').then(m => m.CompetitionsModule)
