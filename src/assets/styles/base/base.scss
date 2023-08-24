@@ -30,4 +30,16 @@ body {
 	color: $main-text-color;
 	padding: 1.8rem 3.2rem;
   min-height: 100%;
+  border-radius: 1.2rem;
+}
+
+.info-block {
+  height: fit-content;
+  border-radius: 1.2rem;
+  background-color: $block-color;
+  padding: 2.6rem 3.2rem;
+
+  @include respond(small-phone) {
+    padding: 2rem 1.5rem;
+  }
 }

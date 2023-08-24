@@ -6,15 +6,9 @@ $table-rows-color: #25282c;
 $table-head-color: #6e737a;
 $table-country-color: #888c95;
 
-.table-desktop {
+.info-block {
   width: 100%;
   overflow: auto;
-
-  border-radius: 1rem;
-  background-color: $block-color;
-  padding: 2.6rem 3.2rem;
-  width: 100%;
-  height: fit-content;
 
   .table-header {
     display: flex;
