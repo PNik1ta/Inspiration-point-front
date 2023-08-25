@@ -9,10 +9,12 @@ export class TimerComponent implements AfterViewInit {
   @Input('seconds') seconds: number = 30;
   @ViewChild('circle') circle?: ElementRef;
   currentSeconds: number = 0;
+  maxSeconds: number = 30;
 
   ngAfterViewInit(): void {
     this.startTimer();
-    this.circle!.nativeElement.style.animationDuration = 's';
+    this.circle!.nativeElement.style.animationDuration = `${this.seconds}s`;
+    this.circle!.nativeElement.style.setProperty('--start-stroke-dashoffset', 1 - (this.seconds / this.maxSeconds));
   }
 
   startTimer(): void {

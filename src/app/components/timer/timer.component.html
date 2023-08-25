@@ -1,3 +1,8 @@
-<div class="circle" #circle>
-  <p>{{currentSeconds}}</p>
-</div>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 100 100">
+
+  <circle #circle cx="20" cy="20" r="20" pathLength="1">
+  </circle>
+  <text transform="rotate(90 50 50)" x="20" y="80" text-anchor="middle" alignment-baseline="middle" font-size="12" fill="white">
+    {{currentSeconds}}
+  </text>
+</svg>
