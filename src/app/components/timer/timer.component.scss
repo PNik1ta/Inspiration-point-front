@@ -8,12 +8,28 @@ $timer-color: #7a7d82;
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  border: .2rem solid #fff;
-
+  border: .2rem solid transparent;
+  border-top-color: #fff;
+  animation-name: borderAnimation;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 
   p {
     font-size: 1.9rem;
     line-height: 1.3;
     color: $timer-color;
+  }
+
+  @keyframes borderAnimation {
+    0% {
+      transform: rotate(0deg);
+      border-top-color: transparent;
+    }
+
+    100% {
+      transform: rotate(360deg);
+      border-top-color: #fff;
+      border: .2rem solid #fff;
+    }
   }
 }

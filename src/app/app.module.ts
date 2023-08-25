@@ -10,6 +10,7 @@ import { LiveCompetitionComponent } from './components/live-competition/live-com
 import { TimerComponent } from './components/timer/timer.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
