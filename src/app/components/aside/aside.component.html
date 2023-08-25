@@ -32,7 +32,7 @@
     <div class="nav-mobile__menu">
       <h2>First round</h2>
 
-      <div class="nav-mobile__burger" (click)="openBurger()"><span></span></div>
+      <div class="nav-mobile__burger" [ngClass]="{'active': isOpened}" (click)="openBurger()"><span></span></div>
     </div>
 
 

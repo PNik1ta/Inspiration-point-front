@@ -7,7 +7,7 @@
 
     <ul class="links">
       <li><a routerLink="a" routerLinkActive="active">трансляции</a></li>
-      <li><a routerLink="Competitions" routerLinkActive="active">соревнования</a></li>
+      <li><a routerLink="Competitions/General" routerLinkActive="active">соревнования</a></li>
       <li><a routerLink="a" routerLinkActive="active">команды</a></li>
       <li><a routerLink="a" routerLinkActive="active">спортсмены</a></li>
     </ul>
@@ -19,6 +19,18 @@
       </ul>
 
       <img class="profile__avatar" src="assets/icons/avatar.svg" alt="avatar image" />
+
+      <div class="burger" (click)="openBurger()" [ngClass]="{'active': isOpened}"><span></span></div>
     </div>
+
   </nav>
 </header>
+
+<nav class="mobile" [ngClass]="{'active': isOpened}">
+  <ul class="links">
+    <li><a (click)="hideMenu()" routerLink="a" routerLinkActive="active">трансляции</a></li>
+    <li><a (click)="hideMenu()" routerLink="Competitions/General" routerLinkActive="active">соревнования</a></li>
+    <li><a (click)="hideMenu()" routerLink="a" routerLinkActive="active">команды</a></li>
+    <li><a (click)="hideMenu()" routerLink="a" routerLinkActive="active">спортсмены</a></li>
+  </ul>
+</nav>

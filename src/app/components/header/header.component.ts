@@ -6,4 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isOpened: boolean;
+
+  constructor() {
+    this.isOpened = false;
+  }
+
+  openBurger() {
+    this.isOpened = !this.isOpened;
+  }
+
+  hideMenu(): void {
+    this.isOpened = false;
+  }
 }
