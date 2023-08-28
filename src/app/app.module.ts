@@ -8,6 +8,8 @@ import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/c
 import { MainPageComponent } from './main-page/main-page.component';
 import { LiveCompetitionComponent } from './components/live-competition/live-competition.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../core/reducers';
 
 
 
@@ -23,6 +25,12 @@ import { TimerComponent } from './components/timer/timer.component';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

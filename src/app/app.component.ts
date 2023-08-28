@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { WebSocketService } from '../core/services/websocket.service';
+import { IWebsocketMessage } from '../core/interfaces/websocket.message';
+import { ICompetitionResult } from '../core/interfaces/competition-result.interface';
+import { Store } from '@ngrx/store';
+import { getCompetitionResult } from '../core/reducers/competitionResult/websocket.selectors';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +11,13 @@ import { WebSocketService } from '../core/services/websocket.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  websocketData: ICompetitionResult | null = null;
 
-  constructor(private readonly webSocketService: WebSocketService) {}
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
-    const url = 'wss://free.blr2.piesocket.com/v3/test_room?api_key=MKiIO0jliytG9ok2SsKqWrnEAnaCiJKNcQ3irzF9';
-    this.webSocketService.connect(url);
+    this.store.select(getCompetitionResult).subscribe(data => {
+      this.websocketData = data;
+    })
   }
 }

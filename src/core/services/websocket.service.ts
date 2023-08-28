@@ -1,27 +1,39 @@
 import { Injectable } from "@angular/core";
+import { ICompetitionResult } from "../interfaces/competition-result.interface";
+import { Store } from "@ngrx/store";
+import { CompetitionResultReceivedAction } from "../reducers/competitionResult/competitionResult.action";
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
+
+  constructor(private store: Store) { }
+
   private socket: WebSocket | null = null;
 
-  connect(url: string): void {
+  connect(url: string) {
     this.socket = new WebSocket(url);
 
     this.socket.onopen = () => {
       console.log('Connected');
     }
+  }
 
-    this.socket.onmessage = (data: any) => {
-      console.log('Received data: ', data.data);
-      console.log('DATA RECEIVED!!!');
-    }
-
-    this.socket.onclose = () => {
-      console.log('Disconnected');
+  subscribeToData(): void {
+    if (this.socket) {
+      this.socket.onmessage = (event: MessageEvent) => {
+        const data: ICompetitionResult = JSON.parse(event.data);
+        this.store.dispatch(new CompetitionResultReceivedAction({ data }));
+      }
     }
   }
 
   disconnect(): void {
-    this.socket?.close;
+    if (this.socket) {
+      this.socket.onclose = () => {
+        console.log('Disconnected');
+      }
+      this.socket.close;
+    }
+
   }
 }
