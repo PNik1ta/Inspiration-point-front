@@ -22,7 +22,8 @@ export class WebSocketService {
     if (this.socket) {
       this.socket.onmessage = (event: MessageEvent) => {
         const data: ICompetitionResult = JSON.parse(event.data);
-        this.store.dispatch(new CompetitionResultReceivedAction({ data }));
+        console.log(JSON.parse(event.data));
+        this.store.dispatch(CompetitionResultReceivedAction({ data }));
       }
     }
   }
