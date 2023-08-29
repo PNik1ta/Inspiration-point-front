@@ -16,5 +16,7 @@ export class AsideComponent {
     this.isOpened = !this.isOpened;
   }
 
-
+  hideMenu(): void {
+    this.isOpened = false;
+  }
 }

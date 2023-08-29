@@ -5,17 +5,17 @@ import { GeneralComponent } from "./general/general.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'Competitions',
     component: CompetitionsLayoutComponent,
     children: [
+      {
+        path: 'General',
+        component: GeneralComponent
+      },
       {
         path: 'FirstRound',
         loadChildren: () => import('./first-round/first-round.module').then(m => m.FirstRoundModule),
       },
-      {
-        path: 'General',
-        component: GeneralComponent
-      }
     ]
   }
 ];

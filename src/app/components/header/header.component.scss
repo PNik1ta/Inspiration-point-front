@@ -9,7 +9,7 @@ $profile-links-color-hover: #b1b4b9;
 .header {
   nav {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr 1fr;
 
     @include respond(tab) {
       grid-template-columns: auto auto;
