@@ -9,24 +9,18 @@
     </div>
 
     <div class="row">
-      <h6>Exempt</h6>
-      <p>0</p>
-    </div>
-
-    <div class="row">
       <h6>Number of pools</h6>
       <p>{{competitionResult?.formulae?.poolsQuantity}}</p>
     </div>
 
     <div class="row">
-      <h6>Hits and times</h6>
-      <p>5 Hits | 3:00 min</p>
+      <h6>Hits</h6>
+      <p>{{competitionResult?.formulae?.pointsInPools}} Hits</p>
     </div>
 
     <div class="row">
       <h6>Promoted to next round</h6>
-      <p>10Advance by Index (all equals are qualified). This round is taken into account for direct elimination
-        seeding.</p>
+      <p>{{competitionResult?.formulae?.athletesQuantityBrackets}}</p>
     </div>
   </div>
 

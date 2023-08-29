@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { Store } from "@ngrx/store";
 import { CompetitionResultReceivedAction } from "../reducers/competitionResult/competitionResult.action";
+import * as pako from 'pako';
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
@@ -21,9 +22,15 @@ export class WebSocketService {
   subscribeToData(): void {
     if (this.socket) {
       this.socket.onmessage = (event: MessageEvent) => {
-        const data: ICompetitionResult = JSON.parse(event.data);
-        console.log(JSON.parse(event.data));
-        this.store.dispatch(CompetitionResultReceivedAction({ data }));
+        console.log(event.data);
+
+        const compressedData: Uint8Array = event.data;
+        const decompressedData = pako.inflate(compressedData, { to: 'string' });
+        console.log(decompressedData);
+
+        //const data: ICompetitionResult = JSON.parse(event.data);
+
+        //this.store.dispatch(CompetitionResultReceivedAction({ data }));
       }
     }
   }

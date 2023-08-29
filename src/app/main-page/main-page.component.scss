@@ -1,4 +1,5 @@
 @import "../../assets/styles/abstracts/mixins.scss";
+@import "../../assets/styles/abstracts/variables.scss";
 
 $header-main-color: #BDFF00;
 $secondary-text-color: #7a7d82;
@@ -23,22 +24,26 @@ $divider: #25282c;
 
 main {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 1.6rem;
   row-gap: 3.2rem;
 
-  @include respond(big-tab) {
-    grid-template-columns: repeat(2, 1fr);
-
-    .col_sportsmans {
-      grid-column: 1 / span 2;
-    }
+  .col_results {
+    grid-column: 1 / span 2;
   }
+
+  // @include respond(big-tab) {
+  //   grid-template-columns: repeat(2, 1fr);
+
+  //   .col_sportsmans {
+  //     grid-column: 1 / span 2;
+  //   }
+  // }
 
   @include respond(phone) {
     grid-template-columns: 1fr;
 
-    .col_sportsmans {
+    .col_results {
       grid-column: 1;
     }
   }
@@ -52,95 +57,48 @@ main {
     margin-bottom: 1.2rem;
   }
 
-  .block-competitions {
-    h3 {
-      margin-bottom: 1.7rem;
-
-      font-size: 2.4rem;
-      line-height: 1.3;
-      color: $secondary-text-color;
-      font-weight: 300;
-    }
-
-    .competitions {
-      display: flex;
-      flex-direction: column;
-      row-gap: 1.6rem;
-
-      .competition {
-        padding-bottom: 2.2rem;
-        border-bottom: .1rem solid $divider;
-        h4 {
-          font-weight: 600;
-          font-size: 2rem;
-          line-height: 1.3;
-          margin-bottom: 1.6rem;
-        }
-
-        .country-date {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1.6rem;
-
-          .country {
-            display: flex;
-            column-gap: 1.1rem;
-            align-items: center;
-
-            img {
-              width: 3.1rem;
-              height: 2.1rem;
-            }
-
-            p {
-              font-size: 1.4rem;
-              line-height: 1.3;
-              color: $secondary-text-color;
-            }
-          }
-          .date {
-            font-size: 1.6rem;
-            line-height: 1.3;
-            font-weight: 500;
-            color: #fff;
-          }
-        }
-        .text {
-          font-size: 1.4rem;
-          line-height: 1.3;
-          color: $secondary-text-color;
-        }
-      }
-    }
+  app-tour-competition {
+    display: block;
+    padding: 1.2rem 0;
+    border-top: .1rem solid $divider;
   }
 
-  .block-sportsmans {
-    h3 {
-      font-size: 1.6rem;
-      line-height: 1.3;
-      font-weight: 600;
-      color: #fff;
+  app-fight {
+    display: block;
+    margin-bottom: 1.6rem;
+  }
 
-      margin-bottom: 1.6rem;
+  .fights {
+    max-height: 51.4rem;
+    overflow: auto;
+  }
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 30% 1fr;
+	overflow: hidden;
+
+	@include respond(tab) {
+		grid-template-columns: 1fr;
+	}
+
+  .competitions-header {
+    margin-top: 10rem;
+
+    @include respond(tab) {
+      display: none;
     }
 
-    .names {
-      display: flex;
-      flex-direction: column;
-      row-gap: 2rem;
-      margin-bottom: 4rem;
+    .title {
+      font-size: 11.8rem;
+      line-height: 1.3;
+      color: $dark-blue;
+      font-weight: 500;
+      white-space: wrap;
 
-      .name {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        p {
-          font-size: 1.6rem;
-          font-weight: 600;
-          line-height: 1.3;
-        }
+      @media screen and (max-width: 1154px) {
+        font-size: 5rem;
       }
     }
   }

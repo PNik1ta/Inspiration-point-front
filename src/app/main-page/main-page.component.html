@@ -3,130 +3,54 @@
 
 <main>
   <div class="col">
-    <h2>Online</h2>
+    <div class="info-block competitons">
+      <h2>Соревнования турнира</h2>
 
-    <div class="online">
-      <app-live-competition></app-live-competition>
+      <app-tour-competition></app-tour-competition>
+      <app-tour-competition></app-tour-competition>
+      <app-tour-competition></app-tour-competition>
+      <app-tour-competition></app-tour-competition>
+      <app-tour-competition></app-tour-competition>
+      <app-tour-competition></app-tour-competition>
+
+
     </div>
   </div>
 
   <div class="col">
-    <h2>Соревнования</h2>
+    <div class="info-block">
+      <h2>Последние бои</h2>
+      <div class="fights">
+        <app-fight></app-fight>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
 
-    <div class="info-block block-competitions">
-      <h3>Ближайшие</h3>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
 
-      <div class="competitions">
-        <div class="competition">
-          <h4>Campeonato Paranaense Cadete e Juvenil</h4>
-          <div class="country-date">
-            <div class="country">
-              <img src="assets/images/brazil.png" alt="country flag"/>
-              <p>BRA Curitiba</p>
-            </div>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
 
-            <p class="date">12.08 – 13.08</p>
-          </div>
-          <p class="text">Foil, Epee, Sabre | Women's, Men's - U20, U17</p>
-        </div>
-
-        <div class="competition">
-          <h4>Campeonato Paranaense Cadete e Juvenil</h4>
-          <div class="country-date">
-            <div class="country">
-              <img src="assets/images/brazil.png" alt="country flag"/>
-              <p>BRA Curitiba</p>
-            </div>
-
-            <p class="date">12.08 – 13.08</p>
-          </div>
-          <p class="text">Foil, Epee, Sabre | Women's, Men's - U20, U17</p>
-        </div>
-
-        <div class="competition">
-          <h4>Campeonato Paranaense Cadete e Juvenil</h4>
-          <div class="country-date">
-            <div class="country">
-              <img src="assets/images/brazil.png" alt="country flag"/>
-              <p>BRA Curitiba</p>
-            </div>
-
-            <p class="date">12.08 – 13.08</p>
-          </div>
-          <p class="text">Foil, Epee, Sabre | Women's, Men's - U20, U17</p>
-        </div>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
+        <app-fight></app-fight>
       </div>
+
+
     </div>
   </div>
 
-  <div class="col col_sportsmans">
-    <h2>Спортсмены</h2>
+  <div class="col col_results">
+    <div class="wrapper">
+      <app-aside></app-aside>
 
-    <div class="info-block block-sportsmans">
-      <h3>Foil</h3>
-      <div class="names">
-        <div class="name">
-          <p>Саламандра Лариса</p>
-          <p>111 2</p>
-        </div>
-
-        <div class="name">
-          <p>Ланскова Майя</p>
-          <p>108 2</p>
-        </div>
-
-        <div class="name">
-          <p>Шварц Юрий</p>
-          <p>106 1</p>
-        </div>
-
-        <div class="name">
-          <p>Родионова Инесса</p>
-          <p>104 5</p>
-        </div>
-
-        <div class="name">
-          <p>Лукутина Марина</p>
-          <p>103 3</p>
-        </div>
-
-        <div class="name">
-          <p>Горюнова Татьяна</p>
-          <p>99 1</p>
-        </div>
-      </div>
-
-      <h3>Epee</h3>
-      <div class="names">
-        <div class="name">
-          <p>Саламандра Лариса</p>
-          <p>111 2</p>
-        </div>
-
-        <div class="name">
-          <p>Ланскова Майя</p>
-          <p>108 2</p>
-        </div>
-
-        <div class="name">
-          <p>Шварц Юрий</p>
-          <p>106 1</p>
-        </div>
-
-        <div class="name">
-          <p>Родионова Инесса</p>
-          <p>104 5</p>
-        </div>
-
-        <div class="name">
-          <p>Лукутина Марина</p>
-          <p>103 3</p>
-        </div>
-
-        <div class="name">
-          <p>Горюнова Татьяна</p>
-          <p>99 1</p>
-        </div>
+      <div class="main">
+        <section class="competitions-header">
+          <span class="title">3 Etapa Circuito</span>
+        </section>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

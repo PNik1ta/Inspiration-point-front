@@ -1,10 +1,9 @@
-@import "../../../assets/styles/abstracts/mixins.scss";
-@import "../../../assets/styles/abstracts/variables.scss";
+@import "../../../../assets/styles/abstracts/mixins.scss";
+@import "../../../../assets/styles/abstracts/variables.scss";
 $table-rows-color: #25282c;
 $h6-text-color: #7a7d82;
 
 .info-block {
-
   h2 {
     font-size: 2.4rem;
     font-weight: 300;
