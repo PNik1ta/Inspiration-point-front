@@ -14,6 +14,5 @@ export class AppComponent implements OnInit {
     const url = 'wss://free.blr2.piesocket.com/v3/test_room?api_key=MKiIO0jliytG9ok2SsKqWrnEAnaCiJKNcQ3irzF9';
     this.websocketService.connect(url);
     this.websocketService.subscribeToData();
-
   }
 }

@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { GeneralComponent } from "./competitions/general/general.component";
 import { MainPageComponent } from "./main-page.component";
+import { GeneralTableComponent } from "./competitions/general-table/general-table.component";
+import { RefereesComponent } from "./referees/referees.component";
 
 const routes: Routes = [
   {
@@ -15,12 +16,16 @@ const routes: Routes = [
       },
       {
         path: 'General',
-        component: GeneralComponent
+        component: GeneralTableComponent
       },
       {
         path: 'FirstRound',
         loadChildren: () => import('./competitions/first-round/first-round.module').then(m => m.FirstRoundModule),
       },
+      {
+        path: 'Referees',
+        component: RefereesComponent
+      }
     ]
   },
 

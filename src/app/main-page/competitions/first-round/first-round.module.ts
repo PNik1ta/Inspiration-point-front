@@ -8,10 +8,12 @@ import { TableDesktopComponent } from "../../../components/table-desktop/table-d
 import { TableMobileComponent } from "../../../components/table-mobile/table-mobile.component";
 import { TableSeedingComponent } from "../../../components/table-seeding/table-seeding.component";
 import { TableUpDownComponent } from "../../../components/table-up-down/table-up-down.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [
-    FirstRoundRoutingModule
+    FirstRoundRoutingModule,
+    CommonModule
   ],
   declarations: [
     SeedingComponent,

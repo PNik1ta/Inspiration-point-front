@@ -1,0 +1,51 @@
+<section class="info-block">
+  <h2>ROUNDS</h2>
+
+  <ng-container *ngIf="!isEmpty; else empty">
+    <div class="block">
+      <h3>First round</h3>
+      <div class="row">
+        <h6>Type</h6>
+        <p>{{competitionResult?.formulae?.roundTypes}}</p>
+      </div>
+
+      <div class="row">
+        <h6>Number of pools</h6>
+        <p>{{competitionResult?.formulae?.poolsQuantity}}</p>
+      </div>
+
+      <div class="row">
+        <h6>Hits</h6>
+        <p>{{competitionResult?.formulae?.pointsInPools}} Hits</p>
+      </div>
+
+      <div class="row">
+        <h6>Promoted to next round</h6>
+        <p>{{competitionResult?.formulae?.athletesQuantityBrackets}}</p>
+      </div>
+    </div>
+
+    <!-- <div class="block">
+      <h3>Direct elimination</h3>
+
+      <div class="row">
+        <h6>Type</h6>
+        <p>Direct elimination</p>
+      </div>
+
+      <div class="row">
+        <h6>Direct elimination mode</h6>
+        <p>Table of 16 <br> Table of 16 <br> Final of 4</p>
+      </div>
+
+      <div class="row">
+        <h6>Seeding</h6>
+        <p>15 Hits | 3 x 3:00 min | 1:00 mineding.</p>
+      </div>
+    </div> -->
+  </ng-container>
+
+  <ng-template #empty>
+    <h3 class="empty">Здесь пока ничего нет...</h3>
+  </ng-template>
+</section>

@@ -105,6 +105,9 @@ $table-country-color: #888c95;
         color: $table-text-color;
         padding: .7rem .2rem;
         min-width: 1.5rem;
+        &_empty {
+          background-color: $divider;
+        }
         &_green {
           color: $table-green-text-color;
         }

@@ -9,6 +9,10 @@ import { LiveCompetitionComponent } from './components/live-competition/live-com
 import { TimerComponent } from './components/timer/timer.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../core/reducers';
+import { MainPageModule } from './main-page/main-page.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment.development';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 
 
@@ -23,11 +27,21 @@ import { reducers } from '../core/reducers';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    MainPageModule,
     StoreModule.forRoot(reducers, {
+      metaReducers: [
+        localStorageSync({
+          keys: ['competitionResult']
+        })
+      ],
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
     })
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
