@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { Store } from "@ngrx/store";
 import { CompetitionResultReceivedAction } from "../reducers/competitionResult/competitionResult.action";
+import { CompetitionResultService } from "./competitionResult.service";
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
   jsonData: string = '';
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private readonly competitionResultService: CompetitionResultService) { }
 
   private socket: WebSocket | null = null;
 

@@ -3,31 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { LiveCompetitionComponent } from './components/live-competition/live-competition.component';
-import { TimerComponent } from './components/timer/timer.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../core/reducers';
-import { MainPageModule } from './main-page/main-page.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.development';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './components/components.module';
+import { MainPageModule } from './main-page/main-page.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LiveCompetitionComponent,
-    TimerComponent,
+    AppComponent
   ],
   imports: [
+    ComponentsModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    MainPageModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers: [
         localStorageSync({
@@ -42,7 +40,9 @@ import { localStorageSync } from 'ngrx-store-localstorage';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    MainPageModule,
+    RouterModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

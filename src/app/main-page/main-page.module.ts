@@ -5,22 +5,31 @@ import { MainPageComponent } from "./main-page.component";
 import { FightComponent } from "./fight/fight.component";
 import { TourCompetitionComponent } from "./tour-competition/tour-competition.component";
 import { AsideComponent } from "../components/aside/aside.component";
-import { BrowserModule } from "@angular/platform-browser";
 import { GeneralTableComponent } from "./competitions/general-table/general-table.component";
 import { RefereesComponent } from './referees/referees.component';
+import { StarterComponent } from './starter/starter.component';
+import { DirectEliminationComponent } from './direct-elimination/direct-elimination.component';
+import { ComponentsModule } from "../components/components.module";
+import { DirectEliminationModule } from "./direct-elimination/direct-elimination.module";
+import { CompetitionsModule } from "./competitions/competitions.module";
+
 
 @NgModule({
   imports: [
+    ComponentsModule,
     CommonModule,
     MainPageRoutingModule,
+    DirectEliminationModule,
+    CompetitionsModule
   ],
   declarations: [
-    AsideComponent,
     MainPageComponent,
     FightComponent,
     TourCompetitionComponent,
     GeneralTableComponent,
-    RefereesComponent
+    RefereesComponent,
+    StarterComponent,
+    DirectEliminationComponent,
   ],
 })
-export class MainPageModule {}
+export class MainPageModule { }

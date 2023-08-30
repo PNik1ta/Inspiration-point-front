@@ -15,9 +15,9 @@
   <nav class="nav">
     <ul class="nav__links">
       <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
-      <li><a routerLink="/a" routerLinkActive="active">Starter</a></li>
+      <li><a routerLink="/Starter" routerLinkActive="active">Starter</a></li>
       <li><a routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a routerLink="/a" routerLinkActive="active">Direct elimination</a></li>
+      <li><a routerLink="/DirectElimination" routerLinkActive="active">Direct elimination</a></li>
       <li><a routerLink="/a" routerLinkActive="active">Results</a></li>
       <li><a routerLink="/Referees" routerLinkActive="active">Referees</a></li>
     </ul>
@@ -33,9 +33,9 @@
 
     <ul class="nav-mobile__links" [ngClass]="{'active': isOpened}">
       <li><a (click)="hideMenu()" routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
-      <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Starter</a></li>
+      <li><a (click)="hideMenu()" routerLink="/Starter" routerLinkActive="active">Starter</a></li>
       <li><a (click)="hideMenu()" routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Direct elimination</a></li>
+      <li><a (click)="hideMenu()" routerLink="/DirectElimination" routerLinkActive="active">Direct elimination</a></li>
       <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Results</a></li>
       <li><a (click)="hideMenu()" routerLink="/Referees" routerLinkActive="active">Referees</a></li>
     </ul>

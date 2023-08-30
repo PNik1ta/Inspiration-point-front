@@ -4,7 +4,7 @@ $secondary-text-color: rgba(255, 255, 255, .6);
 
 .block {
   display: flex;
-  column-gap: 1.2rem;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -12,6 +12,19 @@ $secondary-text-color: rgba(255, 255, 255, .6);
 
   padding-top: 1.2rem;
   border-top: 1px solid $divider;
+
+  @include respond(phone) {
+    flex-direction: column;
+    row-gap: 1.2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .col {
+    display: flex;
+    column-gap: 1.2rem;
+    align-items: center;
+  }
 
   h5, p {
     line-height: 1.3;

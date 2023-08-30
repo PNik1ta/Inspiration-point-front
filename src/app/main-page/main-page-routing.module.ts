@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MainPageComponent } from "./main-page.component";
 import { GeneralTableComponent } from "./competitions/general-table/general-table.component";
 import { RefereesComponent } from "./referees/referees.component";
+import { StarterComponent } from "./starter/starter.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,14 @@ const routes: Routes = [
       {
         path: 'Referees',
         component: RefereesComponent
+      },
+      {
+        path: 'Starter',
+        component: StarterComponent
+      },
+      {
+        path: 'DirectElimination',
+        loadChildren: () => import('./direct-elimination/direct-elimination-routing.module').then(m => m.DirectEliminationRoutingModule)
       }
     ]
   },
