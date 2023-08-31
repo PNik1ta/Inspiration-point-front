@@ -8,14 +8,7 @@
     <div class="info-block competitons">
       <h2>Соревнования турнира</h2>
 
-      <app-tour-competition></app-tour-competition>
-      <app-tour-competition></app-tour-competition>
-      <app-tour-competition></app-tour-competition>
-      <app-tour-competition></app-tour-competition>
-      <app-tour-competition></app-tour-competition>
-      <app-tour-competition></app-tour-competition>
-
-
+      <app-tour-competition *ngFor="let competition of competitions" [competition]="competition"></app-tour-competition>
     </div>
   </div>
 
@@ -44,7 +37,7 @@
     </div>
   </div>
 
-  <div class="col col_results">
+  <div class="col col_results" *ngIf="isResultsActive">
     <div class="wrapper">
       <app-aside></app-aside>
 

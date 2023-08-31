@@ -1,5 +1,7 @@
-<div class="tour-competition">
-  <h5>Шпага девушки</h5>
-  <button>РЕЗУЛЬТАТЫ</button>
-  <p>03 сентябрь 10:00</p>
+<div class="tour-competition" [ngClass]="{'inactive': competitionTourDate ==='FUTURE'}">
+  <h5>{{competition?.newCompetitionForm?.competitionName}}</h5>
+  <button *ngIf="competitionTourDate ==='TODAY'|| competitionTourDate ==='PAST'" (click)="selectCompetition(competition!)">
+    {{buttonContent}}
+  </button>
+  <p>{{competition?.newCompetitionForm?.dateTimeCompetitionStart}}</p>
 </div>

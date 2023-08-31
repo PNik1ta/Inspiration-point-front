@@ -1,4 +1,5 @@
 export interface IParticipantForm {
+  _id?: string;
   nickname?: number;
   surname?: string;
   name?: string;

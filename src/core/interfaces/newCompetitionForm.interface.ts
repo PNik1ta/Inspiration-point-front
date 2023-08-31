@@ -1,4 +1,6 @@
 export interface INewCompetitionForm {
+  _id?: string;
+  competitionId: string;
   competitionName?: string;
   organizerCompany?: string;
   organizerContact?: string;

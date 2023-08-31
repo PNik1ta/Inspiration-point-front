@@ -10,6 +10,7 @@ import { IParticipantForm } from "./participantForm.interface";
 import { IRef } from "./ref.interface";
 
 export interface ICompetitionResult {
+  _id?: string;
   newCompetitionForm: INewCompetitionForm;
   participantFormList: IParticipantForm[];
   athList: IAth[];

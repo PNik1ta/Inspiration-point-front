@@ -6,22 +6,22 @@
       <h3>First round</h3>
       <div class="row">
         <h6>Type</h6>
-        <p>{{competitionResult?.formulae?.roundTypes}}</p>
+        <p>{{currentCompetition?.formulae?.roundTypes}}</p>
       </div>
 
       <div class="row">
         <h6>Number of pools</h6>
-        <p>{{competitionResult?.formulae?.poolsQuantity}}</p>
+        <p>{{currentCompetition?.formulae?.poolsQuantity}}</p>
       </div>
 
       <div class="row">
         <h6>Hits</h6>
-        <p>{{competitionResult?.formulae?.pointsInPools}} Hits</p>
+        <p>{{currentCompetition?.formulae?.pointsInPools ?? 0}} Hits</p>
       </div>
 
       <div class="row">
         <h6>Promoted to next round</h6>
-        <p>{{competitionResult?.formulae?.athletesQuantityBrackets}}</p>
+        <p>{{currentCompetition?.formulae?.athletesQuantityBrackets}}</p>
       </div>
     </div>
 

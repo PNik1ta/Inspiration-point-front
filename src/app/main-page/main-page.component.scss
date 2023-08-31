@@ -78,6 +78,7 @@ main {
 	display: grid;
 	grid-template-columns: 30% 1fr;
 	overflow: hidden;
+  margin-bottom: 3rem;
 
 	@include respond(tab) {
 		grid-template-columns: 1fr;

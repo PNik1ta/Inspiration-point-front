@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
     StoreModule.forRoot(reducers, {
       metaReducers: [
         localStorageSync({
-          keys: ['competitionResult']
+          keys: ['competitionResults']
         })
       ],
       runtimeChecks: {

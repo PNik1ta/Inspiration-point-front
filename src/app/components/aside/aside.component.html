@@ -1,15 +1,15 @@
 <aside>
   <ul class="stages">
-    <li>3 Etapa Circuito Carioca</li>
-    <li>Foil</li>
-    <li>Senior</li>
+    <li>{{currentCompetition?.newCompetitionForm?.competitionName}}</li>
   </ul>
 
-  <h1 class="competition">Women's Individual</h1>
+  <h1 class="competition">{{currentCompetition?.newCompetitionForm?.competitionName}}</h1>
 
   <div class="place-and-date">
-    <img class="place-and-date__flag" src="assets/images/brazil.png" alt="competition country flag" />
-    <p class="place-and-date__text">BRA Rio de Janeiro 06.08 - 06.08</p>
+    <p class="place-and-date__text">
+      {{currentCompetition?.newCompetitionForm?.competitionPlace}}
+      {{currentCompetition?.newCompetitionForm?.dateTimeCompetitionStart}}
+    </p>
   </div>
 
   <nav class="nav">
@@ -17,7 +17,7 @@
       <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
       <li><a routerLink="/Starter" routerLinkActive="active">Starter</a></li>
       <li><a routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a routerLink="/DirectElimination" routerLinkActive="active">Direct elimination</a></li>
+      <li><a routerLink="/DirectElimination/Seeding" routerLinkActive="active">Direct elimination</a></li>
       <li><a routerLink="/a" routerLinkActive="active">Results</a></li>
       <li><a routerLink="/Referees" routerLinkActive="active">Referees</a></li>
     </ul>
@@ -35,7 +35,7 @@
       <li><a (click)="hideMenu()" routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
       <li><a (click)="hideMenu()" routerLink="/Starter" routerLinkActive="active">Starter</a></li>
       <li><a (click)="hideMenu()" routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a (click)="hideMenu()" routerLink="/DirectElimination" routerLinkActive="active">Direct elimination</a></li>
+      <li><a (click)="hideMenu()" routerLink="/DirectElimination/Seeding" routerLinkActive="active">Direct elimination</a></li>
       <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Results</a></li>
       <li><a (click)="hideMenu()" routerLink="/Referees" routerLinkActive="active">Referees</a></li>
     </ul>

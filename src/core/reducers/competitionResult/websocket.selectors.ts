@@ -5,5 +5,5 @@ const getCompetitionResultFeatureState = createFeatureSelector<CompetitionResult
 
 export const getCompetitionResult = createSelector(
   getCompetitionResultFeatureState,
-  state => state.competitionResult
+  state => state.competitionResults
 );

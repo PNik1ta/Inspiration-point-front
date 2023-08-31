@@ -3,5 +3,5 @@ import { ICompetitionResult } from "../../interfaces/competition-result.interfac
 
 export const CompetitionResultReceivedAction = createAction(
   '[CompetitionResult] Data Received',
-  props<{ data: ICompetitionResult }>()
+  props<{ data: ICompetitionResult[] }>()
 );

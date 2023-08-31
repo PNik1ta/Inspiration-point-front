@@ -3,6 +3,8 @@ import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { Store } from "@ngrx/store";
 import { CompetitionResultReceivedAction } from "../reducers/competitionResult/competitionResult.action";
 import { CompetitionResultService } from "./competitionResult.service";
+import { BaseResponse } from "../models/base-response";
+import { CurrentCompetitionReceivedAction } from "../reducers/currentCompetition/currentCompetition.action";
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
@@ -27,10 +29,39 @@ export class WebSocketService {
           this.jsonData += event.data;
         } else {
           const data: ICompetitionResult = JSON.parse(this.jsonData);
-          this.store.dispatch(CompetitionResultReceivedAction({ data }));
+
+          this.competitionResultService.shouldAddOrUpdate(data).subscribe(() => {
+            this.getAllData();
+            this.updateCurrentResults();
+          });
           this.jsonData = '';
         }
       }
+    }
+  }
+
+  getAllData(): void {
+    this.competitionResultService.findAll().subscribe({
+      next: (res: BaseResponse<ICompetitionResult[]>) => {
+        if (res.data) {
+          this.store.dispatch(CompetitionResultReceivedAction({ data: res.data }));
+        }
+      }, error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  updateCurrentResults(): void {
+    const currentCompetition = localStorage.getItem('currentCompetition');
+
+    if (currentCompetition) {
+      const data: ICompetitionResult = JSON.parse(currentCompetition);
+      this.competitionResultService.findById(data._id!).subscribe((res: BaseResponse<ICompetitionResult>) => {
+        if (res.data) {
+          this.store.dispatch(CurrentCompetitionReceivedAction({ data: res.data }));
+        }
+      });
     }
   }
 

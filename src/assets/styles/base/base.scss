@@ -1,6 +1,8 @@
 html {
   font-size: 62.5%;
   min-height: 100%;
+  margin: 0;
+  padding: 0;
 
   @include respond(big-tab) {
     font-size: 60%;
@@ -21,9 +23,9 @@ html {
 
 html,
 body {
-  scroll-behavior: smooth;
-  overflow: auto;
   font-family: regular, sans-serif;
+  position: relative;
+  z-index: -1;
 }
 
 body {
@@ -31,7 +33,6 @@ body {
   color: $main-text-color;
   padding: 1.8rem 3.2rem 0rem 3.2rem;
   min-height: 100%;
-  border-radius: 1.2rem;
 }
 
 .info-block {
