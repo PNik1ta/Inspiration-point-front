@@ -3,7 +3,7 @@
   <ng-container *ngIf="!isEmpty; else empty">
     <div class="block" *ngFor="let referee of totalRefereesInfo">
       <p>{{referee.region}}</p>
-      <img src="assets/images/jor-flag.jpg" alt="country flag">
+      <img [src]="'assets/images/flags/' + referee.region!.toLowerCase() + '.png'" alt="country flag">
       <h5>{{referee.surname}} {{referee.name}} {{referee.fatherName}}</h5>
     </div>
   </ng-container>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 import { IParticipantForm } from '../../../core/interfaces/participantForm.interface';
+import { Store, select } from '@ngrx/store';
+import { getCurrentCompetition } from '../../../core/reducers/currentCompetition/currentCompetition.selectors';
 
 @Component({
   selector: 'app-referees',
@@ -8,23 +10,25 @@ import { IParticipantForm } from '../../../core/interfaces/participantForm.inter
   styleUrls: ['./referees.component.scss']
 })
 export class RefereesComponent implements OnInit {
-  competitionResult: ICompetitionResult | null = null;
+  currentCompetition: ICompetitionResult | null = null;
   isEmpty: boolean = true;
   totalRefereesInfo: IParticipantForm[] = [];
 
-  ngOnInit(): void {
-    const localStorageData = JSON.parse(localStorage.getItem('competitionResult') ?? '');
-    this.competitionResult = localStorageData.competitionResult;
+  constructor(private readonly store: Store) {}
 
-    if (this.competitionResult) {
-      this.isEmpty = this.competitionResult.refList.length === 0;
-    }
+  ngOnInit(): void {
+    this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
+      if (res) {
+        this.currentCompetition = res;
+        this.isEmpty = this.currentCompetition.refList.length === 0;
+      }
+    });
     this.initializeRefereesInfo();
   }
 
   initializeRefereesInfo(): void {
-    for(let referee of this.competitionResult!.refList) {
-      for(let participant of this.competitionResult!.participantFormList) {
+    for(let referee of this.currentCompetition!.refList) {
+      for(let participant of this.currentCompetition!.participantFormList) {
         if (referee.nickname === participant.nickname) {
           this.totalRefereesInfo.push(participant);
           break;
