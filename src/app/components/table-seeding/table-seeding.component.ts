@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table-seeding',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-seeding.component.scss']
 })
 export class TableSeedingComponent {
-
+  @Input('hasInfoBlock') hasInfoBlock: boolean = true;
 }

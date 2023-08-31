@@ -9,7 +9,7 @@ $tabs-hover: #d9d9d9;
   margin-top: 1.2rem;
   margin-bottom: 1.3rem;
 
-  @include respond(tab) {
+  @include respond(big-tab) {
     display: none;
   }
 

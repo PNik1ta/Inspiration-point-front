@@ -23,7 +23,7 @@ import { RouterModule } from "@angular/router";
     TableSeedingComponent,
     TableUpDownComponent,
     TimerComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   exports: [
     AsideComponent,

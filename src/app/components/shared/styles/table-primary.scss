@@ -6,19 +6,22 @@ $table-rows-color: #25282c;
 $table-head-color: #6e737a;
 $table-country-color: #888c95;
 
-.info-block{
+.info-block {
   display: flex;
-
-
-  .table-wrapper {
-    flex: 0 0 100%;
-    width: 10rem;
-    overflow: auto;
-  }
 
   @include respond(small-phone) {
     padding: 2rem 2.5rem;
   }
+}
+
+.table-flex {
+  display: flex;
+}
+
+.table-wrapper {
+  flex: 0 0 100%;
+  width: 10rem;
+  overflow: auto;
 
   table {
     width: 100%;
@@ -99,3 +102,4 @@ $table-country-color: #888c95;
     }
   }
 }
+
