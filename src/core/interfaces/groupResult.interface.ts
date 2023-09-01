@@ -1,10 +1,15 @@
+import { GroupResultStatus } from "../enums/group-result-status.enum";
+
 export interface IGroupResult {
   _id?: string;
-  nickname?: number;
-  poolNumber?: number;
-  athleteRankPool?: number;
+  nickname?: number; 
   coefficient?: number;
   indicator?: number;
-  status?: string;
+  status?: GroupResultStatus;
   rankAfterPools?: number;
+  bouts?: number;
+  wins?: number;
+  td?: number;
+  tr?: number;
+  placeInPool?: number;
 }

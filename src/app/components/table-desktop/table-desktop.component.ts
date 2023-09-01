@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 
 @Component({
   selector: 'app-table-desktop',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-desktop.component.scss']
 })
 export class TableDesktopComponent {
-
+  @Input('result') competitionResult: ICompetitionResult | null = null;
 }

@@ -9,6 +9,10 @@ $table-country-color: #888c95;
 
 .info-block {
 
+  &.block-table-mobile {
+    max-height: 50rem;
+    overflow: auto;
+  }
 
   .table-header {
     display: flex;

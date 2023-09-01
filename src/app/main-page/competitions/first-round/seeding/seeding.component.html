@@ -1,11 +1,10 @@
 <ng-container *ngIf="!isEmpty; else empty">
   <section class="tables">
-    <app-table-seeding></app-table-seeding>
+    <app-table-seeding [athList]="totalAthList"></app-table-seeding>
   </section>
 
   <section class="tables-mobile">
-    <app-table-mobile></app-table-mobile>
-    <app-table-mobile></app-table-mobile>
+    <app-table-mobile [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
   </section>
 </ng-container>
 

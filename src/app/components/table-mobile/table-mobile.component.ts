@@ -1,17 +1,40 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { IAthAndParticipant } from '../../../core/interfaces/ath-and-participant.interface';
+import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { IParticipantAndGroup } from '../../../core/interfaces/participant-and-group.interface';
 
 @Component({
   selector: 'app-table-mobile',
   templateUrl: './table-mobile.component.html',
   styleUrls: ['./table-mobile.component.scss']
 })
-export class TableMobileComponent implements AfterViewInit {
+export class TableMobileComponent implements AfterViewInit, OnInit {
+  @Input('athList') athParticipants: IAthAndParticipant[] = [];
+  @Input('result') result: ICompetitionResult | null = null;
+  participantAndGroupList: IParticipantAndGroup[] = [];
+
   @ViewChild('sliderContainer') sliderContainer?: ElementRef;
   @ViewChild('btnPrev') btnPrev?: ElementRef;
   @ViewChild('btnNext') btnNext?: ElementRef;
   @ViewChild('circles') circles?: ElementRef;
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
+
+  ngOnInit(): void {
+    this.initializeParticipantAndGroupInfo();
+  }
+
+  initializeParticipantAndGroupInfo(): void {
+    for(let group of this.result!.athList) {
+      for(let participant of this.result!.participantFormList) {
+        if (group.nickname === participant.nickname) {
+          let participantAndGroup: IParticipantAndGroup = { participant, group }
+          this.participantAndGroupList.push(participantAndGroup);
+          break;
+        }
+      }
+    }
+  }
 
   ngAfterViewInit(): void {
     this.sliderBlocks = this.sliderContainer!.nativeElement.getElementsByClassName('slide');

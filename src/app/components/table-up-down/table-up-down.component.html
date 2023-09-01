@@ -15,106 +15,27 @@
       </thead>
 
       <tbody>
-        <tr>
+        <tr *ngFor="let item of participantAndGroupList">
           <td class="main-data">
             <div class="country">
-              <img src="assets/images/jor-flag.jpg" alt="jor flag">
-              <p>JOR</p>
+              <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'" alt="jor flag">
+              <p>{{item.participant.region}}</p>
             </div>
-            <p class="name">LBNABOU JAOUDEH Rita</p>
+            <p class="name">{{item.participant.surname}} {{item.participant.name}} {{item.participant.fatherName}}</p>
           </td>
-          <td>6</td>
-          <td>6</td>
-          <td>30</td>
-          <td>4</td>
-          <td>1.000</td>
-          <td>26</td>
-          <td><div class="circle circle_green"></div> </td>
-        </tr>
-
-        <tr>
-          <td class="main-data">
-            <div class="country">
-              <img src="assets/images/ind-flag.png" alt="jor flag">
-              <p>IND</p>
+          <td>{{item.group.wins}}</td>
+          <td>{{item.group.bouts}}</td>
+          <td>{{item.group.td}}</td>
+          <td>{{item.group.tr}}</td>
+          <td>{{item.group.indicator}}</td>
+          <td>{{(item.group.td && item.group.tr) ? item.group.td - item.group.tr : ''}}</td>
+          <td>
+            <div class="circle"
+              [ngClass]="{'circle_green': item.group.status === 'Q',
+              'circle_red': item.group.status === 'E',
+              'circle_black': item.group.status === 'D'}">
             </div>
-            <p class="name">VENACURERO GONZALEZ Anabella</p>
           </td>
-          <td>6</td>
-          <td>6</td>
-          <td>30</td>
-          <td>4</td>
-          <td>1.000</td>
-          <td>26</td>
-          <td><div class="circle circle_green"></div> </td>
-        </tr>
-
-        <tr>
-          <td class="main-data">
-            <div class="country">
-              <img src="assets/images/den-flag.png" alt="den flag">
-              <p>DEN</p>
-            </div>
-            <p class="name">NEPADHIKARI Anita</p>
-          </td>
-          <td>6</td>
-          <td>6</td>
-          <td>30</td>
-          <td>4</td>
-          <td>1.000</td>
-          <td>22</td>
-          <td><div class="circle circle_green"></div> </td>
-        </tr>
-
-        <tr>
-          <td class="main-data">
-            <div class="country">
-              <img src="assets/images/tur-flag.png" alt="tur flag">
-              <p>TUR</p>
-            </div>
-            <p class="name">TURALIOGLU Nazli Ceren</p>
-          </td>
-          <td>6</td>
-          <td>6</td>
-          <td>30</td>
-          <td>5</td>
-          <td>1.000</td>
-          <td>26</td>
-          <td><div class="circle circle_red"></div> </td>
-        </tr>
-
-        <tr>
-          <td class="main-data">
-            <div class="country">
-              <img src="assets/images/usa-flag.png" alt="usa flag">
-              <p>USA</p>
-            </div>
-            <p class="name">TURANBARLILAR Fatima Zehra</p>
-          </td>
-          <td>6</td>
-          <td>6</td>
-          <td>29</td>
-          <td>5</td>
-          <td>1.000</td>
-          <td>21</td>
-          <td><div class="circle circle_green"></div> </td>
-        </tr>
-
-        <tr>
-          <td class="main-data">
-            <div class="country">
-              <img src="assets/images/aut-flag.svg" alt="aut flag">
-              <p>TUR</p>
-            </div>
-            <p class="name">VENAVELLEIRA Hillary</p>
-          </td>
-          <td>6</td>
-          <td>6</td>
-          <td>29</td>
-          <td>8</td>
-          <td>1.000</td>
-          <td>26</td>
-          <td><div class="circle circle_red"></div> </td>
         </tr>
       </tbody>
     </table>

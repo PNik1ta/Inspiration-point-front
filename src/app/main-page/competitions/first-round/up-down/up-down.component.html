@@ -1,10 +1,7 @@
 <div class="tables">
-  <app-table-up-down></app-table-up-down>
-  <app-table-up-down></app-table-up-down>
-  <app-table-up-down></app-table-up-down>
+  <app-table-up-down [result]="currentCompetition"></app-table-up-down>
 </div>
 
 <section class="tables-mobile">
-  <app-table-mobile></app-table-mobile>
-  <app-table-mobile></app-table-mobile>
+  <app-table-mobile [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
 </section>

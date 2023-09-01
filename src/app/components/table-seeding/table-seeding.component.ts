@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAth } from '../../../core/interfaces/ath.interface';
 import { IParticipantForm } from '../../../core/interfaces/participantForm.interface';
 import { IAthAndParticipant } from '../../../core/interfaces/ath-and-participant.interface';
@@ -8,11 +8,14 @@ import { IAthAndParticipant } from '../../../core/interfaces/ath-and-participant
   templateUrl: './table-seeding.component.html',
   styleUrls: ['./table-seeding.component.scss']
 })
-export class TableSeedingComponent {
+export class TableSeedingComponent implements OnInit {
   @Input('hasInfoBlock') hasInfoBlock: boolean = true;
   @Input('athList') athParticipants: IAthAndParticipant[];
 
   constructor() {
     this.athParticipants = [];
+  }
+
+  ngOnInit(): void {
   }
 }

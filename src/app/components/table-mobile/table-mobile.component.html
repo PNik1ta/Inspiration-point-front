@@ -1,4 +1,4 @@
-<div class="info-block">
+<div class="info-block block-table-mobile">
   <div class="table-header">
     <div class="table-header__row">
       <h3>No: 1</h3>
@@ -26,39 +26,13 @@
       <div class="slides" #sliderContainer>
         <div class="slide">
           <div class="countries">
-            <div class="country">
-              <small>1</small>
-              <h5>REBOLLEDO Melissa</h5>
+            <div class="country" *ngFor="let item of athParticipants; let i = index;">
+              <small>{{i + 1}}</small>
+              <h5>{{item.participant.surname}} {{item.participant.name}}</h5>
               <div class="flag">
-                <img src="assets/images/jor-flag.jpg" alt="jor flag">
-                <p>JOR</p>
-              </div>
-            </div>
-
-            <div class="country">
-              <small>2</small>
-              <h5>SCRUGGS Lauren</h5>
-              <div class="flag">
-                <img src="assets/images/ind-flag.png" alt="ind flag">
-                <p>IND</p>
-              </div>
-            </div>
-
-            <div class="country">
-              <small>3</small>
-              <h5>ZAKARANI Youssra</h5>
-              <div class="flag">
-                <img src="assets/images/den-flag.png" alt="den flag">
-                <p>TUR</p>
-              </div>
-            </div>
-
-            <div class="country">
-              <small>3</small>
-              <h5>CIRIL RAJDEV Maria Akshita</h5>
-              <div class="flag">
-                <img src="assets/images/tur-flag.png" alt="tur flag">
-                <p>TUR</p>
+                <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'"
+                  alt="country flag">
+                <p>{{item.participant.region}}</p>
               </div>
             </div>
           </div>
@@ -134,66 +108,32 @@
             <thead>
               <th class="head"></th>
               <th class="head">V</th>
+              <th class="head">M</th>
               <th class="head">TD</th>
               <th class="head">TR</th>
-              <th class="head">I1</th>
-              <th class="head">I2</th>
-              <th class="head">RK</th>
-              <th class="head">RD</th>
-              <th class="head">0</th>
+              <th class="head">Ind.</th>
+              <th class="head">Diff</th>
+              <th class="head">Q</th>
             </thead>
 
             <tbody>
-              <tr>
-                <td class="number">1</td>
-                <td class="data bordered"><span>2</span></td>
-                <td class="data bordered"><span>16</span></td>
-                <td class="data bordered"><span>24</span></td>
-                <td class="data bordered"><span>0.33</span></td>
-                <td class="data bordered"><span>-8</span></td>
-                <td class="data bordered"><span>5</span> </td>
-                <td class="data bordered"><span>83</span> </td>
-                <td class="data bordered"><div class="green-circle"></div></td>
-                <td class="name">REBOLLEDO Melissa</td>
-              </tr>
-
-              <tr>
-                <td class="number">1</td>
-                <td class="data bordered"><span>0</span></td>
-                <td class="data bordered"><span>14</span></td>
-                <td class="data bordered"><span>30</span></td>
-                <td class="data bordered"><span>0.00</span></td>
-                <td class="data bordered"><span>-16</span></td>
-                <td class="data bordered"><span>7</span> </td>
-                <td class="data bordered"><span>105</span> </td>
-                <td class="data bordered"><div class="green-circle"></div></td>
-                <td class="name">SCRUGGS Lauren</td>
-              </tr>
-
-              <tr>
-                <td class="number">1</td>
-                <td class="data bordered"><span>5</span></td>
-                <td class="data bordered"><span>26</span></td>
-                <td class="data bordered"><span>21</span></td>
-                <td class="data bordered"><span>0.83</span></td>
-                <td class="data bordered"><span>5</span></td>
-                <td class="data bordered"><span>2</span> </td>
-                <td class="data bordered"><span>20</span> </td>
-                <td class="data bordered"><div class="green-circle"></div></td>
-                <td class="name">ZAKARANI Youssra</td>
-              </tr>
-
-              <tr>
-                <td class="number">1</td>
-                <td class="data bordered"><span>3</span></td>
-                <td class="data bordered"><span>21</span></td>
-                <td class="data bordered"><span>20</span></td>
-                <td class="data bordered"><span>0.50</span></td>
-                <td class="data bordered"><span>1</span></td>
-                <td class="data bordered"><span>4</span> </td>
-                <td class="data bordered"><span>58</span> </td>
-                <td class="data bordered"></td>
-                <td class="name">CIRIL RAJDEV Maria Akshita</td>
+              <tr *ngFor="let item of participantAndGroupList; let i = index;">
+                <td class="number">{{i + 1}}</td>
+                <td class="data bordered"><span>{{item.group.wins}}</span></td>
+                <td class="data bordered"><span>{{item.group.bouts}}</span></td>
+                <td class="data bordered"><span>{{item.group.td}}</span></td>
+                <td class="data bordered"><span>{{item.group.tr}}</span></td>
+                <td class="data bordered"><span>{{item.group.indicator}}</span></td>
+                <td
+                  class="data bordered"><span>{{(item.group.td && item.group.tr) ? item.group.td - item.group.tr : ''}}</span> </td>
+                <td class="data bordered">
+                  <div class="circle"
+              [ngClass]="{'circle_green': item.group.status === 'Q',
+              'circle_red': item.group.status === 'E',
+              'circle_black': item.group.status === 'D'}">
+            </div>
+                </td>
+                <td class="name">{{item.participant.surname}} {{item.participant.name}}</td>
               </tr>
             </tbody>
           </table>

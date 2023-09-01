@@ -14,22 +14,21 @@ import { IAthAndParticipant } from '../../../../../core/interfaces/ath-and-parti
 export class SeedingComponent {
   currentCompetition: ICompetitionResult | null = null;
   isEmpty: boolean = true;
-  totalAthList: IAthAndParticipant[];
+  totalAthList: IAthAndParticipant[] = [];
 
-  constructor(private readonly store: Store) {
-    this.totalAthList = [];
-  }
+  constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.athList.length === 0;
+        this.initializeAthList();
       }
     });
   }
 
-  initializeRefereesInfo(): void {
+  initializeAthList(): void {
     for(let ath of this.currentCompetition!.athList) {
       for(let participant of this.currentCompetition!.participantFormList) {
         if (ath.nickname === participant.nickname) {
