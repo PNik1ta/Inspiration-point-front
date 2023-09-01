@@ -1,14 +1,14 @@
 <div class="info-block">
   <h2 class="title">Starter</h2>
   <ng-container *ngIf="!isEmpty; else empty">
-    <div class="block">
+    <div class="block" *ngFor="let participant of currentCompetition?.participantFormList">
       <div class="col">
-        <p>NEP</p>
-        <img src="assets/images/jor-flag.jpg" alt="country flag">
-        <h5>ADHIKARI Anita, 2001</h5>
+        <p>{{participant.region}}</p>
+        <img [src]="'assets/images/flags/' + participant.region!.toLowerCase() + '.png'" alt="country flag">
+        <h5>{{participant.name}} {{participant.surname}}, {{participant.yearOfBirthday}}</h5>
       </div>
       <div class="col">
-        <p>Большая классная школа</p>
+        <p>{{participant.club}}</p>
       </div>
     </div>
   </ng-container>

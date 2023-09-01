@@ -5,10 +5,12 @@ import { CompetitionResultReceivedAction } from "../reducers/competitionResult/c
 import { CompetitionResultService } from "./competitionResult.service";
 import { BaseResponse } from "../models/base-response";
 import { CurrentCompetitionReceivedAction } from "../reducers/currentCompetition/currentCompetition.action";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
   jsonData: string = '';
+
 
   constructor(private store: Store, private readonly competitionResultService: CompetitionResultService) { }
 

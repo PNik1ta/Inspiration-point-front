@@ -5,40 +5,43 @@ import { Observable, from, switchMap } from "rxjs";
 import { BaseResponse } from "../models/base-response";
 import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { UpdateCompetitionResultDto } from "../dto/update-competition-result.dto";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class CompetitionResultService {
+  apiUrl: string = environment.apiUrl;
+
   constructor(
     private readonly http: HttpClient
   ) { }
 
   create(dto: CreateCompetitionResultDto): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = '/api/competitionResult';
+    let url: string = this.apiUrl + '/api/competitionResult';
     return this.http.post<BaseResponse<ICompetitionResult>>(url, dto);
   }
 
   findAll(): Observable<BaseResponse<ICompetitionResult[]>> {
-    let url: string = '/api/competitionResult';
+    let url: string = this.apiUrl + '/api/competitionResult';
     return this.http.get<BaseResponse<ICompetitionResult[]>>(url);
   }
 
   findById(id: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/api/competitionResult/' + id;
     return this.http.get<BaseResponse<ICompetitionResult>>(url);
   }
 
   findByCompetitionId(compId: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = '/api/competitionResult/find-by-competition-id/' + compId;
+    let url: string = this.apiUrl + '/api/competitionResult/find-by-competition-id/' + compId;
     return this.http.get<BaseResponse<ICompetitionResult>>(url);
   }
 
   delete(id: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/api/competitionResult/' + id;
     return this.http.delete<BaseResponse<ICompetitionResult>>(url);
   }
 
   update(id: string, dto: UpdateCompetitionResultDto): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/api/competitionResult/' + id;
     return this.http.put<BaseResponse<ICompetitionResult>>(url, dto);
   }
 
