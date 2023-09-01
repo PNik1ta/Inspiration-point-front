@@ -1,10 +1,17 @@
-<section class="tables">
-  <app-table-seeding></app-table-seeding>
-  <app-table-seeding></app-table-seeding>
-  <app-table-seeding></app-table-seeding>
-</section>
+<ng-container *ngIf="!isEmpty; else empty">
+  <section class="tables">
+    <app-table-seeding></app-table-seeding>
+  </section>
 
-<section class="tables-mobile">
-  <app-table-mobile></app-table-mobile>
-  <app-table-mobile></app-table-mobile>
-</section>
+  <section class="tables-mobile">
+    <app-table-mobile></app-table-mobile>
+    <app-table-mobile></app-table-mobile>
+  </section>
+</ng-container>
+
+<ng-template #empty>
+  <div class="info-block">
+    <h3 class="empty">Здесь пока ничего нет...</h3>
+  </div>
+</ng-template>
+

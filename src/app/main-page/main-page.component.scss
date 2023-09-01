@@ -7,18 +7,33 @@ $divider: #25282c;
 
 .banner {
   display: block;
-
-  height: 54.6rem;
   width: calc(100% + 6.4rem);
+  height: 41rem;
   margin: 1rem -3.2rem 2.8rem -3.2rem;
 
-  background-image: url('../../assets/images/banner.png');
+  background-image: url('../../assets/images/banners/1800.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+
+  @include respond(big-tab) {
+    background-image: url('../../assets/images/banners/1220.jpg');
+  }
+
+  @include respond(tab) {
+    background-image: url('../../assets/images/banners/1024.jpg');
+    height: 35rem;
+  }
+
+  @include respond(phone) {
+    background-position: top;
+    background-image: url('../../assets/images/banners/768.jpg');
+    height: 38rem;
+  }
 
   @include respond(small-phone) {
-    background-image: url('../../assets/images/banner-mob.png');
+    background-image: url('../../assets/images/banners/480.jpg');
+    height: 72rem;
   }
 }
 

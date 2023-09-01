@@ -1,6 +1,10 @@
 @import "../../../assets/styles/abstracts/mixins.scss";
 @import "../../../assets/styles/abstracts/variables.scss";
 $secondary-text-color: rgba(255, 255, 255, .6);
+.block_starter {
+  max-height: 50rem;
+  overflow: auto;
+}
 
 .block {
   display: flex;
@@ -9,8 +13,6 @@ $secondary-text-color: rgba(255, 255, 255, .6);
 
   width: 100%;
   height: fit-content;
-  max-height: 50rem;
-  overflow: auto;
 
   padding-top: 1.2rem;
   border-top: 1px solid $divider;

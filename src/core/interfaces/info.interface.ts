@@ -8,7 +8,7 @@ export interface IInfo {
   poulTab?: string;
   match?: number;
   round?: number;
-  referees?: string[];
+  referees?: number[];
   stopwatch?: string;
   priority?: string;
   state?: string;
