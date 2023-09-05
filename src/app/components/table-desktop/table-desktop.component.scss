@@ -113,13 +113,24 @@ $table-country-color: #888c95;
         }
       }
 
-      .green-circle {
+      .circle {
         display: block;
         width: 1rem;
         height: 1rem;
-        background-color: $light-green;
         border-radius: 100%;
         margin: 0 auto;
+
+        &_green {
+          background-color: $light-green;
+        }
+
+        &_red {
+          background-color: $red;
+        }
+
+        &_black {
+          background-color: #111;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IAth } from '../../../core/interfaces/ath.interface';
 import { IParticipantForm } from '../../../core/interfaces/participantForm.interface';
-import { IAthAndParticipant } from '../../../core/interfaces/ath-and-participant.interface';
+import { IAthAndParticipant } from '../../../core/viewInterfaces/ath-and-participant.interface';
 
 @Component({
   selector: 'app-table-seeding',

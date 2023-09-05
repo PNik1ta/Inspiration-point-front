@@ -1,6 +1,5 @@
 <section class="tables-dektop">
-  <app-table-desktop></app-table-desktop>
-  <app-table-desktop></app-table-desktop>
+  <app-table-desktop *ngFor="let view of firstRoundViews" [firstRoundView]="view"></app-table-desktop>
 </section>
 
 <section class="tables-mobile">

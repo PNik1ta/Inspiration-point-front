@@ -1,9 +1,4 @@
 <aside>
-  <ul class="stages">
-    <li>{{currentCompetition?.newCompetitionForm?.competitionName}}</li>
-  </ul>
-
-  <h1 class="competition">{{currentCompetition?.newCompetitionForm?.competitionName}}</h1>
 
   <div class="place-and-date">
     <p class="place-and-date__text">
@@ -14,30 +9,32 @@
 
   <nav class="nav">
     <ul class="nav__links">
-      <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
-      <li><a routerLink="/Starter" routerLinkActive="active">Starter</a></li>
-      <li><a routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a routerLink="/DirectElimination/Seeding" routerLinkActive="active">Direct elimination</a></li>
-      <li><a routerLink="/a" routerLinkActive="active">Results</a></li>
-      <li><a routerLink="/Referees" routerLinkActive="active">Referees</a></li>
+      <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Формула соревнования</a></li>
+      <li><a routerLink="/Starter" routerLinkActive="active">Участники</a></li>
+      <li><a routerLink="/FirstRound/FirstRound" routerLinkActive="active">Тур групп</a></li>
+      <li><a routerLink="/DirectElimination/Seeding" routerLinkActive="active">Тур прямого выбывания</a></li>
+      <li><a class="disabled">Результаты</a></li>
+      <!-- <li><a routerLink="/a" routerLinkActive="active">Результаты</a></li> -->
+      <li><a routerLink="/Referees" routerLinkActive="active">Список судей</a></li>
     </ul>
   </nav>
 
   <nav class="nav-mobile">
     <div class="nav-mobile__menu">
-      <h2>First round</h2>
+      <h2>{{selectedMenu}}</h2>
 
       <div class="nav-mobile__burger" [ngClass]="{'active': isOpened}" (click)="openBurger()"><span></span></div>
     </div>
 
 
     <ul class="nav-mobile__links" [ngClass]="{'active': isOpened}">
-      <li><a (click)="hideMenu()" routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">General</a></li>
-      <li><a (click)="hideMenu()" routerLink="/Starter" routerLinkActive="active">Starter</a></li>
-      <li><a (click)="hideMenu()" routerLink="/FirstRound/FirstRound" routerLinkActive="active">First round</a></li>
-      <li><a (click)="hideMenu()" routerLink="/DirectElimination/Seeding" routerLinkActive="active">Direct elimination</a></li>
-      <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Results</a></li>
-      <li><a (click)="hideMenu()" routerLink="/Referees" routerLinkActive="active">Referees</a></li>
+      <li><a (click)="hideMenu($event)" routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Формула соревнования</a></li>
+      <li><a (click)="hideMenu($event)" routerLink="/Starter" routerLinkActive="active">Участники</a></li>
+      <li><a (click)="hideMenu($event)" routerLink="/FirstRound/FirstRound" routerLinkActive="active">Тур групп</a></li>
+      <li><a (click)="hideMenu($event)" routerLink="/DirectElimination/Seeding" routerLinkActive="active">Тур прямого выбывания</a></li>
+      <li><a class="disabled">Результаты</a></li>
+      <!-- <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Results</a></li> -->
+      <li><a (click)="hideMenu($event)" routerLink="/Referees" routerLinkActive="active">Список судей</a></li>
     </ul>
   </nav>
 </aside>

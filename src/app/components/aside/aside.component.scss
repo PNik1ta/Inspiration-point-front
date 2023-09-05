@@ -96,6 +96,14 @@ aside {
           &.active {
             background-color: $block-color;
           }
+
+          &.disabled {
+            color: #7a7d82;
+
+            &:hover {
+              background-color: inherit;
+            }
+          }
         }
       }
 

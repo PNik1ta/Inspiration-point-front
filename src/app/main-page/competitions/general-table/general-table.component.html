@@ -1,11 +1,10 @@
 <section class="info-block">
-  <h2>ROUNDS</h2>
+  <h2>Формула соревнований</h2>
 
   <ng-container *ngIf="!isEmpty; else empty">
     <div class="block">
-      <h3>First round</h3>
       <div class="row">
-        <h6>Type</h6>
+        <h6>Тип</h6>
         <p>{{currentCompetition?.formulae?.roundTypes}}</p>
       </div>
 
@@ -15,12 +14,12 @@
       </div>
 
       <div class="row">
-        <h6>Hits</h6>
-        <p>{{currentCompetition?.formulae?.pointsInPools ?? 0}} Hits</p>
+        <h6>Уколы</h6>
+        <p>{{currentCompetition?.formulae?.pointsInPools ?? 0}}</p>
       </div>
 
       <div class="row">
-        <h6>Promoted to next round</h6>
+        <h6>Переведен в следующий раунд</h6>
         <p>{{currentCompetition?.formulae?.athletesQuantityBrackets}}</p>
       </div>
     </div>

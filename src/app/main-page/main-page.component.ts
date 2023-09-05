@@ -13,6 +13,7 @@ import { getCurrentCompetition } from '../../core/reducers/currentCompetition/cu
 export class MainPageComponent implements OnInit {
   competitions: ICompetitionResult[] = [];
   isResultsActive: boolean = false;
+  currentCompetition: ICompetitionResult | null = null;
 
   constructor(private readonly store: Store) {
 
@@ -26,8 +27,14 @@ export class MainPageComponent implements OnInit {
           const firstDate = parse(a.newCompetitionForm!.dateTimeCompetitionStart!, 'dd.MM.yyyy', new Date());
           const secondDate = parse(b.newCompetitionForm!.dateTimeCompetitionStart!, 'dd.MM.yyyy', new Date());
 
-          return firstDate.getTime() - secondDate.getTime();
+          return secondDate.getTime() - firstDate.getTime();
         });
+      }
+    });
+
+    this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
+      if (res) {
+        this.currentCompetition = res;
       }
     });
 

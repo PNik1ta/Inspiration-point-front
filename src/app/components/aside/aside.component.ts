@@ -9,6 +9,7 @@ import { getCurrentCompetition } from '../../../core/reducers/currentCompetition
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
+  selectedMenu: string = 'Основная';
   isOpened: boolean;
   competitions: ICompetitionResult[] = [];
   currentCompetition: ICompetitionResult | null = null;
@@ -29,7 +30,8 @@ export class AsideComponent implements OnInit {
     this.isOpened = !this.isOpened;
   }
 
-  hideMenu(): void {
+  hideMenu(event: any): void {
     this.isOpened = false;
+    this.selectedMenu = event.srcElement.innerText;
   }
 }

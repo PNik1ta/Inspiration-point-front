@@ -4,6 +4,7 @@
 $header-main-color: #BDFF00;
 $secondary-text-color: #7a7d82;
 $divider: #25282c;
+$title-text: #d9dee3;
 
 .banner {
   display: block;
@@ -47,6 +48,14 @@ main {
     grid-column: 1 / span 2;
   }
 
+
+  @include respond(phone) {
+    .col {
+      grid-column: 1 / span 2;
+    }
+  }
+
+
   // @include respond(big-tab) {
   //   grid-template-columns: repeat(2, 1fr);
 
@@ -58,9 +67,6 @@ main {
   @include respond(phone) {
     grid-template-columns: 1fr;
 
-    .col_results {
-      grid-column: 1;
-    }
   }
 
   h2 {
@@ -89,6 +95,24 @@ main {
   }
 }
 
+.competitions-header {
+  margin-bottom: 5rem;
+  grid-column: 1 / span 2;
+
+  .title {
+    font-size: 7rem;
+    line-height: 1.3;
+    color: $title-text;
+    font-weight: 500;
+    white-space: wrap;
+
+
+    @media screen and (max-width: 1154px) {
+      font-size: 5rem;
+    }
+  }
+}
+
 .wrapper {
 	display: grid;
 	grid-template-columns: 30% 1fr;
@@ -98,24 +122,4 @@ main {
 	@include respond(tab) {
 		grid-template-columns: 1fr;
 	}
-
-  .competitions-header {
-    margin-top: 10rem;
-
-    @include respond(tab) {
-      display: none;
-    }
-
-    .title {
-      font-size: 11.8rem;
-      line-height: 1.3;
-      color: $dark-blue;
-      font-weight: 500;
-      white-space: wrap;
-
-      @media screen and (max-width: 1154px) {
-        font-size: 5rem;
-      }
-    }
-  }
 }

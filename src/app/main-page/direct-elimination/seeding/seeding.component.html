@@ -1,7 +1,5 @@
 <div class="tables">
-  <app-table-seeding></app-table-seeding>
-  <app-table-seeding></app-table-seeding>
-  <app-table-seeding></app-table-seeding>
+  <app-table-seeding [athList]="totalAthList"></app-table-seeding>
 </div>
 
 
@@ -16,7 +14,6 @@
       <p class="number">16</p>
       <p class="number">8</p>
       <p class="number">4</p>
-      <p class="number">2</p>
       <p class="number">Final</p>
     </div>
     <button class="next" (click)="nextSlide()" #btnNext></button>
@@ -25,49 +22,42 @@
   <div class="slider-container">
     <div class="slides" #sliderContainer>
       <div class="slide">
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
+        <app-table-seeding [hasInfoBlock]="false" [athList]="totalAthList"></app-table-seeding>
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
       <div class="slide">
-        <div class="fights">\
+        <!-- <div class="fights">
           <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

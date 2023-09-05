@@ -3,6 +3,7 @@ import { ICompetitionResult } from '../../../core/interfaces/competition-result.
 import { CompetitionTourDate } from '../../../core/enums/competition-tour-date,enum';
 import { Store } from '@ngrx/store';
 import { CurrentCompetitionReceivedAction } from '../../../core/reducers/currentCompetition/currentCompetition.action';
+import { parse } from 'date-fns';
 
 @Component({
   selector: 'app-tour-competition',
@@ -23,8 +24,10 @@ export class TourCompetitionComponent implements OnInit {
       return;
     }
     const today = new Date();
-    const differenceInTime = today.getTime() - new Date(this.competition.newCompetitionForm.dateTimeCompetitionStart ?? '').getTime();
+    const competitionDate = parse(this.competition.newCompetitionForm.dateTimeCompetitionStart!, 'dd.MM.yyyy', new Date());
+    const differenceInTime = today.getTime() - competitionDate.getTime();
     const differenceInDays = Math.trunc(differenceInTime / (1000 * 3600 * 24));
+
 
     if (differenceInDays < 0) {
       this.competitionTourDate = CompetitionTourDate.FUTURE;

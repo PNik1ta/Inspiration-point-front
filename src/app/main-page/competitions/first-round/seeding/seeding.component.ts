@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IAth } from '../../../../../core/interfaces/ath.interface';
 import { IParticipantForm } from '../../../../../core/interfaces/participantForm.interface';
-import { IAthAndParticipant } from '../../../../../core/interfaces/ath-and-participant.interface';
+import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
 
 @Component({
   selector: 'app-seeding',
@@ -16,7 +16,7 @@ export class SeedingComponent {
   isEmpty: boolean = true;
   totalAthList: IAthAndParticipant[] = [];
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
@@ -29,10 +29,10 @@ export class SeedingComponent {
   }
 
   initializeAthList(): void {
-    for(let ath of this.currentCompetition!.athList) {
-      for(let participant of this.currentCompetition!.participantFormList) {
+    for (let ath of this.currentCompetition!.athList) {
+      for (let participant of this.currentCompetition!.participantFormList) {
         if (ath.nickname === participant.nickname) {
-          let iAthAndParticipant: IAthAndParticipant = { ath, participant}
+          let iAthAndParticipant: IAthAndParticipant = { ath, participant }
           this.totalAthList.push(iAthAndParticipant);
           break;
         }

@@ -15,35 +15,20 @@
     <div class="info-block">
       <h2>Последние бои</h2>
       <div class="fights">
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-        <app-fight></app-fight>
 
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-
-        <app-fight></app-fight>
-        <app-fight></app-fight>
-        <app-fight></app-fight>
       </div>
-
-
     </div>
   </div>
+
+  <section class="competitions-header">
+    <span class="title">{{currentCompetition?.newCompetitionForm?.competitionName}}</span>
+  </section>
 
   <div class="col col_results" *ngIf="isResultsActive">
     <div class="wrapper">
       <app-aside></app-aside>
 
       <div class="main">
-        <section class="competitions-header">
-          <span class="title">3 Etapa Circuito</span>
-        </section>
         <router-outlet></router-outlet>
       </div>
     </div>
