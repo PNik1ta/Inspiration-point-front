@@ -16,32 +16,32 @@ export class CompetitionResultService {
   ) { }
 
   create(dto: CreateCompetitionResultDto): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = this.apiUrl + '/api/competitionResult';
+    let url: string = this.apiUrl + '/competitionResult';
     return this.http.post<BaseResponse<ICompetitionResult>>(url, dto, { withCredentials: true });
   }
 
   findAll(): Observable<BaseResponse<ICompetitionResult[]>> {
-    let url: string = this.apiUrl + '/api/competitionResult';
+    let url: string = this.apiUrl + '/competitionResult';
     return this.http.get<BaseResponse<ICompetitionResult[]>>(url, { withCredentials: true });
   }
 
   findById(id: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = this.apiUrl + '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/competitionResult/' + id;
     return this.http.get<BaseResponse<ICompetitionResult>>(url, { withCredentials: true });
   }
 
   findByCompetitionId(compId: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = this.apiUrl + '/api/competitionResult/find-by-competition-id/' + compId;
+    let url: string = this.apiUrl + '/competitionResult/find-by-competition-id/' + compId;
     return this.http.get<BaseResponse<ICompetitionResult>>(url, { withCredentials: true });
   }
 
   delete(id: string): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = this.apiUrl + '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/competitionResult/' + id;
     return this.http.delete<BaseResponse<ICompetitionResult>>(url, { withCredentials: true });
   }
 
   update(id: string, dto: UpdateCompetitionResultDto): Observable<BaseResponse<ICompetitionResult>> {
-    let url: string = this.apiUrl + '/api/competitionResult/' + id;
+    let url: string = this.apiUrl + '/competitionResult/' + id;
     return this.http.put<BaseResponse<ICompetitionResult>>(url, dto, { withCredentials: true });
   }
 
