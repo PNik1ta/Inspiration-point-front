@@ -1,14 +1,14 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ICompetitionResult } from '../../../../../core/interfaces/competition-result.interface';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { Store, select } from '@ngrx/store';
 import { GroupResultStatus } from '../../../../../core/enums/group-result-status.enum';
-import { constructAthAndGroupInitials } from '../../../../../core/utils/construct-ath-and-group-initial';
-import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/ath-and-group-initial.interface';
-import { IFirstRoundView } from '../../../../../core/viewInterfaces/first-round-view.interface';
-import { IFirstRoundViewRow } from '../../../../../core/viewInterfaces/first-round-view-row.interface';
-import { ConstructFirstRoundViewRow } from '../../../../../core/utils/construct-first-round-view-row';
-import { ConstructFirstRoundViews } from '../../../../../core/utils/construct-first-round-view.interface';
+import { constructAthAndGroupInitials } from '../../../../../core/utils/first-round/construct-ath-and-group-initial';
+import { IFirstRoundViewRow } from '../../../../../core/viewInterfaces/first-round/first-round-view-row.interface';
+import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/first-round/ath-and-group-initial.interface';
+import { IFirstRoundView } from '../../../../../core/viewInterfaces/first-round/first-round-view.interface';
+import { constructFirstRoundViewRow } from '../../../../../core/utils/first-round/construct-first-round-view-row';
+import { constructFirstRoundViews } from '../../../../../core/utils/first-round/construct-first-round-view.interface';
 
 @Component({
   selector: 'app-first-round',
@@ -23,9 +23,7 @@ export class FirstRoundComponent {
   firstRoundViews: IFirstRoundView[] = [];
 
 
-  constructor(private readonly store: Store) {
-    //this.currentCompetition = this.constructMockCompetitionResult();
-  }
+  constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
@@ -39,10 +37,10 @@ export class FirstRoundComponent {
           this.athAndGroupInitials = constructAthAndGroupInitials(this.currentCompetition);
 
           for (let ath of this.athAndGroupInitials) {
-            this.firstRoundRows.push(ConstructFirstRoundViewRow(this.currentCompetition, ath, this.athAndGroupInitials));
+            this.firstRoundRows.push(constructFirstRoundViewRow(this.currentCompetition, ath, this.athAndGroupInitials));
           }
 
-          this.firstRoundViews = ConstructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
+          this.firstRoundViews = constructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
         }
 
       }

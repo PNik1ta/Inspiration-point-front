@@ -3,7 +3,6 @@
 
 .direct-elimination {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   column-gap: 1.2rem;
 
   @include respond(big-tab) {

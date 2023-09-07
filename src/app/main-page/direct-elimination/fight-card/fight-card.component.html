@@ -1,15 +1,15 @@
-<!-- <div class="card">
+<div class="card">
   <div class="patricipant participant_first">
-    <p class="hits">15</p>
-    <p class="country">ITA</p>
+    <p class="hits">{{fight?.leftParticipant?.score}}</p>
+    <p class="country" [title]="fight?.leftParticipant?.region">{{fight?.leftParticipant?.region}}</p>
     <img src="assets/images/ita-flag.png" alt="country flag">
-    <h5>VOLPI Alice</h5>
+    <h5>{{fight?.leftParticipant?.surname}} {{fight?.leftParticipant?.name}}</h5>
   </div>
 
   <div class="patricipant participant_second">
-    <p class="hits">2</p>
-    <p class="country">ITA</p>
+    <p class="hits">{{fight?.rightParticipant?.score}}</p>
+    <p class="country" [title]="fight?.rightParticipant?.region">{{fight?.rightParticipant?.region}}</p>
     <img src="assets/images/ita-flag.png" alt="country flag">
-    <h5>VOLPI Alice</h5>
+    <h5>{{fight?.rightParticipant?.surname}} {{fight?.rightParticipant?.name}}</h5>
   </div>
-</div> -->
+</div>

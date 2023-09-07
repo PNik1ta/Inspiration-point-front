@@ -56,6 +56,21 @@ $secondary-text-color:#ffffff99;
       font-size: 0.9rem;
       line-height: 1.77;
       color: $secondary-text-color;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+
+      &::after {
+        content: ''; /* Создание пустого псевдоэлемента */
+        position: absolute; /* Позиционирование абсолютно */
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 20px; /* Ширина для троеточия */
+        pointer-events: none; /* Позволить взаимодействие с текстом за троеточием */
+      }
     }
   }
 }

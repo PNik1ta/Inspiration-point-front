@@ -8,13 +8,7 @@
     <button class="prev" (click)="prevSlide()" #btnPrev></button>
     <div class="numbers" #circles>
       <p class="number number_active">Seeding</p>
-      <p class="number">128</p>
-      <p class="number">64</p>
-      <p class="number">32</p>
-      <p class="number">16</p>
-      <p class="number">8</p>
-      <p class="number">4</p>
-      <p class="number">Final</p>
+      <p class="number" *ngFor="let view of views">{{view.columnName}}</p>
     </div>
     <button class="next" (click)="nextSlide()" #btnNext></button>
   </div>
@@ -24,40 +18,10 @@
       <div class="slide">
         <app-table-seeding [hasInfoBlock]="false" [athList]="totalAthList"></app-table-seeding>
       </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
-      </div>
-      <div class="slide">
-        <!-- <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div> -->
+      <div class="slide" *ngFor="let view of views">
+        <div class="fights">
+          <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { IFightDEView } from '../../../core/viewInterfaces/direct-elimination/fight-DE-view.interface';
 
 @Component({
   selector: 'app-fight',

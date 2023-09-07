@@ -1,5 +1,7 @@
 export interface IBracketInitial {
   _id?: string;
   nickname?: number;
-  bracketsRankNumber?: number;
+  tableauBr?: string;
+  matchBr?: number;
+  rankBr?: number;
 }

@@ -1,37 +1,8 @@
-<!-- <div class="info-block direct-elimination">
-  <div class="col">
-    <p class="number">8</p>
+<div class="info-block direct-elimination">
+  <div class="col" *ngFor="let view of viewsForDesktop">
+    <p class="number">{{view.columnName}}</p>
 
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-  </div>
-
-  <div class="col">
-    <p class="number">4</p>
-
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-  </div>
-
-  <div class="col">
-    <p class="number">2</p>
-
-    <app-fight-card></app-fight-card>
-    <app-fight-card></app-fight-card>
-  </div>
-
-  <div class="col">
-    <p class="number">Final</p>
-
-    <app-fight-card></app-fight-card>
+    <app-fight-card *ngFor="let fight of view.fights"></app-fight-card>
   </div>
 </div>
 
@@ -40,14 +11,7 @@
     <button class="prev" (click)="prevSlide()" #btnPrev></button>
     <div class="numbers" #circles>
       <p class="number number_active">Seeding</p>
-      <p class="number">128</p>
-      <p class="number">64</p>
-      <p class="number">32</p>
-      <p class="number">16</p>
-      <p class="number">8</p>
-      <p class="number">4</p>
-      <p class="number">2</p>
-      <p class="number">Final</p>
+      <p class="number" *ngFor="let view of views">{{view.columnName}}</p>
     </div>
     <button class="next" (click)="nextSlide()" #btnNext></button>
   </div>
@@ -55,50 +19,13 @@
   <div class="slider-container">
     <div class="slides" #sliderContainer>
       <div class="slide">
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
-        <app-table-seeding [hasInfoBlock]="false"></app-table-seeding>
+        <app-table-seeding [hasInfoBlock]="false" [athList]="totalAthList"></app-table-seeding>
       </div>
-      <div class="slide">
+      <div class="slide" *ngFor="let view of views">
         <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="fights">
-          <app-fight-card></app-fight-card>
+          <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
         </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>

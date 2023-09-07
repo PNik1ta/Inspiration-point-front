@@ -1,9 +1,10 @@
-import { ICompetitionResult } from "../interfaces/competition-result.interface";
-import { IAthAndGroupInitial } from "../viewInterfaces/ath-and-group-initial.interface";
-import { IFirstRoundViewRow } from "../viewInterfaces/first-round-view-row.interface";
-import { IInfoViewFirstRound } from "../viewInterfaces/info-view-first-round.interface";
+import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { IAthAndGroupInitial } from "../../viewInterfaces/first-round/ath-and-group-initial.interface";
+import { IFirstRoundViewRow } from "../../viewInterfaces/first-round/first-round-view-row.interface";
+import { IInfoViewFirstRound } from "../../viewInterfaces/info-view-first-round.interface";
 
-export function ConstructFirstRoundViewRow(result: ICompetitionResult, ath: IAthAndGroupInitial, aths: IAthAndGroupInitial[]): IFirstRoundViewRow {
+
+export function constructFirstRoundViewRow(result: ICompetitionResult, ath: IAthAndGroupInitial, aths: IAthAndGroupInitial[]): IFirstRoundViewRow {
   const firstRoundViewRow: IFirstRoundViewRow = { ath, infoArray: [], result: {} };
 
   firstRoundViewRow.result = result.groupsResults.find((res) => res.nickname === ath.ath.nickname) ?? {};

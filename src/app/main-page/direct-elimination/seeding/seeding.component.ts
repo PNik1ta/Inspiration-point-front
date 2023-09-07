@@ -3,6 +3,11 @@ import { IAthAndParticipant } from '../../../../core/viewInterfaces/ath-and-part
 import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
+import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-view.interface';
+import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
+import { constructDEParticipantsScore } from '../../../../core/utils/direct-elimination/construct-de-participantsScore';
+import { constructDEViews } from '../../../../core/utils/direct-elimination/construct-de-view';
+import { constructAthList } from '../../../../core/utils/constrict-ath-list';
 
 @Component({
   selector: 'app-seeding',
@@ -18,6 +23,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
   currentIndex: number = 0;
   totalAthList: IAthAndParticipant[] = [];
   currentCompetition: ICompetitionResult | null = null;
+  views: IDEView[] = [];
 
   constructor(private readonly store: Store) { }
 
@@ -25,9 +31,24 @@ export class SeedingComponent implements AfterViewInit, OnInit {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
-        this.initializeAthList();
+        this.zeroArrays();
+        this.totalAthList = constructAthList(this.currentCompetition);
+
+        this.views = constructDEViews(this.currentCompetition.bracketsInitial!);
+
+        for (let view of this.views) {
+          view = constructDEParticipantsScore(view, this.currentCompetition);
+        }
+
+        for (let view of this.views) {
+          view = constructDEParticipantsInfo(view, this.currentCompetition);
+        }
       }
     });
+  }
+
+  zeroArrays(): void {
+    this.views = [];
   }
 
   ngAfterViewInit(): void {
@@ -112,17 +133,5 @@ export class SeedingComponent implements AfterViewInit, OnInit {
     }
     this.currentIndex = (this.currentIndex - 1 + this.sliderBlocks.length) % this.sliderBlocks.length;
     this.updateSliderPosition();
-  }
-
-  initializeAthList(): void {
-    for (let ath of this.currentCompetition!.athList) {
-      for (let participant of this.currentCompetition!.participantFormList) {
-        if (ath.nickname === participant.nickname) {
-          let iAthAndParticipant: IAthAndParticipant = { ath, participant }
-          this.totalAthList.push(iAthAndParticipant);
-          break;
-        }
-      }
-    }
   }
 }

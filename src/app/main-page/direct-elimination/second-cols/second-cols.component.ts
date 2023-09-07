@@ -1,17 +1,61 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
+import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-view.interface';
+import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
+import { constructDEParticipantsScore } from '../../../../core/utils/direct-elimination/construct-de-participantsScore';
+import { constructDEViews } from '../../../../core/utils/direct-elimination/construct-de-view';
+import { Store, select } from '@ngrx/store';
+import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
+import { IAthAndParticipant } from '../../../../core/viewInterfaces/ath-and-participant.interface';
+import { constructAthList } from '../../../../core/utils/constrict-ath-list';
 
 @Component({
   selector: 'app-second-cols',
   templateUrl: './second-cols.component.html',
   styleUrls: ['./second-cols.component.scss']
 })
-export class SecondColsComponent implements AfterViewInit {
+export class SecondColsComponent implements AfterViewInit, OnInit {
   @ViewChild('sliderContainer') sliderContainer?: ElementRef;
   @ViewChild('btnPrev') btnPrev?: ElementRef;
   @ViewChild('btnNext') btnNext?: ElementRef;
   @ViewChild('circles') circles?: ElementRef;
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
+
+  currentCompetition: ICompetitionResult | null = null;
+  views: IDEView[] = [];
+  viewsForDesktop: IDEView[] = [];
+  totalAthList: IAthAndParticipant[] = [];
+
+  constructor(private readonly store: Store) {}
+
+  ngOnInit(): void {
+    this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
+      if (res) {
+        this.currentCompetition = res;
+        this.zeroArrays();
+        this.totalAthList = constructAthList(this.currentCompetition);
+        this.views = constructDEViews(this.currentCompetition.bracketsInitial);
+
+        for (let view of this.views) {
+          view = constructDEParticipantsScore(view, this.currentCompetition);
+        }
+
+        for (let view of this.views) {
+          view = constructDEParticipantsInfo(view, this.currentCompetition);
+        }
+        this.viewsForDesktop.push(...this.views);
+        if (this.views.length > 4) {
+          this.viewsForDesktop.length = 4;
+        }
+      }
+    })
+  }
+
+  zeroArrays(): void {
+    this.views = [];
+    this.viewsForDesktop = [];
+  }
 
   ngAfterViewInit(): void {
     this.sliderBlocks = this.sliderContainer!.nativeElement.getElementsByClassName('slide');
