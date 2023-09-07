@@ -5,7 +5,7 @@ import { Observable, from, switchMap } from "rxjs";
 import { BaseResponse } from "../models/base-response";
 import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { UpdateCompetitionResultDto } from "../dto/update-competition-result.dto";
-import { environment } from "../../environments/environment.development";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class CompetitionResultService {

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 import { IFirstRoundView } from '../../../core/viewInterfaces/first-round-view.interface';
 
@@ -7,14 +7,26 @@ import { IFirstRoundView } from '../../../core/viewInterfaces/first-round-view.i
   templateUrl: './table-desktop.component.html',
   styleUrls: ['./table-desktop.component.scss']
 })
-export class TableDesktopComponent implements AfterViewInit {
+export class TableDesktopComponent implements AfterViewInit, OnChanges {
   @Input('firstRoundView') view: IFirstRoundView | null = null;
   arrayOfQuantityParticipants: number[] = [];
 
   ngAfterViewInit(): void {
+    this.arrayOfQuantityParticipants = [];
     this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
     this.sortByAthleteRankPool();
     this.sortByInfoNumber();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['view']) {
+      this.arrayOfQuantityParticipants = [];
+      console.log(this.view?.firstRoundViewRows);
+
+      this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
+      this.sortByAthleteRankPool();
+      this.sortByInfoNumber();
+    }
   }
 
   sortByAthleteRankPool(): void {

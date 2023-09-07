@@ -14,6 +14,7 @@ export class TourCompetitionComponent implements OnInit {
   @Input('competition') competition: ICompetitionResult | null;
   competitionTourDate: CompetitionTourDate = CompetitionTourDate.FUTURE;
   buttonContent: string = '';
+  isDisabled: boolean = false;
 
   constructor(private readonly store: Store) {
     this.competition = null;
@@ -43,5 +44,6 @@ export class TourCompetitionComponent implements OnInit {
   selectCompetition(competition: ICompetitionResult): void {
     this.store.dispatch(CurrentCompetitionReceivedAction({ data: competition }));
     localStorage.setItem('currentCompetition', JSON.stringify(competition));
+    this.isDisabled = true;
   }
 }

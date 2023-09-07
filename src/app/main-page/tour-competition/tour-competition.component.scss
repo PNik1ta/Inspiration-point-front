@@ -15,6 +15,15 @@ $inactive-color: rgba(255, 255, 255, .6);
     h5, p {
       color: $inactive-color;
     }
+
+    button {
+      cursor: not-allowed;
+      color: $inactive-color;
+
+      &:hover {
+        background-color: $button-bg;
+      }
+    }
   }
 
   h5, p {

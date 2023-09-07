@@ -27,6 +27,7 @@ export class WebSocketService {
   subscribeToData(): void {
     if (this.socket) {
       this.socket.onmessage = (event: MessageEvent) => {
+
         if (event.data !== 'END') {
           this.jsonData += event.data;
         } else {
