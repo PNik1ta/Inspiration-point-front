@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-and-group.interface';
 
@@ -7,12 +7,19 @@ import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-a
   templateUrl: './table-up-down.component.html',
   styleUrls: ['./table-up-down.component.scss']
 })
-export class TableUpDownComponent implements OnInit {
+export class TableUpDownComponent implements OnInit, OnChanges {
   @Input('result') result: ICompetitionResult | null = null;
   participantAndGroupList: IParticipantAndGroup[] = [];
 
   ngOnInit(): void {
     this.initializeParticipantAndGroupInfo();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['result']) {
+      this.participantAndGroupList = [];
+      this.initializeParticipantAndGroupInfo();
+    }
   }
 
   initializeParticipantAndGroupInfo(): void {

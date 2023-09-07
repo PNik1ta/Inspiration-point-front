@@ -22,6 +22,8 @@ export class AsideComponent implements OnInit {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
+        console.log(this.currentCompetition);
+
       }
     });
   }

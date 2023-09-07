@@ -1,15 +1,15 @@
 <div class="info-block block-table-mobile">
-  <!-- <div class="table-header">
+  <div class="table-header">
     <div class="table-header__row">
-      <h3>No: 1</h3>
-      <p>Pi BLUE | Su 9:00 |</p>
+      <h3>No: {{view?.group?.poolNumber}}</h3>
+      <p>{{view?.group?.strip}} | Su {{view?.group?.startTime}}</p>
     </div>
 
-    <div class="table-header__row">
+    <!-- <div class="table-header__row">
       <p>Рефери: </p>
       <p>BARDENHAGEN Tim Claus ATTAR COHEN Adriana</p>
-    </div>
-  </div> -->
+    </div> -->
+  </div>
 
   <div class="table-main">
     <div class="navigation">
@@ -39,69 +39,20 @@
         </div>
 
         <div class="slide">
-          <!-- <table class="competition">
+          <table class="competition">
             <thead>
-              <th class="head"></th>
-              <th class="head">1</th>
-              <th class="head">2</th>
-              <th class="head">3</th>
-              <th class="head">4</th>
-              <th class="head">5</th>
-              <th class="head">6</th>
-              <th class="head">7</th>
+              <th class="head" *ngFor="let number of arrayOfQuantityParticipants">{{number}}</th>
             </thead>
 
             <tbody>
-              <tr>
-                <td class="number">1</td>
-                <td class="data data_empty bordered"></td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data bordered"><span>D4</span></td>
-                <td class="data bordered"><span>D2</span></td>
-                <td class="data bordered"><span>D0</span></td>
-                <td class="data bordered"><span>D0</span> </td>
-                <td class="data data_green bordered"><span>V5</span> </td>
-                <td class="name">REBOLLEDO Melissa</td>
-              </tr>
-
-              <tr>
-                <td class="number">2</td>
-                <td class="data bordered"><span>D3</span></td>
-                <td class="data data_empty bordered"></td>
-                <td class="data bordered"><span>D3</span></td>
-                <td class="data bordered"><span>D2</span></td>
-                <td class="data bordered"><span>D1</span></td>
-                <td class="data bordered"><span>D1</span> </td>
-                <td class="data bordered"><span>D4</span> </td>
-                <td class="name">SCRUGGS Lauren</td>
-              </tr>
-
-              <tr>
-                <td class="number">3</td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data data_empty bordered"></td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data bordered"><span>D1</span></td>
-                <td class="data bordered"><span>D0</span> </td>
-                <td class="data data_green bordered"><span>V5</span> </td>
-                <td class="name">ZAKARANI Youssra</td>
-              </tr>
-
-              <tr>
-                <td class="number">4</td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data data_green bordered"><span>V5</span></td>
-                <td class="data bordered"><span>D2</span></td>
-                <td class="data data_empty bordered"></td>
-                <td class="data bordered"><span>D4</span></td>
-                <td class="
-                data bordered"><span>D0</span> </td>
-                <td class="data data_green bordered"><span>V5</span> </td>
-                <td class="name">CIRIL RAJDEV Maria Akshita</td>
+              <tr *ngFor="let row of view?.firstRoundViewRows; let i = index">
+                <td class="number">{{i + 1}}</td>
+                <td class="data bordered" *ngFor="let info of row.infoArray"
+                  [ngClass]="{'data_empty': info.position === -1}"><span>{{info.score}}</span></td>
+                <td class="name">{{ row.ath.participantForm.surname }} {{ row.ath.participantForm.name }}</td>
               </tr>
             </tbody>
-          </table> -->
+          </table>
         </div>
 
         <div class="slide">
@@ -109,32 +60,30 @@
             <thead>
               <th class="head"></th>
               <th class="head">V</th>
-              <th class="head">M</th>
               <th class="head">TD</th>
               <th class="head">TR</th>
-              <th class="head">Ind.</th>
-              <th class="head">Diff</th>
+              <th class="head">t1</th>
+              <th class="head">t2</th>
+              <th class="head">Rk</th>
+              <th class="head">Rd</th>
               <th class="head">Q</th>
             </thead>
 
             <tbody>
-              <tr *ngFor="let item of participantAndGroupList; let i = index;">
+              <tr *ngFor="let row of view?.firstRoundViewRows; let i = index;">
                 <td class="number">{{i + 1}}</td>
-                <td class="data bordered"><span>{{item.group.wins}}</span></td>
-                <td class="data bordered"><span>{{item.group.bouts}}</span></td>
-                <td class="data bordered"><span>{{item.group.td}}</span></td>
-                <td class="data bordered"><span>{{item.group.tr}}</span></td>
-                <td class="data bordered"><span>{{item.group.indicator}}</span></td>
-                <td
-                  class="data bordered"><span>{{(item.group.td && item.group.tr) ? item.group.td - item.group.tr : ''}}</span> </td>
-                <td class="data bordered">
-                  <div class="circle"
-              [ngClass]="{'circle_green': item.group.status === 'Q',
-              'circle_red': item.group.status === 'E',
-              'circle_black': item.group.status === 'D'}">
-            </div>
-                </td>
-                <td class="name">{{item.participant.surname}} {{item.participant.name}}</td>
+                <td class="data bordered"><span>{{row.result.wins}}</span></td>
+                <td class="data bordered"><span>{{row.result.td}}</span></td>
+                <td class="data bordered"><span>{{row.result.tr}}</span></td>
+                <td class="data bordered"><span>{{row.result.indicator}}</span></td>
+                <td class="data bordered"><span>{{row.result.coefficient}}</span></td>
+                <td class="data">{{row.result.placeInPool}}</td>
+                <td class="data">{{row.result.rankAfterPools}}</td>
+                <td class="data"><span class="circle" [ngClass]="
+                  {'circle_green': row.result.status === 'Q',
+                  'circle_red': row.result.status === 'D',
+                  'circle_black': row.result.status === 'E'}
+                "></span></td>
               </tr>
             </tbody>
           </table>

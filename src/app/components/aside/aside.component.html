@@ -9,11 +9,16 @@
 
   <nav class="nav">
     <ul class="nav__links">
-      <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Формула соревнования</a></li>
-      <li><a routerLink="/Starter" routerLinkActive="active">Участники</a></li>
-      <li><a routerLink="/FirstRound/FirstRound" routerLinkActive="active">Тур групп</a></li>
-      <li><a routerLink="/DirectElimination/Seeding" routerLinkActive="active">Тур прямого выбывания</a></li>
-      <li><a class="disabled">Результаты</a></li>
+      <li><a routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Формула
+          соревнования</a></li>
+      <li><a [routerLink]="!currentCompetition?.participantFormList ? null : ['/Starter']" routerLinkActive="active"
+          [ngClass]="{'disabled': !currentCompetition?.participantFormList}">Участники</a></li>
+      <li><a [routerLink]="!currentCompetition?.groupsInitial ? null : ['/FirstRound/FirstRound']"
+          routerLinkActive="active" [ngClass]="{'disabled': !currentCompetition?.groupsInitial}">Тур групп</a></li>
+      <li><a [routerLink]="!currentCompetition?.bracketsInitial ? null : ['/DirectElimination/Seeding']"
+          routerLinkActive="active" [ngClass]="{'disabled': !currentCompetition?.bracketsInitial }">Тур прямого
+          выбывания</a></li>
+      <li><a class="disabled" [ngClass]="{'disabled': !currentCompetition?.bracketsResults }">Результаты</a></li>
       <!-- <li><a routerLink="/a" routerLinkActive="active">Результаты</a></li> -->
       <!-- <li><a routerLink="/Referees" routerLinkActive="active">Список судей</a></li> -->
     </ul>
@@ -28,11 +33,19 @@
 
 
     <ul class="nav-mobile__links" [ngClass]="{'active': isOpened}">
-      <li><a (click)="hideMenu($event)" routerLink="/General" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Формула соревнования</a></li>
-      <li><a (click)="hideMenu($event)" routerLink="/Starter" routerLinkActive="active">Участники</a></li>
-      <li><a (click)="hideMenu($event)" routerLink="/FirstRound/FirstRound" routerLinkActive="active">Тур групп</a></li>
-      <li><a (click)="hideMenu($event)" routerLink="/DirectElimination/Seeding" routerLinkActive="active">Тур прямого выбывания</a></li>
-      <li><a class="disabled">Результаты</a></li>
+      <li><a (click)="hideMenu($event)" routerLink="/General" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact : true}">Формула соревнования</a></li>
+      <li><a (click)="hideMenu($event)" [routerLink]="!currentCompetition?.participantFormList ? null : ['/Starter']"
+          [ngClass]="{'disabled': !currentCompetition?.participantFormList}" routerLinkActive="active">Участники</a>
+      </li>
+      <li><a (click)="hideMenu($event)"
+          [routerLink]="!currentCompetition?.groupsInitial ? null : ['/FirstRound/FirstRound']"
+          [ngClass]="{'disabled': !currentCompetition?.groupsInitial}" routerLinkActive="active">Тур групп</a></li>
+      <li><a (click)="hideMenu($event)"
+          [routerLink]="!currentCompetition?.bracketsInitial ? null : ['/DirectElimination/Seeding']"
+          routerLinkActive="active" [ngClass]="{'disabled': !currentCompetition?.bracketsInitial }">Тур прямого
+          выбывания</a></li>
+      <li><a class="disabled" [ngClass]="{'disabled': !currentCompetition?.bracketsResults }">Результаты</a></li>
       <!-- <li><a (click)="hideMenu()" routerLink="/a" routerLinkActive="active">Results</a></li> -->
       <!-- <li><a (click)="hideMenu($event)" routerLink="/Referees" routerLinkActive="active">Список судей</a></li> -->
     </ul>
