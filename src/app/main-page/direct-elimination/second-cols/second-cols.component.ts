@@ -37,16 +37,15 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
         this.totalAthList = constructAthList(this.currentCompetition);
         this.views = constructDEViews(this.currentCompetition.bracketsInitial);
 
+
         for (let view of this.views) {
           view = constructDEParticipantsScore(view, this.currentCompetition);
         }
+        console.log(this.views);
+
 
         for (let view of this.views) {
           view = constructDEParticipantsInfo(view, this.currentCompetition);
-        }
-        this.viewsForDesktop.push(...this.views);
-        if (this.views.length > 4) {
-          this.viewsForDesktop.length = 4;
         }
       }
     })
@@ -60,6 +59,11 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.sliderBlocks = this.sliderContainer!.nativeElement.getElementsByClassName('slide');
     this.updateVisibleNumbers();
+
+    this.viewsForDesktop.push(...this.views);
+    if (this.viewsForDesktop.length > 4) {
+      this.viewsForDesktop = this.viewsForDesktop.slice(-4);
+    }
   }
 
   updateSliderPosition() {

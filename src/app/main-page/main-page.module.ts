@@ -12,6 +12,7 @@ import { DirectEliminationComponent } from './direct-elimination/direct-eliminat
 import { ComponentsModule } from "../components/components.module";
 import { DirectEliminationModule } from "./direct-elimination/direct-elimination.module";
 import { CompetitionsModule } from "./competitions/competitions.module";
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CompetitionsModule } from "./competitions/competitions.module";
     RefereesComponent,
     StarterComponent,
     DirectEliminationComponent,
+    ResultsComponent,
   ],
 })
 export class MainPageModule { }

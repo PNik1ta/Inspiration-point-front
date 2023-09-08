@@ -39,6 +39,10 @@ export class TableMobileComponent implements AfterViewInit, OnInit, OnChanges {
     }
   }
 
+  constructArrayOfQuantityParticipants(view: IFirstRoundView): number[] {
+    return Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
+  }
+
   initializeParticipantAndGroupInfo(): void {
     for (let group of this.result!.athList) {
       for (let participant of this.result!.participantFormList) {

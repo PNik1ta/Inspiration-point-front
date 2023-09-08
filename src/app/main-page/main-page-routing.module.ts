@@ -4,6 +4,7 @@ import { MainPageComponent } from "./main-page.component";
 import { GeneralTableComponent } from "./competitions/general-table/general-table.component";
 import { RefereesComponent } from "./referees/referees.component";
 import { StarterComponent } from "./starter/starter.component";
+import { ResultsComponent } from "./results/results.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'DirectElimination',
         loadChildren: () => import('./direct-elimination/direct-elimination-routing.module').then(m => m.DirectEliminationRoutingModule)
+      },
+      {
+        path: 'Results',
+        component: ResultsComponent
       }
     ]
   },

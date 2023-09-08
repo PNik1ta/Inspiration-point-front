@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
     });
 
     const currentCompetition = localStorage.getItem('currentCompetition');
-    console.log('Competition from JSON', JSON.parse(currentCompetition!));
 
 
     if (currentCompetition) {

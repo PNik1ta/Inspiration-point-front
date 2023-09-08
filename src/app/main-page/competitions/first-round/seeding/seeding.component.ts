@@ -5,6 +5,12 @@ import { getCurrentCompetition } from '../../../../../core/reducers/currentCompe
 import { IAth } from '../../../../../core/interfaces/ath.interface';
 import { IParticipantForm } from '../../../../../core/interfaces/participantForm.interface';
 import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
+import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/first-round/ath-and-group-initial.interface';
+import { IFirstRoundViewRow } from '../../../../../core/viewInterfaces/first-round/first-round-view-row.interface';
+import { IFirstRoundView } from '../../../../../core/viewInterfaces/first-round/first-round-view.interface';
+import { constructAthAndGroupInitials } from '../../../../../core/utils/first-round/construct-ath-and-group-initial';
+import { constructFirstRoundViewRow } from '../../../../../core/utils/first-round/construct-first-round-view-row';
+import { constructFirstRoundViews } from '../../../../../core/utils/first-round/construct-first-round-view.interface';
 
 @Component({
   selector: 'app-seeding',
@@ -15,6 +21,9 @@ export class SeedingComponent {
   currentCompetition: ICompetitionResult | null = null;
   isEmpty: boolean = true;
   totalAthList: IAthAndParticipant[] = [];
+  firstRoundViews: IFirstRoundView[] = [];
+  athAndGroupInitials: IAthAndGroupInitial[] = [];
+  firstRoundRows: IFirstRoundViewRow[] = [];
 
   constructor(private readonly store: Store) { }
 
@@ -24,6 +33,17 @@ export class SeedingComponent {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.athList.length === 0;
         this.initializeAthList();
+
+        if (this.currentCompetition) {
+          this.zeroArrays();
+          this.athAndGroupInitials = constructAthAndGroupInitials(this.currentCompetition);
+
+          for (let ath of this.athAndGroupInitials) {
+            this.firstRoundRows.push(constructFirstRoundViewRow(this.currentCompetition, ath, this.athAndGroupInitials));
+          }
+
+          this.firstRoundViews = constructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
+        }
       }
     });
   }
@@ -38,5 +58,11 @@ export class SeedingComponent {
         }
       }
     }
+  }
+
+  zeroArrays(): void {
+    this.athAndGroupInitials = [];
+    this.firstRoundRows = [];
+    this.firstRoundViews = [];
   }
 }

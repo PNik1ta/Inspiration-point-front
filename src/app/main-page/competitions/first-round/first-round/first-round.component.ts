@@ -9,6 +9,7 @@ import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/first-ro
 import { IFirstRoundView } from '../../../../../core/viewInterfaces/first-round/first-round-view.interface';
 import { constructFirstRoundViewRow } from '../../../../../core/utils/first-round/construct-first-round-view-row';
 import { constructFirstRoundViews } from '../../../../../core/utils/first-round/construct-first-round-view.interface';
+import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
 
 @Component({
   selector: 'app-first-round',
@@ -17,19 +18,20 @@ import { constructFirstRoundViews } from '../../../../../core/utils/first-round/
 })
 export class FirstRoundComponent {
   currentCompetition: ICompetitionResult | null = null;
-  athAndGroupInitials: IAthAndGroupInitial[] = []
+  athAndGroupInitials: IAthAndGroupInitial[] = [];
   firstRoundRows: IFirstRoundViewRow[] = [];
   isEmpty: boolean = true;
   firstRoundViews: IFirstRoundView[] = [];
+  totalAthList: IAthAndParticipant[] = [];
 
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
-
+        this.initializeAthList();
         this.isEmpty = this.currentCompetition.athList.length === 0;
 
         if (this.currentCompetition) {
@@ -45,6 +47,18 @@ export class FirstRoundComponent {
 
       }
     });
+  }
+
+  initializeAthList(): void {
+    for (let ath of this.currentCompetition!.athList) {
+      for (let participant of this.currentCompetition!.participantFormList) {
+        if (ath.nickname === participant.nickname) {
+          let iAthAndParticipant: IAthAndParticipant = { ath, participant }
+          this.totalAthList.push(iAthAndParticipant);
+          break;
+        }
+      }
+    }
   }
 
   zeroArrays(): void {

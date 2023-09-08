@@ -4,15 +4,20 @@ import { IDEView } from "../../viewInterfaces/direct-elimination/de-view.interfa
 export function constructDEParticipantsScore(view: IDEView, { info }: ICompetitionResult): IDEView {
   for (let item of info) {
     if (item.poulTab === view.columnName) {
-      const fight = view.fights.find((fight) => fight.matchBr === item.match);
+      console.log(item);
+
+
+      const fight = view.fights.find((fight) => fight.matchBr === item.fightId);
+
+
 
       if (fight && fight.leftParticipantNickname === item.nicknameLeft) {
         fight.leftParticipant.score = item.scoreLeft ?? 0;
-      } else if (fight && fight.rightParticipantNickname === item.nicknameLeft) {
+      }  if (fight && fight.rightParticipantNickname === item.nicknameLeft) {
         fight.rightParticipant.score = item.scoreRight ?? 0;
-      } else if (fight && fight.leftParticipantNickname === item.nicknameRight) {
+      }  if (fight && fight.leftParticipantNickname === item.nicknameRight) {
         fight.leftParticipant.score = item.scoreRight ?? 0;
-      } else if (fight && fight.rightParticipantNickname === item.nicknameRight){
+      }  if (fight && fight.rightParticipantNickname === item.nicknameRight){
         fight.rightParticipant.score = item.scoreRight ?? 0;
       }
     }

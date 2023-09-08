@@ -3,6 +3,5 @@
 </section>
 
 <section class="tables-mobile">
-  <app-table-mobile></app-table-mobile>
-  <app-table-mobile></app-table-mobile>
+  <app-table-mobile *ngFor="let view of firstRoundViews" [firstRoundView]="view" [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
 </section>

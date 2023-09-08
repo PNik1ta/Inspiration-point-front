@@ -46,8 +46,10 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
           view = constructDEParticipantsInfo(view, this.currentCompetition);
         }
         this.viewsForDesktop.push(...this.views);
-        if (this.views.length > 4) {
-          this.viewsForDesktop.length = 4;
+        if (this.viewsForDesktop.length <= 4) {
+          this.viewsForDesktop = [];
+        } else {
+          this.viewsForDesktop = this.viewsForDesktop.slice(this.viewsForDesktop.length - 4);
         }
       }
     });

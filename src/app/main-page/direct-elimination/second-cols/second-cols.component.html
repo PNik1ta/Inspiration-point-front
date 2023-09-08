@@ -1,8 +1,8 @@
-<div class="info-block direct-elimination">
+<div class="info-block direct-elimination" [style.grid-template-columns]="'repeat(' + viewsForDesktop.length + ', 1fr)'">
   <div class="col" *ngFor="let view of viewsForDesktop">
     <p class="number">{{view.columnName}}</p>
 
-    <app-fight-card *ngFor="let fight of view.fights"></app-fight-card>
+    <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
   </div>
 </div>
 

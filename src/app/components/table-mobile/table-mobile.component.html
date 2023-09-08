@@ -77,8 +77,8 @@
                 <td class="data bordered"><span>{{row.result.tr}}</span></td>
                 <td class="data bordered"><span>{{row.result.indicator}}</span></td>
                 <td class="data bordered"><span>{{row.result.coefficient}}</span></td>
-                <td class="data">{{row.result.placeInPool}}</td>
-                <td class="data">{{row.result.rankAfterPools}}</td>
+                <td class="data bordered"><span>{{row.result.placeInPool}}</span></td>
+                <td class="data bordered"><span>{{row.result.rankAfterPools}}</span></td>
                 <td class="data"><span class="circle" [ngClass]="
                   {'circle_green': row.result.status === 'Q',
                   'circle_red': row.result.status === 'D',

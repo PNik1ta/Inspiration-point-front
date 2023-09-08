@@ -1,0 +1,25 @@
+<div class="info-block">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Итоговый номер</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let res of totalResults">
+          <td class="main-data">
+            <div class="country">
+              <img [src]="'assets/images/flags/' + res.region!.toLowerCase() + '.png'" alt="country flag">
+              <p>{{res.region}}</p>
+            </div>
+            <p class="name">{{res.surname}} {{res.name}}</p>
+          </td>
+          <td>{{res.rank}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
