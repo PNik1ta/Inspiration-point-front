@@ -39,7 +39,7 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
         this.views = constructDEViews(this.currentCompetition.bracketsInitial);
 
         for (let view of this.views) {
-          view = constructDEParticipantsScore(view, this.currentCompetition);
+          view = constructDEParticipantsScore(view, this.currentCompetition.info);
         }
 
         for (let view of this.views) {

@@ -1,15 +1,15 @@
 <div class="fight">
   <div class="opponent">
-    <span>15</span>
-    <p>СПБ</p>
-    <img src="assets/images/ind-flag.png" alt="ita-flag.png">
-    <h5 class="active">МАРИНЕНКО Аркадий</h5>
+    <span>{{fight?.leftParticipant?.score}}</span>
+    <p>{{fight?.leftParticipant?.region}}</p>
+    <img [src]="'assets/images/flags/' + fight?.leftParticipant?.region?.toLowerCase() + '.png'" alt="ita-flag.png">
+    <h5 class="active">{{fight?.leftParticipant?.surname}} {{fight?.leftParticipant?.name}}</h5>
   </div>
 
   <div class="opponent">
-    <span>10</span>
-    <p>НОВ</p>
-    <img src="assets/images/ind-flag.png" alt="ita-flag.png">
-    <h5>ЧЕРНЫШЕВ Василий</h5>
+    <span>{{fight?.rightParticipant?.score}}</span>
+    <p>{{fight?.rightParticipant?.region}}</p>
+    <img [src]="'assets/images/flags/' + fight?.rightParticipant?.region?.toLowerCase() + '.png'" alt="ita-flag.png">
+    <h5>{{fight?.rightParticipant?.surname}} {{fight?.rightParticipant?.name}}</h5>
   </div>
 </div>

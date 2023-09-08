@@ -1,16 +1,11 @@
 import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { IInfo } from "../../interfaces/info.interface";
 import { IDEView } from "../../viewInterfaces/direct-elimination/de-view.interface";
 
-export function constructDEParticipantsScore(view: IDEView, { info }: ICompetitionResult): IDEView {
+export function constructDEParticipantsScore(view: IDEView, info: IInfo[]): IDEView {
   for (let item of info) {
     if (item.poulTab === view.columnName) {
-      console.log(item);
-
-
       const fight = view.fights.find((fight) => fight.matchBr === item.fightId);
-
-
-
       if (fight && fight.leftParticipantNickname === item.nicknameLeft) {
         fight.leftParticipant.score = item.scoreLeft ?? 0;
       }  if (fight && fight.rightParticipantNickname === item.nicknameLeft) {

@@ -39,7 +39,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
 
 
         for (let view of this.views) {
-          view = constructDEParticipantsScore(view, this.currentCompetition);
+          view = constructDEParticipantsScore(view, this.currentCompetition.info);
         }
         console.log(this.views);
 

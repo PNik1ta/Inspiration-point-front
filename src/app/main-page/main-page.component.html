@@ -15,7 +15,7 @@
     <div class="info-block">
       <h2>Последние бои</h2>
       <div class="fights">
-
+        <app-fight *ngFor="let fight of fights" [fight]="fight"></app-fight>
       </div>
     </div>
   </div>
