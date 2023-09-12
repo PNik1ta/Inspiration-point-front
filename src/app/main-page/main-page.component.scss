@@ -43,6 +43,7 @@ main {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 1.6rem;
   row-gap: 3.2rem;
+  margin-top: 5rem;
 
   .col_results {
     grid-column: 1 / span 2;
