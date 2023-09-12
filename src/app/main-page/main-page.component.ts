@@ -5,12 +5,6 @@ import { getCompetitionResult } from '../../core/reducers/competitionResult/webs
 import { parse } from 'date-fns';
 import { getCurrentCompetition } from '../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IInfo } from '../../core/interfaces/info.interface';
-import { constructAthList } from '../../core/utils/constrict-ath-list';
-import { constructDEParticipantsInfo } from '../../core/utils/direct-elimination/construct-de-participantsInfo';
-import { constructDEParticipantsScore } from '../../core/utils/direct-elimination/construct-de-participantsScore';
-import { constructDEViews } from '../../core/utils/direct-elimination/construct-de-view';
-import { IAthAndParticipant } from '../../core/viewInterfaces/ath-and-participant.interface';
-import { IDEView } from '../../core/viewInterfaces/direct-elimination/de-view.interface';
 import { IFightDEView } from '../../core/viewInterfaces/direct-elimination/fight-DE-view.interface';
 
 @Component({
