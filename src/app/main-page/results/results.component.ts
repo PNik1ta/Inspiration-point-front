@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit {
   constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;

@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
   currentCompetition: ICompetitionResult | null = null;
   lastInfos: IInfo[] = [];
   fights: IFightDEView[] = [];
+  isLastInfosEmpty: boolean = true;
 
   constructor(private readonly store: Store) { }
 
@@ -38,8 +39,8 @@ export class MainPageComponent implements OnInit {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
-        this.constructLastInfos();
         this.zeroArrays();
+        this.constructLastInfos();
         this.constructFights();
       }
     });
@@ -51,12 +52,15 @@ export class MainPageComponent implements OnInit {
 
   zeroArrays(): void {
     this.fights = [];
+    this.lastInfos = [];
   }
 
   constructLastInfos(): void {
     if (this.currentCompetition) {
+      this.isLastInfosEmpty = this.currentCompetition.info.length === 0;
       for (let info of this.currentCompetition.info) {
-        if (info.poulTab?.includes('A')) {
+        if (info.poulTab?.includes('A') && (info.nicknameLeft !== -1 && info.nicknameRight !== -1)) {
+
           if (this.lastInfos.length === 15) {
             break;
           }
