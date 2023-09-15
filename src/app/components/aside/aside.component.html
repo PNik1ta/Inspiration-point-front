@@ -44,8 +44,7 @@
           [routerLink]="!currentCompetition?.bracketsInitial ? null : ['/DirectElimination/Seeding']"
           routerLinkActive="active" [ngClass]="{'disabled': !currentCompetition?.bracketsInitial }">Тур прямого
           выбывания</a></li>
-      <li><a class="disabled" [ngClass]="{'disabled': !currentCompetition?.bracketsResults }">Результаты</a></li>
-      <li><a (click)="hideMenu($event)" routerLink="/Results" routerLinkActive="active">Results</a></li>
+      <li><a  routerLink="/Results" routerLinkActive="active" class="disabled" (click)="hideMenu($event)" [ngClass]="{'disabled': !currentCompetition?.bracketsResults }">Результаты</a></li>
       <!-- <li><a (click)="hideMenu($event)" routerLink="/Referees" routerLinkActive="active">Список судей</a></li> -->
     </ul>
   </nav>

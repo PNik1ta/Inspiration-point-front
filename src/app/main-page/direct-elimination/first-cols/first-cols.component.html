@@ -1,9 +1,16 @@
 <div class="info-block direct-elimination" [style.grid-template-columns]="'repeat(' + views.length + ', 1fr)'">
-  <div class="col" *ngFor="let view of viewsForDesktop">
-    <p class="number">{{view.columnName}}</p>
+  <ng-container *ngIf="viewsForDesktop.length !== 0; else empty">
+    <div class="col" *ngFor="let view of viewsForDesktop">
+      <p class="number">{{view.columnName}}</p>
 
-    <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
-  </div>
+      <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <h3 class="empty">Здесь ничего нет. Результаты во вкладке 8 - Final.</h3>
+  </ng-template>
+
 </div>
 
 <div class="info-block direct-elimination_mobile">

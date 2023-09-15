@@ -12,7 +12,7 @@ export class FightCardComponent implements OnChanges, AfterContentChecked {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterContentChecked(): void {
-    if (this.fight && this.fight?.leftRankBr! < this.fight?.rightRankBr!) {
+    if (this.fight && this.fight?.leftParticipant.score! < this.fight?.rightParticipant.score!) {
       const temp = this.fight?.leftParticipant;
       this.fight.leftParticipant = this.fight?.rightParticipant;
       this.fight.rightParticipant = temp;
@@ -21,9 +21,8 @@ export class FightCardComponent implements OnChanges, AfterContentChecked {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
     if (changes['fight'] && this.fight) {
-      if (this.fight?.leftRankBr! < this.fight?.rightRankBr!) {
+      if (this.fight?.leftParticipant.score! < this.fight?.rightParticipant.score!) {
         const temp = this.fight?.leftParticipant;
         this.fight.leftParticipant = this.fight?.rightParticipant;
         this.fight.rightParticipant = temp;

@@ -36,7 +36,10 @@ export class FirstRoundComponent {
 
         if (this.currentCompetition) {
           this.zeroArrays();
+
+
           this.athAndGroupInitials = constructAthAndGroupInitials(this.currentCompetition);
+
 
           for (let ath of this.athAndGroupInitials) {
             this.firstRoundRows.push(constructFirstRoundViewRow(this.currentCompetition, ath, this.athAndGroupInitials));

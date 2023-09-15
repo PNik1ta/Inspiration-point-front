@@ -6,6 +6,8 @@ import { parse } from 'date-fns';
 import { getCurrentCompetition } from '../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IInfo } from '../../core/interfaces/info.interface';
 import { IFightDEView } from '../../core/viewInterfaces/direct-elimination/fight-DE-view.interface';
+import { getRandomNumber } from '../../core/utils/get-random-number';
+import { constructFights } from '../../core/utils/construct-fights';
 
 @Component({
   selector: 'app-main-page',
@@ -19,6 +21,7 @@ export class MainPageComponent implements OnInit {
   lastInfos: IInfo[] = [];
   fights: IFightDEView[] = [];
   isLastInfosEmpty: boolean = true;
+  randomBannerClass: string = '';
 
   constructor(private readonly store: Store) { }
 
@@ -41,13 +44,15 @@ export class MainPageComponent implements OnInit {
         this.currentCompetition = res;
         this.zeroArrays();
         this.constructLastInfos();
-        this.constructFights();
+        this.fights = constructFights(this.lastInfos, this.currentCompetition);
       }
     });
 
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       this.isResultsActive = !!res;
     });
+
+    this.randomBannerClass = `banner_${getRandomNumber(1, 3)}`;
   }
 
   zeroArrays(): void {
@@ -67,35 +72,6 @@ export class MainPageComponent implements OnInit {
           this.lastInfos.push(info);
         }
       }
-    }
-  }
-
-  constructFights(): void {
-    for (let info of this.lastInfos) {
-      let fight: IFightDEView = {
-        matchBr: info.fightId ?? 0,
-        leftParticipantNickname: info.nicknameLeft,
-        rightParticipantNickname: info.nicknameRight,
-        leftParticipant: { score: info.scoreLeft ?? 0, region: '', name: '', surname: '' },
-        rightParticipant: { score: info.scoreRight ?? 0, region: '', name: '', surname: '' }
-      };
-
-      const participantLeft = this.currentCompetition?.participantFormList.find((participant) => participant.nickname === info.nicknameLeft);
-      const participantRight = this.currentCompetition?.participantFormList.find((participant) => participant.nickname === info.nicknameRight);
-
-      if (participantLeft) {
-        fight.leftParticipant.name = participantLeft.name ?? '';
-        fight.leftParticipant.surname = participantLeft.surname ?? '';
-        fight.leftParticipant.region = participantLeft.region ?? '';
-      }
-
-      if (participantRight) {
-        fight.rightParticipant.name = participantRight.name ?? '';
-        fight.rightParticipant.surname = participantRight.surname ?? '';
-        fight.rightParticipant.region = participantRight.region ?? '';
-      }
-
-      this.fights.push(fight);
     }
   }
 }

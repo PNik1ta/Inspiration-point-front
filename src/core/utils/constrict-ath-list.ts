@@ -5,12 +5,11 @@ export function constructAthList(currentCompetition: ICompetitionResult): IAthAn
   const totalAthList: IAthAndParticipant[] = [];
 
   for (let ath of currentCompetition!.athList) {
-    for (let participant of currentCompetition!.participantFormList) {
-      if (ath.nickname === participant.nickname) {
-        let iAthAndParticipant: IAthAndParticipant = { ath, participant }
-        totalAthList.push(iAthAndParticipant);
-        break;
-      }
+    const participant = currentCompetition.participantFormList.find((participant) => participant.nickname === ath.nickname);
+
+    if (participant) {
+      let iAthAndParticipant: IAthAndParticipant = { ath, participant };
+      totalAthList.push(iAthAndParticipant);
     }
   }
   return totalAthList;

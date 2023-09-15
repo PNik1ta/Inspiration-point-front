@@ -7,12 +7,10 @@ export function constructAthAndGroupInitials(result: ICompetitionResult): IAthAn
   for (let groupInitial of result.groupsInitial) {
     const athAndGroupInitial: IAthAndGroupInitial = { ath: {}, groupInitial: {}, participantForm: {} };
 
-    for (let i = 0; i < result.athList.length; i++) {
-      if (groupInitial.nickname === result.athList[i].nickname) {
-        athAndGroupInitial.groupInitial = groupInitial;
-        athAndGroupInitial.ath = result.athList[i];
-        break;
-      }
+    const ath = result.athList.find((ath) => ath.nickname === groupInitial.nickname);
+    if (ath) {
+      athAndGroupInitial.groupInitial = groupInitial;
+      athAndGroupInitial.ath = ath;
     }
 
     athAndGroupInitial.participantForm = result.participantFormList.find((form) => form.nickname === athAndGroupInitial.ath.nickname) ?? {};

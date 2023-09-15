@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    const currentCompetition = localStorage.getItem('currentCompetition');
+    const currentCompetition = sessionStorage.getItem('currentCompetition');
 
 
     if (currentCompetition) {

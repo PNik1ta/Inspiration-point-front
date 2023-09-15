@@ -12,28 +12,82 @@ $title-text: #d9dee3;
   height: 41rem;
   margin: 1rem -3.2rem 2.8rem -3.2rem;
 
-  background-image: url('../../assets/images/banners/1800.jpg');
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 
-  @include respond(big-tab) {
-    background-image: url('../../assets/images/banners/1220.jpg');
+  &_1 {
+    background-image: url('../../assets/images/banners/1_1800.jpg');
+
+    @include respond(big-tab) {
+      background-image: url('../../assets/images/banners/1_1220.jpg');
+    }
+
+    @include respond(tab) {
+      background-image: url('../../assets/images/banners/1_1024.jpg');
+    }
+
+    @include respond(phone) {
+      background-image: url('../../assets/images/banners/1_768.jpg');
+    }
+
+    @include respond(small-phone) {
+      background-image: url('../../assets/images/banners/1_480.jpg');
+    }
   }
 
+  &_2 {
+    background-image: url('../../assets/images/banners/2_1800.jpg');
+
+    @include respond(big-tab) {
+      background-image: url('../../assets/images/banners/2_1220.jpg');
+    }
+
+    @include respond(tab) {
+      background-image: url('../../assets/images/banners/2_1024.jpg');
+    }
+
+    @include respond(phone) {
+      background-image: url('../../assets/images/banners/2_768.jpg');
+    }
+
+    @include respond(small-phone) {
+      background-image: url('../../assets/images/banners/2_480.jpg');
+    }
+  }
+
+  &_3 {
+    background-image: url('../../assets/images/banners/3_1800.jpg');
+
+    @include respond(big-tab) {
+      background-image: url('../../assets/images/banners/3_1220.jpg');
+    }
+
+    @include respond(tab) {
+      background-image: url('../../assets/images/banners/3_1024.jpg');
+    }
+
+    @include respond(phone) {
+      background-image: url('../../assets/images/banners/3_768.jpg');
+    }
+
+    @include respond(small-phone) {
+      background-image: url('../../assets/images/banners/3_480.jpg');
+    }
+  }
+
+
   @include respond(tab) {
-    background-image: url('../../assets/images/banners/1024.jpg');
     height: 35rem;
   }
 
   @include respond(phone) {
     background-position: top;
-    background-image: url('../../assets/images/banners/768.jpg');
     height: 38rem;
   }
 
   @include respond(small-phone) {
-    background-image: url('../../assets/images/banners/480.jpg');
     height: 72rem;
   }
 }

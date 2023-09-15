@@ -43,7 +43,7 @@ export class TourCompetitionComponent implements OnInit {
 
   selectCompetition(competition: ICompetitionResult): void {
     this.store.dispatch(CurrentCompetitionReceivedAction({ data: competition }));
-    localStorage.setItem('currentCompetition', JSON.stringify(competition));
+    sessionStorage.setItem('currentCompetition', JSON.stringify(competition));
     this.isDisabled = true;
   }
 }
