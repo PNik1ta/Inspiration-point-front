@@ -5,14 +5,14 @@
 
 <main>
   <div class="col">
-    <div class="info-block competitons">
+    <div class="info-block competitions">
       <h2>Соревнования турнира</h2>
       <app-tour-competition *ngFor="let competition of competitions" [competition]="competition"></app-tour-competition>
     </div>
   </div>
 
   <div class="col">
-    <div class="info-block">
+    <div class="info-block" *ngIf="currentCompetition?.info?.length !== 0">
       <h2>Последние бои</h2>
       <ng-container *ngIf="!isLastInfosEmpty; else lastInfosEmpty">
         <div class="fights">
@@ -29,7 +29,7 @@
     <span class="title">{{currentCompetition?.newCompetitionForm?.competitionName}}</span>
   </section>
 
-  <div class="col col_results" *ngIf="isResultsActive">
+  <div class="col col_results" id="results" *ngIf="isResultsActive">
     <div class="wrapper">
       <app-aside></app-aside>
 

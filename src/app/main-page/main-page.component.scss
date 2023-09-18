@@ -12,7 +12,6 @@ $title-text: #d9dee3;
   height: 41rem;
   margin: 1rem -3.2rem 2.8rem -3.2rem;
 
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -99,6 +98,15 @@ main {
   row-gap: 3.2rem;
   margin-top: 5rem;
 
+  .col {
+    .competitions {
+      max-height: 50rem;
+      overflow: auto;
+    }
+  }
+
+
+
   .col_results {
     grid-column: 1 / span 2;
   }
@@ -169,12 +177,12 @@ main {
 }
 
 .wrapper {
-	display: grid;
-	grid-template-columns: 30% 1fr;
-	overflow: hidden;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  overflow: hidden;
   margin-bottom: 3rem;
 
-	@include respond(tab) {
-		grid-template-columns: 1fr;
-	}
+  @include respond(tab) {
+    grid-template-columns: 1fr;
+  }
 }
