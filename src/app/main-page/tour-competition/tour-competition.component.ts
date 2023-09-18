@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { CurrentCompetitionReceivedAction } from '../../../core/reducers/currentCompetition/currentCompetition.action';
 import { parse } from 'date-fns';
 import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tour-competition',
@@ -19,7 +20,8 @@ export class TourCompetitionComponent implements OnInit {
 
   constructor(
     private readonly store: Store,
-    private readonly viewportScroller: ViewportScroller
+    private readonly viewportScroller: ViewportScroller,
+    private readonly router: Router
   ) {
     this.competition = null;
   }
@@ -50,5 +52,6 @@ export class TourCompetitionComponent implements OnInit {
     sessionStorage.setItem('currentCompetition', JSON.stringify(competition));
     this.isDisabled = true;
     this.viewportScroller.scrollToAnchor('results');
+    this.router.navigateByUrl('/General');
   }
 }
