@@ -30,6 +30,14 @@ $tabs-hover: #d9d9d9;
         background-color: $tabs-hover;
         color: $main-bg;
       }
+
+      &.disabled {
+        color: #7a7d82;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
     }
   }
 

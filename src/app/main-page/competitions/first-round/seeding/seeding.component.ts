@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { ICompetitionResult } from '../../../../../core/interfaces/competition-result.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
-import { IAth } from '../../../../../core/interfaces/ath.interface';
-import { IParticipantForm } from '../../../../../core/interfaces/participantForm.interface';
 import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
 import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/first-round/ath-and-group-initial.interface';
 import { IFirstRoundViewRow } from '../../../../../core/viewInterfaces/first-round/first-round-view-row.interface';
