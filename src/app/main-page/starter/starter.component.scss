@@ -28,6 +28,11 @@ $secondary-text-color: rgba(255, 255, 255, .6);
     display: flex;
     column-gap: 1.2rem;
     align-items: center;
+
+    small {
+      color: #6e737a;
+      font-size: 1.6rem;
+    }
   }
 
   h5, p {

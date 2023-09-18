@@ -5,12 +5,14 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Итоговый номер</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let res of totalResults">
+          <tr *ngFor="let res of totalResults; let i = index;">
+            <td class="small">{{i + 1}}</td>
             <td class="main-data">
               <div class="country">
                 <img [src]="'assets/images/flags/' + res.region!.toLowerCase() + '.png'" alt="country flag">

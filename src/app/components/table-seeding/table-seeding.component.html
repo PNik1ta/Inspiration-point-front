@@ -5,13 +5,15 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Rk.</th>
             <th>Очки</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let ath of athParticipants">
+          <tr *ngFor="let ath of athParticipants; let i = index;">
+            <td>{{i + 1}}</td>
             <td class="main-data">
               <div class="country">
                 <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
@@ -35,13 +37,15 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Rk.</th>
             <th>Points</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let ath of athParticipants">
+          <tr *ngFor="let ath of athParticipants; let i = index;">
+            <td class="small">{{i + 1}}</td>
             <td class="main-data">
               <div class="country">
                 <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
