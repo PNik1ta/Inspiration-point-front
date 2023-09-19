@@ -9,6 +9,7 @@ import { TableUpDownComponent } from "./table-up-down/table-up-down.component";
 import { TimerComponent } from "./timer/timer.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { RouterModule } from "@angular/router";
     TableUpDownComponent,
     TimerComponent,
     HeaderComponent,
+    LoaderComponent,
   ],
   exports: [
     AsideComponent,
@@ -33,7 +35,8 @@ import { RouterModule } from "@angular/router";
     TableSeedingComponent,
     TableUpDownComponent,
     TimerComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent
   ]
 })
 export class ComponentsModule {

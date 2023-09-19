@@ -1,16 +1,22 @@
-<ng-container *ngIf="!isEmpty; else empty">
-  <section class="tables">
-    <app-table-seeding [athList]="totalAthList"></app-table-seeding>
-  </section>
+<ng-container *ngIf="isLoaded; else loader">
+  <ng-container *ngIf="!isEmpty; else empty">
+    <section class="tables">
+      <app-table-seeding [athList]="totalAthList"></app-table-seeding>
+    </section>
 
-  <section class="tables-mobile">
-    <app-table-mobile *ngFor="let view of firstRoundViews" [firstRoundView]="view"  [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
-  </section>
+    <section class="tables-mobile">
+      <app-table-mobile *ngFor="let view of firstRoundViews" [firstRoundView]="view" [athList]="totalAthList"
+        [result]="currentCompetition"></app-table-mobile>
+    </section>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="info-block">
+      <h3 class="empty">Здесь пока ничего нет...</h3>
+    </div>
+  </ng-template>
 </ng-container>
 
-<ng-template #empty>
-  <div class="info-block">
-    <h3 class="empty">Здесь пока ничего нет...</h3>
-  </div>
+<ng-template #loader>
+  <app-loader></app-loader>
 </ng-template>
-

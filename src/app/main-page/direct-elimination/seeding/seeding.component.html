@@ -1,28 +1,34 @@
-<div class="tables">
-  <app-table-seeding [athList]="totalAthList"></app-table-seeding>
-</div>
-
-
-<div class="info-block direct-elimination_mobile">
-  <div class="navigation">
-    <button class="prev" (click)="prevSlide()" #btnPrev></button>
-    <div class="numbers" #circles>
-      <p class="number number_active">Seeding</p>
-      <p class="number" *ngFor="let view of views">{{view.columnName}}</p>
-    </div>
-    <button class="next" (click)="nextSlide()" #btnNext></button>
+<ng-container *ngIf="isLoaded; else loader">
+  <div class="tables">
+    <app-table-seeding [athList]="totalAthList"></app-table-seeding>
   </div>
 
-  <div class="slider-container">
-    <div class="slides" #sliderContainer>
-      <div class="slide">
-        <app-table-seeding [hasInfoBlock]="false" [athList]="totalAthList"></app-table-seeding>
+
+  <div class="info-block direct-elimination_mobile">
+    <div class="navigation">
+      <button class="prev" (click)="prevSlide()" #btnPrev></button>
+      <div class="numbers" #circles>
+        <p class="number number_active">Seeding</p>
+        <p class="number" *ngFor="let view of views">{{view.columnName}}</p>
       </div>
-      <div class="slide" *ngFor="let view of views">
-        <div class="fights">
-          <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
+      <button class="next" (click)="nextSlide()" #btnNext></button>
+    </div>
+
+    <div class="slider-container">
+      <div class="slides" #sliderContainer>
+        <div class="slide">
+          <app-table-seeding [hasInfoBlock]="false" [athList]="totalAthList"></app-table-seeding>
+        </div>
+        <div class="slide" *ngFor="let view of views">
+          <div class="fights">
+            <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

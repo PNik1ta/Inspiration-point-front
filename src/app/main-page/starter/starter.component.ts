@@ -11,6 +11,7 @@ import { getCurrentCompetition } from '../../../core/reducers/currentCompetition
 export class StarterComponent implements OnInit {
   isEmpty: boolean = false;
   currentCompetition: ICompetitionResult | null = null;
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -19,6 +20,7 @@ export class StarterComponent implements OnInit {
       if (res) {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.participantFormList.length === 0;
+        this.isLoaded = true;
       }
     });
   }

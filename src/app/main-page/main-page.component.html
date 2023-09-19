@@ -7,20 +7,33 @@
   <div class="col">
     <div class="info-block competitions">
       <h2>Соревнования турнира</h2>
-      <app-tour-competition *ngFor="let competition of competitions" [competition]="competition"></app-tour-competition>
+      <ng-container *ngIf="isCompetitionsLoaded; else competitionsLoader">
+        <app-tour-competition *ngFor="let competition of competitions"
+          [competition]="competition"></app-tour-competition>
+      </ng-container>
+
+      <ng-template #competitionsLoader>
+        <app-loader></app-loader>
+      </ng-template>
     </div>
   </div>
 
   <div class="col">
-    <div class="info-block" *ngIf="currentCompetition?.info?.length !== 0">
+    <div class="info-block" *ngIf="currentCompetition && currentCompetition.info?.length !== 0">
       <h2>Последние бои</h2>
-      <ng-container *ngIf="!isLastInfosEmpty; else lastInfosEmpty">
-        <div class="fights">
-          <app-fight *ngFor="let fight of fights" [fight]="fight"></app-fight>
-        </div>
+      <ng-container *ngIf="isLastFightsLoaded; else lastFightsLoader">
+        <ng-container *ngIf="!isLastInfosEmpty; else lastInfosEmpty">
+          <div class="fights">
+            <app-fight *ngFor="let fight of fights" [fight]="fight"></app-fight>
+          </div>
+        </ng-container>
+        <ng-template #lastInfosEmpty>
+          <h3 class="empty">Здесь пока ничего нет...</h3>
+        </ng-template>
       </ng-container>
-      <ng-template #lastInfosEmpty>
-        <h3 class="empty">Здесь пока ничего нет...</h3>
+
+      <ng-template #lastFightsLoader>
+        <app-loader></app-loader>
       </ng-template>
     </div>
   </div>

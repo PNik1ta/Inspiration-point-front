@@ -24,6 +24,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
   totalAthList: IAthAndParticipant[] = [];
   currentCompetition: ICompetitionResult | null = null;
   views: IDEView[] = [];
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -43,6 +44,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
         for (let view of this.views) {
           view = constructDEParticipantsInfo(view, this.currentCompetition);
         }
+        this.isLoaded = true;
       }
     });
   }

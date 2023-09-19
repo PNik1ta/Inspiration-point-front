@@ -17,62 +17,62 @@ $title-text: #d9dee3;
   background-size: contain;
 
   &_1 {
-    background-image: url('../../assets/images/banners/1_1800.jpg');
+    background-image: url('/assets/images/banners/1_1800.jpg');
 
     @include respond(big-tab) {
-      background-image: url('../../assets/images/banners/1_1220.jpg');
+      background-image: url('/assets/images/banners/1_1220.jpg');
     }
 
     @include respond(tab) {
-      background-image: url('../../assets/images/banners/1_1024.jpg');
+      background-image: url('/assets/images/banners/1_1024.jpg');
     }
 
     @include respond(phone) {
-      background-image: url('../../assets/images/banners/1_768.jpg');
+      background-image: url('/assets/images/banners/1_768.jpg');
     }
 
     @include respond(small-phone) {
-      background-image: url('../../assets/images/banners/1_480.jpg');
+      background-image: url('/assets/images/banners/1_480.jpg');
     }
   }
 
   &_2 {
-    background-image: url('../../assets/images/banners/2_1800.jpg');
+    background-image: url('/assets/images/banners/2_1800.jpg');
 
     @include respond(big-tab) {
-      background-image: url('../../assets/images/banners/2_1220.jpg');
+      background-image: url('/assets/images/banners/2_1220.jpg');
     }
 
     @include respond(tab) {
-      background-image: url('../../assets/images/banners/2_1024.jpg');
+      background-image: url('/assets/images/banners/2_1024.jpg');
     }
 
     @include respond(phone) {
-      background-image: url('../../assets/images/banners/2_768.jpg');
+      background-image: url('/assets/images/banners/2_768.jpg');
     }
 
     @include respond(small-phone) {
-      background-image: url('../../assets/images/banners/2_480.jpg');
+      background-image: url('/assets/images/banners/2_480.jpg');
     }
   }
 
   &_3 {
-    background-image: url('../../assets/images/banners/3_1800.jpg');
+    background-image: url('/assets/images/banners/3_1800.jpg');
 
     @include respond(big-tab) {
-      background-image: url('../../assets/images/banners/3_1220.jpg');
+      background-image: url('/assets/images/banners/3_1220.jpg');
     }
 
     @include respond(tab) {
-      background-image: url('../../assets/images/banners/3_1024.jpg');
+      background-image: url('/assets/images/banners/3_1024.jpg');
     }
 
     @include respond(phone) {
-      background-image: url('../../assets/images/banners/3_768.jpg');
+      background-image: url('/assets/images/banners/3_768.jpg');
     }
 
     @include respond(small-phone) {
-      background-image: url('../../assets/images/banners/3_480.jpg');
+      background-image: url('/assets/images/banners/3_480.jpg');
     }
   }
 

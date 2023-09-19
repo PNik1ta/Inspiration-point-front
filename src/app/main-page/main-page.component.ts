@@ -22,6 +22,8 @@ export class MainPageComponent implements OnInit {
   fights: IFightDEView[] = [];
   isLastInfosEmpty: boolean = true;
   randomBannerClass: string = '';
+  isCompetitionsLoaded: boolean = false;
+  isLastFightsLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -36,6 +38,7 @@ export class MainPageComponent implements OnInit {
 
           return secondDate.getTime() - firstDate.getTime();
         });
+        this.isCompetitionsLoaded = true;
       }
     });
 
@@ -45,6 +48,7 @@ export class MainPageComponent implements OnInit {
         this.zeroArrays();
         this.constructLastInfos();
         this.fights = constructFights(this.lastInfos, this.currentCompetition);
+        this.isLastFightsLoaded = true;
       }
     });
 

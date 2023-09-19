@@ -22,6 +22,7 @@ export class SeedingComponent {
   firstRoundViews: IFirstRoundView[] = [];
   athAndGroupInitials: IAthAndGroupInitial[] = [];
   firstRoundRows: IFirstRoundViewRow[] = [];
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -41,6 +42,7 @@ export class SeedingComponent {
           }
 
           this.firstRoundViews = constructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
+          this.isLoaded = true;
         }
       }
     });

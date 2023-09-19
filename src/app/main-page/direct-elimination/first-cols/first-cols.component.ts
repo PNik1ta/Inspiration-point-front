@@ -26,6 +26,7 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
   views: IDEView[] = [];
   viewsForDesktop: IDEView[] = [];
   totalAthList: IAthAndParticipant[] = [];
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -51,6 +52,7 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
         } else {
           this.viewsForDesktop = this.viewsForDesktop.slice(this.viewsForDesktop.length - 4);
         }
+        this.isLoaded = true;
       }
     });
   }

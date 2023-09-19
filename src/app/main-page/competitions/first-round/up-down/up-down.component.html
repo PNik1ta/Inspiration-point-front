@@ -1,7 +1,13 @@
-<div class="tables">
-  <app-table-up-down [result]="currentCompetition"></app-table-up-down>
-</div>
+<ng-container *ngIf="isLoaded; else loader">
+  <div class="tables">
+    <app-table-up-down [result]="currentCompetition"></app-table-up-down>
+  </div>
 
-<section class="tables-mobile">
-  <app-table-mobile *ngFor="let view of firstRoundViews" [firstRoundView]="view" [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
-</section>
+  <section class="tables-mobile">
+    <app-table-mobile *ngFor="let view of firstRoundViews" [firstRoundView]="view" [athList]="totalAthList" [result]="currentCompetition"></app-table-mobile>
+  </section>
+</ng-container>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

@@ -23,6 +23,7 @@ export class FirstRoundComponent {
   isEmpty: boolean = true;
   firstRoundViews: IFirstRoundView[] = [];
   totalAthList: IAthAndParticipant[] = [];
+  isLoaded: boolean = false;
 
 
   constructor(private readonly store: Store) { }
@@ -46,8 +47,8 @@ export class FirstRoundComponent {
           }
 
           this.firstRoundViews = constructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
+          this.isLoaded = true;
         }
-
       }
     });
   }

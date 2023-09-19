@@ -1,20 +1,26 @@
 <div class="info-block block_starter">
   <h2 class="title">Участники</h2>
-  <ng-container *ngIf="!isEmpty; else empty">
-    <div class="block" *ngFor="let participant of currentCompetition?.participantFormList; let i = index;">
-      <div class="col">
-        <small>{{i + 1}}</small>
-        <p>{{participant.region}}</p>
-        <img [src]="'assets/images/flags/' + participant.region!.toLowerCase() + '.png'" alt="country flag">
-        <h5>{{participant.name}} {{participant.surname}}, {{participant.yearOfBirthday}}</h5>
+  <ng-container *ngIf="isLoaded; else loader">
+    <ng-container *ngIf="!isEmpty; else empty">
+      <div class="block" *ngFor="let participant of currentCompetition?.participantFormList; let i = index;">
+        <div class="col">
+          <small>{{i + 1}}</small>
+          <p>{{participant.region}}</p>
+          <img [src]="'assets/images/flags/' + participant.region!.toLowerCase() + '.png'" alt="country flag">
+          <h5>{{participant.name}} {{participant.surname}}, {{participant.yearOfBirthday}}</h5>
+        </div>
+        <div class="col">
+          <p>{{participant.club}}</p>
+        </div>
       </div>
-      <div class="col">
-        <p>{{participant.club}}</p>
-      </div>
-    </div>
+    </ng-container>
+
+    <ng-template #empty>
+      <h3 class="empty">Здесь пока ничего нет...</h3>
+    </ng-template>
   </ng-container>
 
-  <ng-template #empty>
-    <h3 class="empty">Здесь пока ничего нет...</h3>
+  <ng-template #loader>
+    <app-loader></app-loader>
   </ng-template>
 </div>

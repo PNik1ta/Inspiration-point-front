@@ -14,6 +14,7 @@ export class ResultsComponent implements OnInit {
   currentCompetition: ICompetitionResult | null = null;
   isEmpty: boolean = true;
   totalResults: IBracketResultAndParticipant[] = [];
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }
 
@@ -24,6 +25,7 @@ export class ResultsComponent implements OnInit {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.bracketsResults.length === 0;
         this.totalResults = constructBracketResults(this.currentCompetition);
+        this.isLoaded = true;
       }
     });
   }

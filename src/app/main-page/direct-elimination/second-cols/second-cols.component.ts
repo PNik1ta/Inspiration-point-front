@@ -26,6 +26,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
   views: IDEView[] = [];
   viewsForDesktop: IDEView[] = [];
   totalAthList: IAthAndParticipant[] = [];
+  isLoaded: boolean = false;
 
   constructor(private readonly store: Store) {}
 
@@ -37,16 +38,15 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
         this.totalAthList = constructAthList(this.currentCompetition);
         this.views = constructDEViews(this.currentCompetition.bracketsInitial);
 
-
         for (let view of this.views) {
           view = constructDEParticipantsScore(view, this.currentCompetition.info);
         }
-        console.log(this.views);
-
 
         for (let view of this.views) {
           view = constructDEParticipantsInfo(view, this.currentCompetition);
         }
+
+        this.isLoaded = true;
       }
     })
   }
