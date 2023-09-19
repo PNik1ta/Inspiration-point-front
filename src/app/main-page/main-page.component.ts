@@ -68,7 +68,7 @@ export class MainPageComponent implements OnInit {
     if (this.currentCompetition) {
       this.isLastInfosEmpty = this.currentCompetition.info.length === 0;
       for (let info of this.currentCompetition.info) {
-        if (info.poulTab?.includes('A') && (info.nicknameLeft !== -1 && info.nicknameRight !== -1)) {
+        if (info.nicknameLeft !== -1 && info.nicknameRight !== -1) {
 
           if (this.lastInfos.length === 15) {
             break;

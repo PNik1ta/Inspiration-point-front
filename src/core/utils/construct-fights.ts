@@ -16,9 +16,6 @@ export function constructFights(lastInfos: IInfo[], currentCompetition: ICompeti
     const participantLeft = currentCompetition?.participantFormList.find((participant) => participant.nickname === info.nicknameLeft);
     const participantRight = currentCompetition?.participantFormList.find((participant) => participant.nickname === info.nicknameRight);
 
-    const bracketInitialLeft = currentCompetition?.bracketsInitial.find((bracket) => bracket.nickname === info.nicknameLeft);
-    const bracketInitialRight = currentCompetition?.bracketsInitial.find((bracket) => bracket.nickname === info.nicknameRight);
-
     if (participantLeft) {
       fight.leftParticipant.name = participantLeft.name ?? '';
       fight.leftParticipant.surname = participantLeft.surname ?? '';
@@ -29,14 +26,6 @@ export function constructFights(lastInfos: IInfo[], currentCompetition: ICompeti
       fight.rightParticipant.name = participantRight.name ?? '';
       fight.rightParticipant.surname = participantRight.surname ?? '';
       fight.rightParticipant.region = participantRight.region ?? '';
-    }
-
-    if (bracketInitialLeft) {
-      fight.leftRankBr = bracketInitialLeft.rankBr;
-    }
-
-    if (bracketInitialRight) {
-      fight.rightRankBr = bracketInitialRight.rankBr;
     }
 
     fights.push(fight);

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 import { getCurrentCompetition } from '../../../core/reducers/currentCompetition/currentCompetition.selectors';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aside',
@@ -31,8 +30,24 @@ export class AsideComponent implements OnInit {
       .subscribe(url => {
         const lastUrlSegment = this.router.url.split('?')[0].split('/').pop();
 
-        if (lastUrlSegment === 'General') {
-          this.selectedMenu = 'Формула соревнования';
+        switch (lastUrlSegment) {
+          case 'General':
+            this.selectedMenu = 'Формула соревнования';
+            break;
+          case 'Starter':
+            this.selectedMenu = 'Участники';
+            break;
+          case 'FirstRound':
+            this.selectedMenu = 'Тур групп';
+            break;
+          case 'Seeding':
+            this.selectedMenu = 'Тур прямого выбывания';
+            break;
+          case 'Results':
+            this.selectedMenu = 'Результаты';
+            break;
+          default:
+            break;
         }
       });
   }
@@ -46,8 +61,6 @@ export class AsideComponent implements OnInit {
 
     if (event.target.classList.contains('disabled')) {
       event.stopPropagation();
-    } else {
-      this.selectedMenu = event.srcElement.innerText;
     }
   }
 }
