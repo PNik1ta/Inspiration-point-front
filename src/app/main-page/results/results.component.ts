@@ -25,8 +25,13 @@ export class ResultsComponent implements OnInit {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.bracketsResults.length === 0;
         this.totalResults = constructBracketResults(this.currentCompetition);
+        this.sortByRank(this.totalResults);
         this.isLoaded = true;
       }
     });
+  }
+
+  sortByRank(totalResults: IBracketResultAndParticipant[]): void {
+    totalResults.sort((a, b) => a.rank - b.rank);
   }
 }

@@ -49,7 +49,7 @@
               <tr *ngFor="let row of view?.firstRoundViewRows; let i = index">
                 <td class="number">{{i + 1}}</td>
                 <td class="data bordered" *ngFor="let info of row.infoArray"
-                  [ngClass]="{'data_empty': info.position === -1}"><span>{{info.score}}</span></td>
+                  [ngClass]="{'data_empty': info.position === -1}"><span>{{info.score && info.score > 0 ? info.score : ''}}</span></td>
                 <td class="name">{{ row.ath.participantForm.surname }} {{ row.ath.participantForm.name }}</td>
               </tr>
             </tbody>

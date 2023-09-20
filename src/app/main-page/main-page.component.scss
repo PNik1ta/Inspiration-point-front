@@ -9,7 +9,7 @@ $title-text: #d9dee3;
 .banner {
   display: block;
   width: calc(100% + 6.4rem);
-  height: 41rem;
+  height: 41.4rem;
   margin: 1rem -3.2rem 2.8rem -3.2rem;
 
   background-repeat: no-repeat;
@@ -83,11 +83,22 @@ $title-text: #d9dee3;
 
   @include respond(phone) {
     background-position: top;
-    height: 38rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    height: 30rem;
   }
 
   @include respond(small-phone) {
-    height: 72rem;
+    height: 35rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 30rem;
+  }
+
+  @media screen and (max-width: 350px) {
+    height: 25rem;
   }
 }
 

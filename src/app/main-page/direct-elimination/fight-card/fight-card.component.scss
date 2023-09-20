@@ -10,6 +10,14 @@ $secondary-text-color:#ffffff99;
   padding: 1.5rem .9rem;
   height: 100%;
 
+  .empty {
+    text-align: center;
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
   .patricipant {
     display: grid;
     grid-template-columns: 8% 8% 8% 1fr;

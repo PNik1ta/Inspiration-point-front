@@ -6,7 +6,7 @@
 <main>
   <div class="col">
     <div class="info-block competitions">
-      <h2>Соревнования турнира</h2>
+      <h2>Список соревнований</h2>
       <ng-container *ngIf="isCompetitionsLoaded; else competitionsLoader">
         <app-tour-competition *ngFor="let competition of competitions"
           [competition]="competition"></app-tour-competition>
