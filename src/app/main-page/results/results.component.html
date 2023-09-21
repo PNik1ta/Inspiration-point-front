@@ -13,7 +13,7 @@
 
           <tbody>
             <tr *ngFor="let res of totalResults; let i = index;">
-              <td class="small">{{i + 1}}</td>
+              <td>{{res.rank}}</td>
               <td class="main-data">
                 <div class="country">
                   <img [src]="'assets/images/flags/' + res.region!.toLowerCase() + '.png'" alt="country flag">
@@ -21,7 +21,6 @@
                 </div>
                 <p class="name">{{res.surname}} {{res.name}}</p>
               </td>
-              <td>{{res.rank}}</td>
             </tr>
           </tbody>
         </table>

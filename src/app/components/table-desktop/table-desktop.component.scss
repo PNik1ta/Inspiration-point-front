@@ -10,6 +10,10 @@ $table-country-color: #888c95;
   width: 100%;
   overflow: auto;
 
+  @include respond(tab) {
+    max-width: calc(100vw - 6.4rem);
+  }
+
   .table-header {
     display: flex;
     align-items: center;
@@ -34,13 +38,12 @@ $table-country-color: #888c95;
   }
 
   .table-main {
-    width: 100%;
-    min-width: 93rem;
     border-collapse: collapse;
     text-align: center;
     border-top: none;
     overflow: scroll;
     height: fit-content;
+    width: 100%;
 
     .head {
       font-size: 1.2rem;
@@ -103,7 +106,7 @@ $table-country-color: #888c95;
         font-size: 1.5rem;
         color: $table-text-color;
         padding: .7rem .2rem;
-        min-width: 1.5rem;
+        min-width: 3.5rem;
         &_empty {
           background-color: $divider;
         }

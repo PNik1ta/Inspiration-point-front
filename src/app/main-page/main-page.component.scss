@@ -104,9 +104,11 @@ $title-text: #d9dee3;
 
 main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: 1.6rem;
   row-gap: 3.2rem;
+  max-width: 144rem;
+  margin: 0 auto;
   margin-top: 5rem;
 
   .col {
@@ -189,8 +191,7 @@ main {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 30% 1fr;
-  overflow: hidden;
+  grid-template-columns: 35% 1fr;
   margin-bottom: 3rem;
 
   @include respond(tab) {

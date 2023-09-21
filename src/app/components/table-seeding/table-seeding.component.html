@@ -6,24 +6,39 @@
           <tr>
             <th></th>
             <th></th>
-            <th>Rk.</th>
-            <th>Очки</th>
+            <th *ngIf="!participantsAndGroups">Rk.</th>
+            <th *ngIf="!participantsAndGroups">Очки</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let ath of athParticipants; let i = index;">
-            <td>{{i + 1}}</td>
-            <td class="main-data">
-              <div class="country">
-                <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
-                <p>{{ath.participant.region}}</p>
-              </div>
-              <p class="name">{{ath.participant.surname}} {{ath.participant.name}} {{ath.participant.fatherName}}</p>
-            </td>
-            <td>{{ath.ath.startRanking}}</td>
-            <td>{{ath.ath.startPoints}}</td>
-          </tr>
+          <ng-container *ngIf="!participantsAndGroups">
+            <tr *ngFor="let ath of athParticipants; let i = index;">
+              <td *ngIf="!participantsAndGroups">{{i + 1}}</td>
+              <td class="main-data">
+                <div class="country">
+                  <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
+                  <p>{{ath.participant.region}}</p>
+                </div>
+                <p class="name">{{ath.participant.surname}} {{ath.participant.name}} {{ath.participant.fatherName}}</p>
+              </td>
+              <td>{{ath.ath.startRanking}}</td>
+              <td>{{ath.ath.startPoints}}</td>
+            </tr>
+          </ng-container>
+
+          <ng-container *ngIf="participantsAndGroups">
+            <tr *ngFor="let participant of participantsAndGroups">
+              <td>{{participant.group.rankAfterPools}}</td>
+              <td class="main-data">
+                <div class="country">
+                  <img [src]="'assets/images/flags/' + participant.participant.region!.toLowerCase() + '.png'" alt="country flag">
+                  <p>{{participant.participant.region}}</p>
+                </div>
+                <p class="name">{{participant.participant.surname}} {{participant.participant.name}} {{participant.participant.fatherName}}</p>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
@@ -38,24 +53,39 @@
           <tr>
             <th></th>
             <th></th>
-            <th>Rk.</th>
-            <th>Points</th>
+            <th *ngIf="!participantsAndGroups">Rk.</th>
+            <th *ngIf="!participantsAndGroups">Очки</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let ath of athParticipants; let i = index;">
-            <td class="small">{{i + 1}}</td>
-            <td class="main-data">
-              <div class="country">
-                <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
-                <p>{{ath.participant.region}}</p>
-              </div>
-              <p class="name">{{ath.participant.surname}} {{ath.participant.name}} {{ath.participant.fatherName}}</p>
-            </td>
-            <td>{{ath.ath.startRanking}}</td>
-            <td>{{ath.ath.startPoints}}</td>
-          </tr>
+          <ng-container *ngIf="!participantsAndGroups">
+            <tr *ngFor="let ath of athParticipants; let i = index;">
+              <td *ngIf="!participantsAndGroups">{{i + 1}}</td>
+              <td class="main-data">
+                <div class="country">
+                  <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">
+                  <p>{{ath.participant.region}}</p>
+                </div>
+                <p class="name">{{ath.participant.surname}} {{ath.participant.name}} {{ath.participant.fatherName}}</p>
+              </td>
+              <td>{{ath.ath.startRanking}}</td>
+              <td>{{ath.ath.startPoints}}</td>
+            </tr>
+          </ng-container>
+
+          <ng-container *ngIf="participantsAndGroups">
+            <tr *ngFor="let participant of participantsAndGroups">
+              <td>{{participant.group.rankAfterPools}}</td>
+              <td class="main-data">
+                <div class="country">
+                  <img [src]="'assets/images/flags/' + participant.participant.region!.toLowerCase() + '.png'" alt="country flag">
+                  <p>{{participant.participant.region}}</p>
+                </div>
+                <p class="name">{{participant.participant.surname}} {{participant.participant.name}} {{participant.participant.fatherName}}</p>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>

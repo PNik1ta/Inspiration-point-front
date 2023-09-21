@@ -1,5 +1,5 @@
 <ul class="tabs">
-  <li><a routerLink="Seeding" routerLinkActive="active">Участники</a></li>
+  <li><a routerLink="Seeding" routerLinkActive="active">Рейтинг</a></li>
   <li><a [routerLink]="currentCompetition?.info?.length === 0 ? null : ['FirstRound']"
       [ngClass]="{'disabled': currentCompetition?.info?.length === 0}" routerLinkActive="active">Первый тур</a></li>
   <li><a [routerLink]="currentCompetition?.groupsResults?.length === 0 ? null : ['UpDown']"

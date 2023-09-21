@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { IAthAndParticipant } from '../../../../core/viewInterfaces/ath-and-participant.interface';
 import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
@@ -7,7 +6,8 @@ import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-v
 import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
 import { constructDEParticipantsScore } from '../../../../core/utils/direct-elimination/construct-de-participantsScore';
 import { constructDEViews } from '../../../../core/utils/direct-elimination/construct-de-view';
-import { constructAthList } from '../../../../core/utils/constrict-ath-list';
+import { IParticipantAndGroup } from '../../../../core/viewInterfaces/participant-and-group.interface';
+import { constructParticipantAndGroupResults } from '../../../../core/utils/construct-participant-and-group-results';
 
 @Component({
   selector: 'app-seeding',
@@ -21,10 +21,10 @@ export class SeedingComponent implements AfterViewInit, OnInit {
   @ViewChild('circles') circles?: ElementRef;
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
-  totalAthList: IAthAndParticipant[] = [];
   currentCompetition: ICompetitionResult | null = null;
   views: IDEView[] = [];
   isLoaded: boolean = false;
+  participantsAndGroupsResults: IParticipantAndGroup[] = [];
 
   constructor(private readonly store: Store) { }
 
@@ -33,7 +33,6 @@ export class SeedingComponent implements AfterViewInit, OnInit {
       if (res) {
         this.currentCompetition = res;
         this.zeroArrays();
-        this.totalAthList = constructAthList(this.currentCompetition);
 
         this.views = constructDEViews(this.currentCompetition.bracketsInitial!);
 
@@ -45,6 +44,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
           view = constructDEParticipantsInfo(view, this.currentCompetition);
         }
         this.isLoaded = true;
+        this.participantsAndGroupsResults = constructParticipantAndGroupResults(this.currentCompetition);
       }
     });
   }

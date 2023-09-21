@@ -33,6 +33,7 @@
           </td>
           <td class="data" [ngClass]="{'data_empty': info.position === -1}"
             *ngFor="let info of row.infoArray">{{info.score && info.score > 0 ? info.score : ''}}</td>
+
           <td class="data">{{row.result.wins}}</td>
           <td class="data">{{row.result.td}}</td>
           <td class="data">{{row.result.tr}}</td>
@@ -46,6 +47,8 @@
             'circle_black': row.result.status === 'E'}
           "></span></td>
         </tr>
+
+
       </tbody>
     </table>
   </div>

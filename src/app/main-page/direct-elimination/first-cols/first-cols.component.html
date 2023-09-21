@@ -18,8 +18,20 @@
     <div class="navigation">
       <button class="prev" (click)="prevSlide()" #btnPrev></button>
       <div class="numbers" #circles>
-        <p class="number number_active">Seeding</p>
-        <p class="number" *ngFor="let view of views">{{view.columnName}}</p>
+        <p class="number number_active">Участники</p>
+        <p class="number" *ngFor="let view of views">
+          <ng-container *ngIf="view.columnName === 'A4'">
+            Полуфинал
+          </ng-container>
+
+          <ng-container *ngIf="view.columnName === 'A2'">
+            Финал
+          </ng-container>
+
+          <ng-container *ngIf="view.columnName !== 'A4' && view.columnName !== 'A2'">
+            {{view.columnName}}
+          </ng-container>
+        </p>
       </div>
       <button class="next" (click)="nextSlide()" #btnNext></button>
     </div>
