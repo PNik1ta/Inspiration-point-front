@@ -1,6 +1,6 @@
 @import "../../../../../assets/styles/abstracts/mixins.scss";
 @import "../../../../../assets/styles/abstracts/variables.scss";
-$tabs-hover: #d9d9d9;
+$tabs-hover: #333841;
 
 
 
@@ -23,12 +23,12 @@ $tabs-hover: #d9d9d9;
 
       &:hover {
         background-color: $tabs-hover;
-        color: $main-bg;
+        color: #fff;
       }
 
       &.active {
         background-color: $tabs-hover;
-        color: $main-bg;
+        color: #fff;
       }
 
       &.disabled {

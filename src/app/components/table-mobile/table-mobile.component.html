@@ -22,8 +22,8 @@
       <button class="next" (click)="nextSlide()" #btnNext></button>
     </div>
 
-    <div class="slider-container">
-      <div class="slides" #sliderContainer>
+    <div class="slider-container" #sliderContainer>
+      <div class="slides" #slides>
         <div class="slide">
           <div class="countries">
             <div class="country" *ngFor="let item of athParticipants; let i = index;">

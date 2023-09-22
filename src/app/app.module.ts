@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { RouterModule } from '@angular/router';
+import { popperVariation, provideTippyConfig, tooltipVariation } from '@ngneat/helipopper';
 
 
 
@@ -44,7 +45,16 @@ import { RouterModule } from '@angular/router';
     MainPageModule,
     RouterModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provideTippyConfig({
+      defaultVariation: 'tooltip',
+      variations: {
+        tooltip: tooltipVariation,
+        popper: popperVariation,
+      }
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

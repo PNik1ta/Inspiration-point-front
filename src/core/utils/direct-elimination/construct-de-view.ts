@@ -4,7 +4,9 @@ import { IFightDEView } from "../../viewInterfaces/direct-elimination/fight-DE-v
 
 export function constructDEViews(bracketsInitial: IBracketInitial[]): IDEView[] {
   const views: IDEView[] = [];
+  bracketsInitial = bracketsInitial.filter((bracket) => bracket.tableauBr && bracket.tableauBr[0] === 'A');
   for (let bracket of bracketsInitial) {
+
     let view = views.find((view) => view.columnName === bracket.tableauBr);
 
     if (view) {

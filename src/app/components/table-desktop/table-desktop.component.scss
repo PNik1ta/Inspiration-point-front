@@ -7,11 +7,18 @@ $table-head-color: #6e737a;
 $table-country-color: #888c95;
 
 .info-block {
-  width: 100%;
   overflow: auto;
 
+  @media screen and (max-width: 1240px) {
+   max-width: 75rem;
+  }
+
+  @media screen and (max-width: 1150px) {
+    max-width: 65rem;
+  }
+
   @include respond(tab) {
-    max-width: calc(100vw - 6.4rem);
+    max-width: calc(100vw - 12.8rem);
   }
 
   .table-header {
@@ -49,6 +56,10 @@ $table-country-color: #888c95;
       font-size: 1.2rem;
       color: $table-head-color;
       padding: .7rem 0;
+
+      &_ml {
+        padding-left: 3.2rem;
+      }
     }
 
     tbody {
@@ -81,6 +92,7 @@ $table-country-color: #888c95;
           font-size: 1.5rem;
           margin-left: 1.5rem;
           text-align: left;
+          color: #fff;
         }
 
         small {
@@ -107,6 +119,11 @@ $table-country-color: #888c95;
         color: $table-text-color;
         padding: .7rem .2rem;
         min-width: 3.5rem;
+
+        &_ml {
+          padding-left: 3.2rem;
+        }
+
         &_empty {
           background-color: $divider;
         }

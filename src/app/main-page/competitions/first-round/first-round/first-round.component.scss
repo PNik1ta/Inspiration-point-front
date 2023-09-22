@@ -9,7 +9,7 @@
   margin-top: 1.5rem;
   overflow: auto;
   transition: all .3s ease 0s;
-
+  
   @include respond(small-phone) {
     display: none;
   }

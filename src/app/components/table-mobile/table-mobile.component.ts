@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { IAthAndParticipant } from '../../../core/viewInterfaces/ath-and-participant.interface';
 import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
 import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-and-group.interface';
@@ -16,12 +16,15 @@ export class TableMobileComponent implements AfterViewInit, OnInit, OnChanges {
   arrayOfQuantityParticipants: number[] = [];
   participantAndGroupList: IParticipantAndGroup[] = [];
 
+  @ViewChild('slides') slides?: ElementRef;
   @ViewChild('sliderContainer') sliderContainer?: ElementRef;
   @ViewChild('btnPrev') btnPrev?: ElementRef;
   @ViewChild('btnNext') btnNext?: ElementRef;
   @ViewChild('circles') circles?: ElementRef;
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
+
+  constructor(private readonly renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.arrayOfQuantityParticipants = [];
@@ -55,15 +58,31 @@ export class TableMobileComponent implements AfterViewInit, OnInit, OnChanges {
     }
   }
 
+  adjustSliderHeight(): void {
+    const currentSlide = this.sliderBlocks[this.currentIndex];
+    const slideChildren = currentSlide.children;
+    let maxHeight = 0;
+
+    for (let i = 0; i < slideChildren.length; i++) {
+      const childHeight = slideChildren[i].getBoundingClientRect().height;
+      if (childHeight > maxHeight) {
+        maxHeight = childHeight;
+      }
+    }
+
+    this.sliderContainer!.nativeElement.style.height = `${maxHeight + 60}px`;
+  }
+
   ngAfterViewInit(): void {
-    this.sliderBlocks = this.sliderContainer!.nativeElement.getElementsByClassName('slide');
+    this.sliderBlocks = this.slides!.nativeElement.getElementsByClassName('slide');
   }
 
   updateSliderPosition() {
     const offset = this.currentIndex * -100;
-    this.sliderContainer!.nativeElement.style.transform = `translateX(${offset}%)`;
+    this.slides!.nativeElement.style.transform = `translateX(${offset}%)`;
     this.removeCircleActiveClasses();
     this.circles!.nativeElement.children[this.currentIndex].classList.add('circle_active');
+    this.adjustSliderHeight();
   }
 
   removeCircleActiveClasses(): void {

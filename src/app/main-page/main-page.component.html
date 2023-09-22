@@ -38,17 +38,20 @@
     </div>
   </div> -->
 
-  <section class="competitions-header">
-    <span class="title">{{currentCompetition?.newCompetitionForm?.competitionName}}</span>
-  </section>
+  <div class="info-block info-block_main">
+    <section class="competitions-header">
+      <span class="title">{{currentCompetition?.newCompetitionForm?.dateTimeCompetitionStart}} - {{currentCompetition?.newCompetitionForm?.competitionName}}</span>
+    </section>
 
-  <div class="col col_results" id="results" *ngIf="isResultsActive">
-    <div class="wrapper">
-      <app-aside></app-aside>
+    <div class="col col_results" id="results" *ngIf="isResultsActive">
+      <div class="wrapper">
+        <app-aside></app-aside>
 
-      <div class="main">
-        <router-outlet></router-outlet>
+        <div class="main">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
+
 </main>

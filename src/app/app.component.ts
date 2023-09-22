@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const url = 'wss://free.blr2.piesocket.com/v3/test_room?api_key=MKiIO0jliytG9ok2SsKqWrnEAnaCiJKNcQ3irzF9';
+    const url = 'wss://s10303.fra1.piesocket.com/v3/1?api_key=mHrjFM2YI5aX8uyJQnPgUOBKJG2GrQ37vAb5yfJf&notify_self=1';
     this.websocketService.connect(url);
     this.websocketService.subscribeToData();
     this.competitionResultService.findAll().subscribe({

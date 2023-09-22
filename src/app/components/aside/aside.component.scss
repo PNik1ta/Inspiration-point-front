@@ -57,13 +57,13 @@ aside {
     }
 
     &__text {
-      color: $date-and-place-text-color;
+      color: #fff;
       font-size: 2.7rem;
     }
   }
 
   .nav {
-    margin-top: 3.8rem;
+    //margin-top: 3.8rem;
 
     @include respond(tab) {
       display: none;
@@ -74,7 +74,7 @@ aside {
       flex-direction: column;
 
       li {
-        width: 70%;
+        width: 100%;
 
         a {
           display: flex;
@@ -84,6 +84,8 @@ aside {
           line-height: 2;
           color: inherit;
           padding: 0rem 2rem;
+          white-space: nowrap;
+          font-weight: 300;
 
           border-radius: 1.2rem;
 
@@ -95,6 +97,7 @@ aside {
 
           &.active {
             background-color: $block-color;
+            color: #d9dee3;
           }
 
           &.disabled {

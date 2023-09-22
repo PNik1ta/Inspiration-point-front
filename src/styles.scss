@@ -3,3 +3,6 @@
 @import "./assets/styles/abstracts/variables.scss";
 @import "./assets//styles//abstracts/fonts.scss";
 @import "./assets/styles/base/base.scss";
+@import '~tippy.js/dist/tippy.css';
+@import '~tippy.js/themes/light.css';
+@import '~tippy.js/animations/scale.css';

@@ -12,6 +12,8 @@ export class TableUpDownComponent implements OnInit, OnChanges {
   participantAndGroupList: IParticipantAndGroup[] = [];
 
   ngOnInit(): void {
+    console.log(this.result);
+
     this.initializeParticipantAndGroupInfo();
   }
 
@@ -23,13 +25,11 @@ export class TableUpDownComponent implements OnInit, OnChanges {
   }
 
   initializeParticipantAndGroupInfo(): void {
-    for (let group of this.result!.athList) {
-      for (let participant of this.result!.participantFormList) {
-        if (group.nickname === participant.nickname) {
-          let participantAndGroup: IParticipantAndGroup = { participant, group }
-          this.participantAndGroupList.push(participantAndGroup);
-          break;
-        }
+    for (let group of this.result!.groupsResults) {
+      const participant = this.result?.participantFormList.find((participant) => participant.nickname === group.nickname);
+      if (participant) {
+        let participantAndGroup: IParticipantAndGroup = { participant, group }
+        this.participantAndGroupList.push(participantAndGroup);
       }
     }
   }
