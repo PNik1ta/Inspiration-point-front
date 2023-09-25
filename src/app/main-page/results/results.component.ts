@@ -23,6 +23,7 @@ export class ResultsComponent implements OnInit {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
+
         this.isEmpty = this.currentCompetition.bracketsResults.length === 0;
         this.totalResults = constructBracketResults(this.currentCompetition);
         this.sortByRank(this.totalResults);

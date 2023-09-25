@@ -38,9 +38,9 @@
     </div>
   </div> -->
 
-  <div class="info-block info-block_main">
+  <div class="info-block info-block_main" *ngIf="currentCompetition">
     <section class="competitions-header">
-      <span class="title">{{currentCompetition?.newCompetitionForm?.dateTimeCompetitionStart}} - {{currentCompetition?.newCompetitionForm?.competitionName}}</span>
+      <span class="title">{{currentCompetition.newCompetitionForm.dateTimeCompetitionStart}} {{currentCompetition.newCompetitionForm.competitionName}}</span>
     </section>
 
     <div class="col col_results" id="results" *ngIf="isResultsActive">

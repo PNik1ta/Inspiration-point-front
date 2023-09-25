@@ -6,16 +6,9 @@ import { IFirstRoundView } from '../../../core/viewInterfaces/first-round/first-
   templateUrl: './table-desktop.component.html',
   styleUrls: ['./table-desktop.component.scss']
 })
-export class TableDesktopComponent implements AfterViewInit, OnChanges {
+export class TableDesktopComponent implements OnChanges {
   @Input('firstRoundView') view: IFirstRoundView | null = null;
   arrayOfQuantityParticipants: number[] = [];
-
-  ngAfterViewInit(): void {
-    this.arrayOfQuantityParticipants = [];
-    this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
-    this.sortByAthleteRankPool();
-    this.sortByInfoNumber();
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['view']) {

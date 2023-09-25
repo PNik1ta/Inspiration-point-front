@@ -82,7 +82,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
 
       if (i >= startIndex && i <= endIndex) {
         const distanceFromMiddle = i - this.currentIndex + middleIndex;
-        const translateX = initialTranslate + step * distanceFromMiddle;
+        const translateX = initialTranslate + step * distanceFromMiddle + 50  ;
 
         circle.style.left = `${translateX}%`;
         circle.style.right = `-${translateX}%`;

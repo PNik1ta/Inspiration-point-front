@@ -28,7 +28,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
   totalAthList: IAthAndParticipant[] = [];
   isLoaded: boolean = false;
 
-  constructor(private readonly store: Store, private readonly cdr: ChangeDetectorRef) {}
+  constructor(private readonly store: Store, private readonly cdr: ChangeDetectorRef) { }
 
   ngAfterContentChecked(): void {
     this.cdr.detectChanges();
@@ -80,7 +80,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
 
   updateVisibleNumbers() {
     const circleElements = this.circles!.nativeElement.children;
-    const visibleCount = 4; // Number of visible numbers
+    const visibleCount = 3;
     const middleIndex = Math.floor(visibleCount / 2);
 
     const startIndex = Math.max(0, this.currentIndex - middleIndex);
@@ -94,7 +94,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
 
       if (i >= startIndex && i <= endIndex) {
         const distanceFromMiddle = i - this.currentIndex + middleIndex;
-        const translateX = initialTranslate + step * distanceFromMiddle;
+        const translateX = initialTranslate + step * distanceFromMiddle + 50;
 
         circle.style.left = `${translateX}%`;
         circle.style.right = `-${translateX}%`;

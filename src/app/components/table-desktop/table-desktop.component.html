@@ -31,8 +31,10 @@
             <p>{{ row.ath.participantForm.surname }} {{ row.ath.participantForm.name }}</p>
             <small>{{i + 1}}</small>
           </td>
-          <td class="data" [ngClass]="{'data_empty': info.position === -1}"
-            *ngFor="let info of row.infoArray">{{info.score && info.score >= 0 ? info.score : ''}}</td>
+          <td class="data" [ngClass]="{'data_empty': info.position === -1, 'data_green': info.winner }"
+            *ngFor="let info of row.infoArray">
+            {{info.score !== undefined  && info.score >= 0 ? (info.winner ? 'V' + info.score : 'D' + info.score ) : ''}}
+          </td>
 
           <td class="data data_ml">{{row.result.wins}}</td>
           <td class="data">{{row.result.td}}</td>

@@ -50,6 +50,7 @@ export class FirstRoundComponent {
           this.firstRoundViews = constructFirstRoundViews(this.currentCompetition, this.firstRoundRows);
           this.isLoaded = true;
         }
+
       }
     });
   }
