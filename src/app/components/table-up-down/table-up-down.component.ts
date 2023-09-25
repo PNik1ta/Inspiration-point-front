@@ -7,15 +7,9 @@ import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-a
   templateUrl: './table-up-down.component.html',
   styleUrls: ['./table-up-down.component.scss']
 })
-export class TableUpDownComponent implements OnInit, OnChanges {
+export class TableUpDownComponent implements OnChanges {
   @Input('result') result: ICompetitionResult | null = null;
   participantAndGroupList: IParticipantAndGroup[] = [];
-
-  ngOnInit(): void {
-    console.log(this.result);
-
-    this.initializeParticipantAndGroupInfo();
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['result']) {
@@ -28,7 +22,7 @@ export class TableUpDownComponent implements OnInit, OnChanges {
     for (let group of this.result!.groupsResults) {
       const participant = this.result?.participantFormList.find((participant) => participant.nickname === group.nickname);
       if (participant) {
-        let participantAndGroup: IParticipantAndGroup = { participant, group }
+        let participantAndGroup: IParticipantAndGroup = { participant, group };
         this.participantAndGroupList.push(participantAndGroup);
       }
     }

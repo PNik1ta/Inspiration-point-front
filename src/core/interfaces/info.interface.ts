@@ -28,4 +28,5 @@ export interface IInfo {
   pCardLeft?: number;
   currentFightScoreLeft?: number;
   videoLeft?: number;
+  winner?: number;
 }

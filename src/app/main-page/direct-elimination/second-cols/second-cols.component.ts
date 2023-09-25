@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
 import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-view.interface';
 import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
@@ -14,7 +14,7 @@ import { constructAthList } from '../../../../core/utils/constrict-ath-list';
   templateUrl: './second-cols.component.html',
   styleUrls: ['./second-cols.component.scss']
 })
-export class SecondColsComponent implements AfterViewInit, OnInit {
+export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentChecked {
   @ViewChild('sliderContainer') sliderContainer?: ElementRef;
   @ViewChild('btnPrev') btnPrev?: ElementRef;
   @ViewChild('btnNext') btnNext?: ElementRef;
@@ -28,7 +28,11 @@ export class SecondColsComponent implements AfterViewInit, OnInit {
   totalAthList: IAthAndParticipant[] = [];
   isLoaded: boolean = false;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store, private readonly cdr: ChangeDetectorRef) {}
+
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+  }
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {

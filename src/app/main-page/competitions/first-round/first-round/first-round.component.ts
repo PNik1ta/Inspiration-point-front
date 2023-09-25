@@ -33,6 +33,7 @@ export class FirstRoundComponent {
       if (res) {
         this.currentCompetition = res;
         this.initializeAthList();
+
         this.isEmpty = this.currentCompetition.athList.length === 0;
 
         if (this.currentCompetition) {

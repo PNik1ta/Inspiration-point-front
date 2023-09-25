@@ -15,8 +15,9 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let item of participantAndGroupList">
+        <tr *ngFor="let item of participantAndGroupList; let i = index;">
           <td class="main-data">
+            <p class="name">{{i + 1}}</p>
             <div class="country">
               <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'" alt="jor flag">
               <p>{{item.participant.region}}</p>

@@ -1,21 +1,17 @@
 <div class="card">
-  <ng-container *ngIf="fight?.leftParticipant?.score! > 0 && fight?.rightParticipant?.score! > 0; else empty">
-    <div class="patricipant participant_first">
-      <p class="hits">{{fight?.leftParticipant?.score}}</p>
-      <p class="country" [tp]="fight?.leftParticipant?.region">{{fight?.leftParticipant?.region}}</p>
-      <img [src]="'assets/images/flags/' + fight?.leftParticipant?.region!.toLowerCase() + '.png'" alt="country flag">
-      <h5 [tp]="fight?.rightParticipant?.surname + ' ' + fight?.rightParticipant?.name">{{fight?.leftParticipant?.surname}} {{fight?.leftParticipant?.name}}</h5>
-    </div>
+  <div class="patricipant participant_first" *ngIf="fight?.leftParticipantNickname !== -1">
+    <p class="hits">{{fight?.leftParticipant?.score! > 0 ? fight?.leftParticipant?.score : ''}}</p>
+    <p class="country" [tp]="fight?.leftParticipant?.region">{{fight?.leftParticipant?.region}}</p>
+    <img [src]="'assets/images/flags/' + fight?.leftParticipant?.region!.toLowerCase() + '.png'" alt="country flag">
+    <h5 [tp]="fight?.rightParticipant?.surname + ' ' + fight?.rightParticipant?.name">
+      {{fight?.leftParticipant?.surname}} {{fight?.leftParticipant?.name}}</h5>
+  </div>
 
-    <div class="patricipant participant_second">
-      <p class="hits">{{fight?.rightParticipant?.score}}</p>
-      <p class="country" [title]="fight?.rightParticipant?.region">{{fight?.rightParticipant?.region}}</p>
-      <img [src]="'assets/images/flags/' + fight?.rightParticipant?.region!.toLowerCase() + '.png'" alt="country flag">
-      <h5 [tp]="fight?.rightParticipant?.surname + ' ' + fight?.rightParticipant?.name">
-        {{fight?.rightParticipant?.surname}} {{fight?.rightParticipant?.name}}</h5>
-    </div>
-  </ng-container>
-
-  <ng-template #empty>
-  </ng-template>
+  <div class="patricipant participant_second" *ngIf="fight?.rightParticipantNickname !== -1">
+    <p class="hits">{{fight?.rightParticipant?.score! > 0 ? fight?.rightParticipant?.score : ''}}</p>
+    <p class="country" [title]="fight?.rightParticipant?.region">{{fight?.rightParticipant?.region}}</p>
+    <img [src]="'assets/images/flags/' + fight?.rightParticipant?.region!.toLowerCase() + '.png'" alt="country flag">
+    <h5 [tp]="fight?.rightParticipant?.surname + ' ' + fight?.rightParticipant?.name">
+      {{fight?.rightParticipant?.surname}} {{fight?.rightParticipant?.name}}</h5>
+  </div>
 </div>

@@ -32,9 +32,6 @@ export class WebSocketService {
           this.jsonData += event.data;
         } else {
           const data: ICompetitionResult = JSON.parse(this.jsonData);
-          console.log(this.jsonData);
-
-
           this.competitionResultService.shouldAddOrUpdate(data).subscribe(() => {
             this.getAllData();
             this.updateCurrentResults();
@@ -58,7 +55,7 @@ export class WebSocketService {
   }
 
   updateCurrentResults(): void {
-    const currentCompetition = localStorage.getItem('currentCompetition');
+    const currentCompetition = sessionStorage.getItem('currentCompetition');
 
     if (currentCompetition) {
       const data: ICompetitionResult = JSON.parse(currentCompetition);
