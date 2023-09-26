@@ -2,7 +2,7 @@
   <div class="info-block direct-elimination" [style.grid-template-columns]="'repeat(' + views.length + ', 1fr)'">
     <ng-container *ngIf="viewsForDesktop.length !== 0; else empty">
       <div class="col" *ngFor="let view of viewsForDesktop">
-        <p class="number">{{view.columnName}}</p>
+        <p class="number">{{'T' + view.columnName.slice(1)}}</p>
 
         <app-fight-card *ngFor="let fight of view.fights" [fight]="fight"></app-fight-card>
       </div>
@@ -29,7 +29,7 @@
           </ng-container>
 
           <ng-container *ngIf="view.columnName !== 'A4' && view.columnName !== 'A2'">
-            {{view.columnName}}
+            {{'T' + view.columnName.slice(1)}}
           </ng-container>
         </p>
       </div>

@@ -86,7 +86,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
     const startIndex = Math.max(0, this.currentIndex - middleIndex);
     const endIndex = Math.min(this.sliderBlocks.length - 1, startIndex + visibleCount - 1);
 
-    const step = 100 / (visibleCount - 1); // Step for translateX
+    const step = 200 / (visibleCount - 1); // Step for translateX
     const initialTranslate = 50 - step * middleIndex; // Initial translateX value
 
     for (let i = 0; i < circleElements.length; i++) {

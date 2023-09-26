@@ -45,6 +45,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
         }
         this.isLoaded = true;
         this.participantsAndGroupsResults = constructParticipantAndGroupResults(this.currentCompetition);
+
       }
     });
   }
@@ -74,7 +75,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
     const startIndex = Math.max(0, this.currentIndex - middleIndex);
     const endIndex = Math.min(this.sliderBlocks.length - 1, startIndex + visibleCount - 1);
 
-    const step = 100 / (visibleCount - 1); // Step for translateX
+    const step = 200 / (visibleCount - 1); // Step for translateX
     const initialTranslate = 50 - step * middleIndex; // Initial translateX value
 
     for (let i = 0; i < circleElements.length; i++) {
@@ -82,7 +83,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
 
       if (i >= startIndex && i <= endIndex) {
         const distanceFromMiddle = i - this.currentIndex + middleIndex;
-        const translateX = initialTranslate + step * distanceFromMiddle + 50  ;
+        const translateX = initialTranslate + step * distanceFromMiddle;
 
         circle.style.left = `${translateX}%`;
         circle.style.right = `-${translateX}%`;

@@ -19,7 +19,7 @@
           </ng-container>
 
           <ng-container *ngIf="view.columnName !== 'A4' && view.columnName !== 'A2'">
-            {{view.columnName}}
+            {{'T' + view.columnName.slice(1)}}
           </ng-container>
         </p>
       </div>
