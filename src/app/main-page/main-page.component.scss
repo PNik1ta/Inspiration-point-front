@@ -184,8 +184,12 @@ main {
 
 
     @media screen and (max-width: 1154px) {
-      font-size: 5rem;
+      font-size: 2.5rem;
     }
+  }
+
+  @media screen and (max-width: 1154px) {
+    margin-bottom: 2rem;
   }
 }
 

@@ -1,5 +1,5 @@
 <ng-container *ngIf="isLoaded; else loader">
-  <section class="tables-dektop">
+  <section class="tables-dektop" data-aos="fade-up">
     <app-table-desktop *ngFor="let view of firstRoundViews" [firstRoundView]="view"></app-table-desktop>
   </section>
 

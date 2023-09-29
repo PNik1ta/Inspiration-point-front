@@ -1,7 +1,7 @@
-import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { ICompetition } from "../../interfaces/competition.interface";
 import { IBracketResultAndParticipant } from "../../viewInterfaces/bracket-result-and-participant.interface";
 
-export function constructBracketResults({ bracketsResults, participantFormList }: ICompetitionResult): IBracketResultAndParticipant[] {
+export function constructBracketResults({ bracketsResults, participantFormList }: ICompetition): IBracketResultAndParticipant[] {
   const totalResults: IBracketResultAndParticipant[] = [];
   for (let result of bracketsResults) {
     const participant = participantFormList.find((participant) => participant.nickname === result.nickname);

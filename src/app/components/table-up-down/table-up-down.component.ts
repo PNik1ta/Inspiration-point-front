@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-and-group.interface';
 
 @Component({
@@ -8,13 +8,14 @@ import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-a
   styleUrls: ['./table-up-down.component.scss']
 })
 export class TableUpDownComponent implements OnChanges {
-  @Input('result') result: ICompetitionResult | null = null;
+  @Input('result') result: ICompetition | null = null;
   participantAndGroupList: IParticipantAndGroup[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['result']) {
       this.participantAndGroupList = [];
       this.initializeParticipantAndGroupInfo();
+      this.sortByRank();
     }
   }
 
@@ -26,5 +27,10 @@ export class TableUpDownComponent implements OnChanges {
         this.participantAndGroupList.push(participantAndGroup);
       }
     }
+  }
+
+  sortByRank(): void {
+    this.participantAndGroupList.filter((item) => item.group.rankAfterPools && item.group.rankAfterPools > 0);
+    this.participantAndGroupList.sort((a, b) => a.group.rankAfterPools! - b.group.rankAfterPools!);
   }
 }

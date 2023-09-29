@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { WebSocketService } from '../core/services/websocket.service';
-import { CompetitionResultService } from '../core/services/competitionResult.service';
+import { CompetitionService } from '../core/services/competition.service';
 import { Store } from '@ngrx/store';
-import { CompetitionResultReceivedAction } from '../core/reducers/competitionResult/competitionResult.action';
+import { CompetitionReceivedAction } from '../core/reducers/competition/competition.action';
 import { BaseResponse } from '../core/models/base-response';
-import { ICompetitionResult } from '../core/interfaces/competition-result.interface';
+import { ICompetition } from '../core/interfaces/competition.interface';
 import { CurrentCompetitionReceivedAction } from '../core/reducers/currentCompetition/currentCompetition.action';
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private readonly websocketService: WebSocketService,
-    private readonly competitionResultService: CompetitionResultService,
+    private readonly competitionResultService: CompetitionService,
     private readonly store: Store
   ) { }
 
@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     this.websocketService.connect(url);
     this.websocketService.subscribeToData();
     this.competitionResultService.findAll().subscribe({
-      next: (res: BaseResponse<ICompetitionResult[]>) => {
-        if (res.data && res.data.length !== 0) {
-          this.store.dispatch(CompetitionResultReceivedAction({ data: res.data }));
+      next: (res: BaseResponse<ICompetition[]>) => {
+        if (res.data) {
+          this.store.dispatch(CompetitionReceivedAction({ data: res.data }));
         }
       }, error: (err) => {
         console.log(err);

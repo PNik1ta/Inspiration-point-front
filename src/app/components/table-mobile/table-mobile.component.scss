@@ -1,8 +1,8 @@
 @import "../../../assets/styles/abstracts/mixins.scss";
 @import "../../../assets/styles/abstracts/variables.scss";
 $header-background-mobile: #272b34;
-$table-text-color: #c1c7ce;
-$table-green-text-color: #1e9117;
+$table-text-color: #fff;
+$table-green-text-color: #22FF00;
 $table-rows-color: #25282c;
 $table-head-color: #6e737a;
 $table-country-color: #888c95;
@@ -10,7 +10,7 @@ $table-country-color: #888c95;
 .info-block {
 
   &.block-table-mobile {
-    max-height: 50rem;
+    max-height: 70rem;
     overflow: auto;
   }
 
@@ -113,7 +113,7 @@ $table-country-color: #888c95;
           padding: 2rem;
           box-sizing: border-box;
           transition: all .3s ease-in-out 0s;
-          width: 10rem;
+          width: 1rem;
           overflow: auto;
           height: 100%;
 
@@ -124,6 +124,7 @@ $table-country-color: #888c95;
 
 
           .countries {
+            margin-top: 0.2rem;
             .country {
               display: grid;
               grid-template-columns: auto 1fr;
@@ -175,19 +176,9 @@ $table-country-color: #888c95;
 
           .competition {
             width: 100%;
-            margin-top: 1rem;
+            margin-top: -3rem;
             border-collapse: collapse;
             height: fit-content;
-            //min-width: 40rem;
-
-
-            @media screen and (max-width: 600px) {
-              margin-top: 0.5rem;
-            }
-
-            @media screen and (max-width: 440px) {
-              margin-top: 0;
-            }
 
             tr {
               position: relative;
@@ -197,7 +188,7 @@ $table-country-color: #888c95;
             .number {
               font-size: 1.6rem;
               color: $table-head-color;
-              padding: .7rem 0;
+              padding: .7rem 1rem .7rem 0;
             }
 
             .number {

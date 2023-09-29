@@ -1,7 +1,7 @@
-import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { ICompetition } from "../../interfaces/competition.interface";
 import { IAthAndGroupInitial } from "../../viewInterfaces/first-round/ath-and-group-initial.interface";
 
-export function constructAthAndGroupInitials(result: ICompetitionResult): IAthAndGroupInitial[] {
+export function constructAthAndGroupInitials(result: ICompetition): IAthAndGroupInitial[] {
   const athAndGroupInitials: IAthAndGroupInitial[] = [];
 
   for (let groupInitial of result.groupsInitial) {

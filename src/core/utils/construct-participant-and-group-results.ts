@@ -1,7 +1,7 @@
-import { ICompetitionResult } from "../interfaces/competition-result.interface";
+import { ICompetition } from "../interfaces/competition.interface";
 import { IParticipantAndGroup } from "../viewInterfaces/participant-and-group.interface";
 
-export function constructParticipantAndGroupResults({ participantFormList, groupsResults }: ICompetitionResult): IParticipantAndGroup[] {
+export function constructParticipantAndGroupResults({ participantFormList, groupsResults }: ICompetition): IParticipantAndGroup[] {
   const participantsAndGroups: IParticipantAndGroup[] = [];
   const filteredGroups = groupsResults.filter((result) => result.nickname !== undefined && result.nickname >= 0);
 

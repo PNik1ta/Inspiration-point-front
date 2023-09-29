@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { CompetitionTourDate } from '../../../core/enums/competition-tour-date,enum';
 import { Store } from '@ngrx/store';
 import { CurrentCompetitionReceivedAction } from '../../../core/reducers/currentCompetition/currentCompetition.action';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tour-competition.component.scss']
 })
 export class TourCompetitionComponent implements OnInit {
-  @Input('competition') competition: ICompetitionResult | null;
+  @Input('competition') competition: ICompetition | null;
   competitionTourDate: CompetitionTourDate = CompetitionTourDate.FUTURE;
   buttonContent: string = '';
   isDisabled: boolean = false;
@@ -47,7 +47,7 @@ export class TourCompetitionComponent implements OnInit {
     }
   }
 
-  selectCompetition(competition: ICompetitionResult): void {
+  selectCompetition(competition: ICompetition): void {
     this.store.dispatch(CurrentCompetitionReceivedAction({ data: competition }));
     sessionStorage.setItem('currentCompetition', JSON.stringify(competition));
     this.isDisabled = true;

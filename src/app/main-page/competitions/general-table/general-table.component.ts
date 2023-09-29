@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
-import { getCompetitionResult } from '../../../../core/reducers/competitionResult/websocket.selectors';
+import { ICompetition } from '../../../../core/interfaces/competition.interface';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-general-table',
@@ -10,13 +10,14 @@ import { getCurrentCompetition } from '../../../../core/reducers/currentCompetit
   styleUrls: ['./general-table.component.scss']
 })
 export class GeneralTableComponent implements OnInit {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   isEmpty: boolean = true;
-  competitions: ICompetitionResult[] = [];
+  competitions: ICompetition[] = [];
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;

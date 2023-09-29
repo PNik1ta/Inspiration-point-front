@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { getCurrentCompetition } from '../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { Router } from '@angular/router';
 
@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class AsideComponent implements OnInit {
   selectedMenu: string = 'Формула соревнования';
   isOpened: boolean;
-  competitions: ICompetitionResult[] = [];
-  currentCompetition: ICompetitionResult | null = null;
+  competitions: ICompetition[] = [];
+  currentCompetition: ICompetition | null = null;
 
   constructor(private readonly store: Store, private readonly router: Router) {
     this.isOpened = false;

@@ -1,8 +1,8 @@
-import { ICompetitionResult } from "../interfaces/competition-result.interface";
+import { ICompetition } from "../interfaces/competition.interface";
 import { IInfo } from "../interfaces/info.interface";
 import { IFightDEView } from "../viewInterfaces/direct-elimination/fight-DE-view.interface";
 
-export function constructFights(lastInfos: IInfo[], currentCompetition: ICompetitionResult): IFightDEView[] {
+export function constructFights(lastInfos: IInfo[], currentCompetition: ICompetition): IFightDEView[] {
   const fights: IFightDEView[] = [];
   for (let info of lastInfos) {
     let fight: IFightDEView = {

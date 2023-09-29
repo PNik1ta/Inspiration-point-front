@@ -1,7 +1,7 @@
-import { ICompetitionResult } from "../interfaces/competition-result.interface";
+import { ICompetition } from "../interfaces/competition.interface";
 import { IAthAndParticipant } from "../viewInterfaces/ath-and-participant.interface";
 
-export function constructAthList(currentCompetition: ICompetitionResult): IAthAndParticipant[] {
+export function constructAthList(currentCompetition: ICompetition): IAthAndParticipant[] {
   const totalAthList: IAthAndParticipant[] = [];
 
   for (let ath of currentCompetition!.athList) {

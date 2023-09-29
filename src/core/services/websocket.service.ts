@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { ICompetitionResult } from "../interfaces/competition-result.interface";
+import { ICompetition } from "../interfaces/competition.interface";
 import { Store } from "@ngrx/store";
-import { CompetitionResultReceivedAction } from "../reducers/competitionResult/competitionResult.action";
-import { CompetitionResultService } from "./competitionResult.service";
+import { CompetitionReceivedAction } from "../reducers/competition/competition.action";
+import { CompetitionService } from "./competition.service";
 import { BaseResponse } from "../models/base-response";
 import { CurrentCompetitionReceivedAction } from "../reducers/currentCompetition/currentCompetition.action";
 import { environment } from "../../environments/environment";
@@ -12,7 +12,7 @@ export class WebSocketService {
   jsonData: string = '';
 
 
-  constructor(private store: Store, private readonly competitionResultService: CompetitionResultService) { }
+  constructor(private store: Store, private readonly competitionResultService: CompetitionService) { }
 
   private socket: WebSocket | null = null;
 
@@ -31,8 +31,9 @@ export class WebSocketService {
         if (event.data !== 'END') {
           this.jsonData += event.data;
         } else {
-          const data: ICompetitionResult = JSON.parse(this.jsonData);
+          const data: ICompetition = JSON.parse(this.jsonData);
           this.competitionResultService.shouldAddOrUpdate(data).subscribe(() => {
+
             this.getAllData();
             this.updateCurrentResults();
           });
@@ -44,9 +45,9 @@ export class WebSocketService {
 
   getAllData(): void {
     this.competitionResultService.findAll().subscribe({
-      next: (res: BaseResponse<ICompetitionResult[]>) => {
+      next: (res: BaseResponse<ICompetition[]>) => {
         if (res.data) {
-          this.store.dispatch(CompetitionResultReceivedAction({ data: res.data }));
+          this.store.dispatch(CompetitionReceivedAction({ data: res.data }));
         }
       }, error: (err) => {
         console.log(err);
@@ -57,10 +58,12 @@ export class WebSocketService {
   updateCurrentResults(): void {
     const currentCompetition = sessionStorage.getItem('currentCompetition');
 
+
     if (currentCompetition) {
-      const data: ICompetitionResult = JSON.parse(currentCompetition);
-      this.competitionResultService.findById(data._id!).subscribe((res: BaseResponse<ICompetitionResult>) => {
+      const data: ICompetition = JSON.parse(currentCompetition);
+      this.competitionResultService.findById(data._id!).subscribe((res: BaseResponse<ICompetition>) => {
         if (res.data) {
+          sessionStorage.setItem('currentCompetition', JSON.stringify(res.data));
           this.store.dispatch(CurrentCompetitionReceivedAction({ data: res.data }));
         }
       });
@@ -77,3 +80,10 @@ export class WebSocketService {
 
   }
 }
+
+
+
+
+
+
+

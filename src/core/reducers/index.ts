@@ -1,13 +1,13 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { CompetitionResultState, competitionResultReducer } from "./competitionResult/websocketMessage.reducer";
+import { CompetitionState, competitionReducer } from "./competition/competition.reducer";
 import { CurrentCompetitionState, currentCompetitionReducer } from "./currentCompetition/currentCompetition.reducer";
 
 export interface State {
-  competitionResult: CompetitionResultState,
+  competition: CompetitionState,
   currentCompetition: CurrentCompetitionState
 }
 
 export const reducers: ActionReducerMap<State> = {
-  competitionResult: competitionResultReducer,
+  competition: competitionReducer,
   currentCompetition: currentCompetitionReducer
 };

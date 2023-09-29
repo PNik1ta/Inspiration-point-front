@@ -1,10 +1,10 @@
-import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { ICompetition } from "../../interfaces/competition.interface";
 import { IAthAndGroupInitial } from "../../viewInterfaces/first-round/ath-and-group-initial.interface";
 import { IFirstRoundViewRow } from "../../viewInterfaces/first-round/first-round-view-row.interface";
 import { IInfoViewFirstRound } from "../../viewInterfaces/info-view-first-round.interface";
 
 
-export function constructFirstRoundViewRow(result: ICompetitionResult, ath: IAthAndGroupInitial, aths: IAthAndGroupInitial[]): IFirstRoundViewRow {
+export function constructFirstRoundViewRow(result: ICompetition, ath: IAthAndGroupInitial, aths: IAthAndGroupInitial[]): IFirstRoundViewRow {
   const groupsInfo = result.info.filter((info) => info.poulTab?.startsWith('P'));
   const firstRoundViewRow: IFirstRoundViewRow = { ath, infoArray: [], result: {} };
 
@@ -13,9 +13,6 @@ export function constructFirstRoundViewRow(result: ICompetitionResult, ath: IAth
   for (let info of groupsInfo) {
 
     if (info.nicknameLeft === ath.ath.nickname) {
-      console.log(info);
-
-
       const infoViewFirstRound: IInfoViewFirstRound = { score: -1, position: -1, winner: info.winner === ath.ath.nickname };
 
       infoViewFirstRound.score = info.scoreLeft ?? 0;

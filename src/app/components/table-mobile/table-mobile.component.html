@@ -18,6 +18,7 @@
         <div class="circle circle_active"></div>
         <div class="circle"></div>
         <div class="circle"></div>
+        <div class="circle"></div>
       </div>
       <button class="next" (click)="nextSlide()" #btnNext></button>
     </div>
@@ -49,7 +50,11 @@
               <tr *ngFor="let row of view?.firstRoundViewRows; let i = index">
                 <td class="number">{{i + 1}}</td>
                 <td class="data bordered" *ngFor="let info of row.infoArray"
-                  [ngClass]="{'data_empty': info.position === -1}"><span>{{info.score && info.score >= 0 ? info.score : ''}}</span></td>
+                  [ngClass]="{'data_empty': info.position === -1, 'data_green': info.winner}">
+                  <span>
+                    {{info.score !== undefined  && info.score >= 0 ? (info.winner ? 'V' + info.score : 'D' + info.score ) : ''}}
+                  </span>
+                </td>
                 <td class="name">{{ row.ath.participantForm.surname }} {{ row.ath.participantForm.name }}</td>
               </tr>
             </tbody>
@@ -60,14 +65,14 @@
           <table class="competition">
             <thead>
               <th class="head"></th>
-              <th class="head">V</th>
-              <th class="head">TD</th>
-              <th class="head">TR</th>
-              <th class="head">t1</th>
-              <th class="head">t2</th>
-              <th class="head">Rk</th>
-              <th class="head">Rd</th>
-              <th class="head">Q</th>
+              <th class="head">П</th>
+              <th class="head">УН</th>
+              <th class="head">УП</th>
+              <th class="head">К</th>
+              <th class="head">И</th>
+              <th class="head">М</th>
+              <th class="head">Р</th>
+              <th class="head">К</th>
             </thead>
 
             <tbody>
@@ -80,6 +85,38 @@
                 <td class="data bordered"><span>{{row.result.coefficient}}</span></td>
                 <td class="data bordered"><span>{{row.result.placeInPool}}</span></td>
                 <td class="data bordered"><span>{{row.result.rankAfterPools}}</span></td>
+                <td class="data bordered"><span class="circle" [ngClass]="
+            {'circle_green': row.result.status === 'Q',
+            'circle_red': row.result.status === 'D',
+            'circle_black': row.result.status === 'E'}
+          "></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="slide">
+          <table class="competition">
+            <thead>
+              <th class="head"></th>
+              <th class="head">П</th>
+              <th class="head">M</th>
+              <th class="head">УН</th>
+              <th class="head">УП</th>
+              <th class="head">Ind.</th>
+              <th class="head">Diff</th>
+              <th class="head">К</th>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let row of view?.firstRoundViewRows">
+                <td class="number">{{row.result.rankAfterPools}}</td>
+                <td class="data bordered"><span>{{row.result.wins}}</span></td>
+                <td class="data bordered"><span>{{row.result.bouts}}</span></td>
+                <td class="data bordered"><span>{{row.result.td}}</span></td>
+                <td class="data bordered"><span>{{row.result.tr}}</span></td>
+                <td class="data bordered"><span>{{row.result.coefficient}}</span></td>
+                <td class="data bordered"><span>{{row.result.indicator}}</span></td>
                 <td class="data"><span class="circle" [ngClass]="
                   {'circle_green': row.result.status === 'Q',
                   'circle_red': row.result.status === 'D',

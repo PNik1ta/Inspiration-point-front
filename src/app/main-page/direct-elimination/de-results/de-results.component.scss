@@ -1,0 +1,114 @@
+@import "../../../../assets/styles/abstracts/mixins.scss";
+@import "../../../../assets/styles/abstracts/variables.scss";
+$table-text-color: #fff;
+$table-green-text-color: #1e9117;
+$table-rows-color: #25282c;
+$table-head-color: #6e737a;
+$table-country-color: #888c95;
+
+.info-block {
+  display: flex;
+
+  @include respond(small-phone) {
+    padding: 2rem 2.5rem;
+  }
+}
+
+.table-flex {
+  display: flex;
+}
+
+.table-wrapper {
+  flex: 0 0 100%;
+  width: 10rem;
+  overflow: auto;
+  max-height: 50rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    height: fit-content;
+
+    tbody {
+      tr {
+        border-top: .1rem solid $table-rows-color;
+        border-bottom: 1px solid $table-rows-color;
+      }
+
+      .small {
+        color: #6e737a;
+      }
+    }
+
+
+    th {
+      font-size: 1.2rem;
+      line-height: 2.7;
+      color: $table-head-color;
+    }
+
+    .main-data {
+      display: flex;
+      align-items: center;
+      column-gap: 1.7rem;
+
+      .country {
+        display: flex;
+        align-items: center;
+        column-gap: 0.73rem;
+
+        img {
+          width: 2.7rem;
+          height: 1.8rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+          color: $table-country-color;
+        }
+      }
+
+      .name {
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: left;
+      }
+    }
+
+
+
+    td {
+      font-size: 1.5rem;
+      color: $table-text-color;
+      text-align: center;
+      margin: .8rem 0;
+      min-width: 3rem;
+
+      .circle {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+
+        border-radius: 100%;
+        margin: 0 auto;
+
+        &_green {
+          background-color: $light-green;
+        }
+
+        &_red {
+          background-color: $red;
+        }
+
+        &_black {
+          background-color: #111;
+        }
+      }
+
+      @include respond(small-phone) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ICompetitionResult } from '../../../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../../../core/interfaces/competition.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
@@ -9,6 +9,7 @@ import { IFirstRoundView } from '../../../../../core/viewInterfaces/first-round/
 import { constructAthAndGroupInitials } from '../../../../../core/utils/first-round/construct-ath-and-group-initial';
 import { constructFirstRoundViewRow } from '../../../../../core/utils/first-round/construct-first-round-view-row';
 import { constructFirstRoundViews } from '../../../../../core/utils/first-round/construct-first-round-view.interface';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-seeding',
@@ -16,7 +17,7 @@ import { constructFirstRoundViews } from '../../../../../core/utils/first-round/
   styleUrls: ['./seeding.component.scss']
 })
 export class SeedingComponent {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   isEmpty: boolean = true;
   totalAthList: IAthAndParticipant[] = [];
   firstRoundViews: IFirstRoundView[] = [];
@@ -27,10 +28,12 @@ export class SeedingComponent {
   constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.athList.length === 0;
+        this.totalAthList = [];
         this.initializeAthList();
 
         if (this.currentCompetition) {

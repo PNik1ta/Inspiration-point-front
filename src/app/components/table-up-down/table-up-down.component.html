@@ -4,22 +4,22 @@
       <thead>
         <tr>
           <th></th>
-          <th>V</th>
+          <th>П</th>
           <th>M</th>
-          <th>TD</th>
-          <th>TR</th>
+          <th>УН</th>
+          <th>УП</th>
           <th>Ind.</th>
           <th>Diff</th>
-          <th>Q</th>
+          <th>К</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let item of participantAndGroupList; let i = index;">
+        <tr *ngFor="let item of participantAndGroupList">
           <td class="main-data">
-            <p class="name">{{i + 1}}</p>
+            <p class="name">{{item.group.rankAfterPools}}</p>
             <div class="country">
-              <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'" alt="jor flag">
+              <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'" alt="region flag">
               <p>{{item.participant.region}}</p>
             </div>
             <p class="name">{{item.participant.surname}} {{item.participant.name}} {{item.participant.fatherName}}</p>
@@ -28,8 +28,8 @@
           <td>{{item.group.bouts}}</td>
           <td>{{item.group.td}}</td>
           <td>{{item.group.tr}}</td>
+          <td>{{item.group.coefficient}}</td>
           <td>{{item.group.indicator}}</td>
-          <td>{{(item.group.td && item.group.tr) ? item.group.td - item.group.tr : ''}}</td>
           <td>
             <div class="circle"
               [ngClass]="{'circle_green': item.group.status === 'Q',

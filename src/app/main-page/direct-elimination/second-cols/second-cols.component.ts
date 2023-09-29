@@ -1,5 +1,5 @@
-import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { ICompetition } from '../../../../core/interfaces/competition.interface';
 import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-view.interface';
 import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
 import { constructDEParticipantsScore } from '../../../../core/utils/direct-elimination/construct-de-participantsScore';
@@ -8,13 +8,14 @@ import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IAthAndParticipant } from '../../../../core/viewInterfaces/ath-and-participant.interface';
 import { constructAthList } from '../../../../core/utils/constrict-ath-list';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-second-cols',
   templateUrl: './second-cols.component.html',
   styleUrls: ['./second-cols.component.scss']
 })
-export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentChecked {
+export class SecondColsComponent implements AfterViewInit, OnInit {
   @ViewChild('sliderContainer') sliderContainer?: ElementRef;
   @ViewChild('btnPrev') btnPrev?: ElementRef;
   @ViewChild('btnNext') btnNext?: ElementRef;
@@ -22,7 +23,7 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
 
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   views: IDEView[] = [];
   viewsForDesktop: IDEView[] = [];
   totalAthList: IAthAndParticipant[] = [];
@@ -30,27 +31,33 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
 
   constructor(private readonly store: Store, private readonly cdr: ChangeDetectorRef) { }
 
-  ngAfterContentChecked(): void {
-    this.cdr.detectChanges();
-  }
-
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
         this.zeroArrays();
-        this.totalAthList = constructAthList(this.currentCompetition);
-        this.views = constructDEViews(this.currentCompetition.bracketsInitial);
+        if (this.currentCompetition) {
+          this.totalAthList = constructAthList(this.currentCompetition);
 
-        for (let view of this.views) {
-          view = constructDEParticipantsScore(view, this.currentCompetition.info);
+          this.views = constructDEViews(this.currentCompetition.bracketsInitial);
+
+
+          for (let view of this.views) {
+            view = constructDEParticipantsScore(view, this.currentCompetition.info);
+          }
+
+          for (let view of this.views) {
+            view = constructDEParticipantsInfo(view, this.currentCompetition);
+          }
+
+          this.viewsForDesktop.push(...this.views);
+          if (this.viewsForDesktop.length > 4) {
+            this.viewsForDesktop = this.viewsForDesktop.slice(-4);
+          }
+
+          this.isLoaded = true;
         }
-
-        for (let view of this.views) {
-          view = constructDEParticipantsInfo(view, this.currentCompetition);
-        }
-
-        this.isLoaded = true;
       }
     })
   }
@@ -63,11 +70,6 @@ export class SecondColsComponent implements AfterViewInit, OnInit, AfterContentC
   ngAfterViewInit(): void {
     this.sliderBlocks = this.sliderContainer!.nativeElement.getElementsByClassName('slide');
     this.updateVisibleNumbers();
-
-    this.viewsForDesktop.push(...this.views);
-    if (this.viewsForDesktop.length > 4) {
-      this.viewsForDesktop = this.viewsForDesktop.slice(-4);
-    }
   }
 
   updateSliderPosition() {

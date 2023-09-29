@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { IParticipantForm } from '../../../core/interfaces/participantForm.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../core/reducers/currentCompetition/currentCompetition.selectors';
@@ -10,11 +10,11 @@ import { getCurrentCompetition } from '../../../core/reducers/currentCompetition
   styleUrls: ['./referees.component.scss']
 })
 export class RefereesComponent implements OnInit {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   isEmpty: boolean = true;
   totalRefereesInfo: IParticipantForm[] = [];
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
@@ -27,8 +27,8 @@ export class RefereesComponent implements OnInit {
   }
 
   initializeRefereesInfo(): void {
-    for(let referee of this.currentCompetition!.refList) {
-      for(let participant of this.currentCompetition!.participantFormList) {
+    for (let referee of this.currentCompetition!.refList) {
+      for (let participant of this.currentCompetition!.participantFormList) {
         if (referee.nickname === participant.nickname) {
           this.totalRefereesInfo.push(participant);
           break;

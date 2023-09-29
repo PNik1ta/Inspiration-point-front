@@ -1,9 +1,9 @@
 import { createReducer, on } from "@ngrx/store";
-import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { ICompetition } from "../../interfaces/competition.interface";
 import { CurrentCompetitionReceivedAction } from "./currentCompetition.action";
 
 export interface CurrentCompetitionState {
-  currentCompetition: ICompetitionResult | null;
+  currentCompetition: ICompetition | null;
 }
 
 const initialState: CurrentCompetitionState = {

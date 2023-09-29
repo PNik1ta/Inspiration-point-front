@@ -1,6 +1,7 @@
-<ul class="tabs">
+<ul class="tabs" data-aos="zoom-out">
   <li><a routerLink="Seeding" routerLinkActive="active">Участники</a></li>
   <li><a routerLink="FirstRound" *ngIf="this.viewsForDesktop.length !== 0" routerLinkActive="active">128 - 16</a></li>
   <li><a routerLink="FinalRounds" routerLinkActive="active">8 - Final</a></li>
+  <li><a routerLink="Results" routerLinkActive="active">Результаты</a></li>
 </ul>
 <router-outlet></router-outlet>

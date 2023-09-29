@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../core/interfaces/competition.interface';
 import { Store, select } from '@ngrx/store';
-import { getCompetitionResult } from '../../core/reducers/competitionResult/websocket.selectors';
+import { getCompetitionResult } from '../../core/reducers/competition/competition.selectors';
 import { parse } from 'date-fns';
 import { getCurrentCompetition } from '../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IInfo } from '../../core/interfaces/info.interface';
@@ -15,9 +15,9 @@ import { constructFights } from '../../core/utils/construct-fights';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  competitions: ICompetitionResult[] = [];
+  competitions: ICompetition[] = [];
   isResultsActive: boolean = false;
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   lastInfos: IInfo[] = [];
   fights: IFightDEView[] = [];
   isLastInfosEmpty: boolean = true;
@@ -32,7 +32,7 @@ export class MainPageComponent implements OnInit {
       if (res) {
         this.competitions = [...res];
 
-        this.competitions.sort((a: ICompetitionResult, b: ICompetitionResult) => {
+        this.competitions.sort((a: ICompetition, b: ICompetition) => {
           const firstDate = parse(a.newCompetitionForm!.dateTimeCompetitionStart!, 'dd.MM.yyyy', new Date());
           const secondDate = parse(b.newCompetitionForm!.dateTimeCompetitionStart!, 'dd.MM.yyyy', new Date());
           return secondDate.getTime() - firstDate.getTime();

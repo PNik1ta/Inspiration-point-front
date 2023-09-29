@@ -4,6 +4,7 @@ import { DirectEliminationComponent } from "./direct-elimination.component";
 import { SeedingComponent } from "./seeding/seeding.component";
 import { FirstColsComponent } from "./first-cols/first-cols.component";
 import { SecondColsComponent } from "./second-cols/second-cols.component";
+import { DeResultsComponent } from "./de-results/de-results.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'FinalRounds',
         component: SecondColsComponent
+      },
+      {
+        path: 'Results',
+        component: DeResultsComponent
       }
     ]
   }

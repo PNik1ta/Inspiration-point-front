@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ICompetitionResult } from '../../../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../../../core/interfaces/competition.interface';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { Store, select } from '@ngrx/store';
 import { IAthAndParticipant } from '../../../../../core/viewInterfaces/ath-and-participant.interface';
@@ -9,6 +9,7 @@ import { IAthAndGroupInitial } from '../../../../../core/viewInterfaces/first-ro
 import { constructAthAndGroupInitials } from '../../../../../core/utils/first-round/construct-ath-and-group-initial';
 import { constructFirstRoundViewRow } from '../../../../../core/utils/first-round/construct-first-round-view-row';
 import { constructFirstRoundViews } from '../../../../../core/utils/first-round/construct-first-round-view.interface';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-up-down',
@@ -16,7 +17,7 @@ import { constructFirstRoundViews } from '../../../../../core/utils/first-round/
   styleUrls: ['./up-down.component.scss']
 })
 export class UpDownComponent {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   totalAthList: IAthAndParticipant[] = [];
   firstRoundRows: IFirstRoundViewRow[] = [];
   firstRoundViews: IFirstRoundView[] = [];
@@ -26,9 +27,11 @@ export class UpDownComponent {
   constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;
+        this.totalAthList = [];
         this.initializeAthList();
 
         if (this.currentCompetition) {

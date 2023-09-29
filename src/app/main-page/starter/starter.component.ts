@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../core/reducers/currentCompetition/currentCompetition.selectors';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-starter',
@@ -10,7 +11,7 @@ import { getCurrentCompetition } from '../../../core/reducers/currentCompetition
 })
 export class StarterComponent implements OnInit {
   isEmpty: boolean = false;
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   isLoaded: boolean = false;
 
   constructor(private readonly store: Store) { }

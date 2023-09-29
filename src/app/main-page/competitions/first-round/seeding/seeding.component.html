@@ -1,6 +1,6 @@
 <ng-container *ngIf="isLoaded; else loader">
   <ng-container *ngIf="!isEmpty; else empty">
-    <section class="tables">
+    <section class="tables" data-aos="fade-right">
       <app-table-seeding [athList]="totalAthList"></app-table-seeding>
     </section>
 

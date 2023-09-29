@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../../core/interfaces/competition.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IDEView } from '../../../../core/viewInterfaces/direct-elimination/de-view.interface';
@@ -8,6 +8,7 @@ import { constructDEParticipantsScore } from '../../../../core/utils/direct-elim
 import { constructDEViews } from '../../../../core/utils/direct-elimination/construct-de-view';
 import { IParticipantAndGroup } from '../../../../core/viewInterfaces/participant-and-group.interface';
 import { constructParticipantAndGroupResults } from '../../../../core/utils/construct-participant-and-group-results';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-seeding',
@@ -21,7 +22,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
   @ViewChild('circles') circles?: ElementRef;
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   views: IDEView[] = [];
   isLoaded: boolean = false;
   participantsAndGroupsResults: IParticipantAndGroup[] = [];
@@ -29,6 +30,7 @@ export class SeedingComponent implements AfterViewInit, OnInit {
   constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;

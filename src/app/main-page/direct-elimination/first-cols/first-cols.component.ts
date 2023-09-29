@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ICompetitionResult } from '../../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../../core/interfaces/competition.interface';
 import { constructDEParticipantsInfo } from '../../../../core/utils/direct-elimination/construct-de-participantsInfo';
 import { constructDEParticipantsScore } from '../../../../core/utils/direct-elimination/construct-de-participantsScore';
 import { constructDEViews } from '../../../../core/utils/direct-elimination/construct-de-view';
@@ -8,6 +8,7 @@ import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../core/reducers/currentCompetition/currentCompetition.selectors';
 import { IAthAndParticipant } from '../../../../core/viewInterfaces/ath-and-participant.interface';
 import { constructAthList } from '../../../../core/utils/constrict-ath-list';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-first-cols',
@@ -22,7 +23,7 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
 
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   views: IDEView[] = [];
   viewsForDesktop: IDEView[] = [];
   totalAthList: IAthAndParticipant[] = [];
@@ -31,6 +32,7 @@ export class FirstColsComponent implements OnInit, AfterViewInit {
   constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe((res) => {
       if (res) {
         this.currentCompetition = res;

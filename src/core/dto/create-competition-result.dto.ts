@@ -1,6 +1,7 @@
 import { IAth } from "../interfaces/ath.interface";
 import { IBracketInitial } from "../interfaces/bracketInitial.interface";
 import { IBracketResult } from "../interfaces/bracketResult.interface";
+import { ICompetitionResult } from "../interfaces/competition-result.interface";
 import { IFormulae } from "../interfaces/formular.interface";
 import { IGroup } from "../interfaces/group.interface";
 import { IGroupInitial } from "../interfaces/groupInitial.interface";
@@ -11,7 +12,7 @@ import { IParticipantForm } from "../interfaces/participantForm.interface";
 import { IRef } from "../interfaces/ref.interface";
 
 
-export interface CreateCompetitionResultDto {
+export interface CreateCompetitionDto {
   newCompetitionForm: INewCompetitionForm;
   participantFormList: IParticipantForm[];
   athList: IAth[];
@@ -23,4 +24,5 @@ export interface CreateCompetitionResultDto {
   bracketsInitial: IBracketInitial[];
   bracketsResults: IBracketResult[];
   info: IInfo[];
+  competitionResults: ICompetitionResult[];
 }

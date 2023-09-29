@@ -1,5 +1,5 @@
 <ng-container *ngIf="isLoaded; else loader;">
-  <div class="info-block direct-elimination" [style.grid-template-columns]="'repeat(' + views.length + ', 1fr)'">
+  <div class="info-block direct-elimination" [style.grid-template-columns]="'repeat(' + views.length + ', 1fr)'" data-aos="fade-up">
     <ng-container *ngIf="viewsForDesktop.length !== 0; else empty">
       <div class="col" *ngFor="let view of viewsForDesktop">
         <p class="number">{{'T' + view.columnName.slice(1)}}</p>

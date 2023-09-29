@@ -1,7 +1,7 @@
 <div class="info-block">
   <div class="table-header">
-    <h3>No: {{view?.group?.poolNumber}}</h3>
-    <p>{{view?.group?.strip}} | Su {{view?.group?.startTime}}</p>
+    <h3>Группа № {{view?.group?.poolNumber}}</h3>
+    <p>Дорожка: {{view?.group?.strip}} | Начало в {{view?.group?.startTime}}</p>
   </div>
 
   <div class="table-wrapper">
@@ -10,14 +10,14 @@
         <tr>
           <th></th>
           <th class="head" *ngFor="let number of arrayOfQuantityParticipants">{{number}}</th>
-          <th class="head head_ml">V</th>
-          <th class="head">TD</th>
-          <th class="head">TR</th>
-          <th class="head">t1</th>
-          <th class="head">t2</th>
-          <th class="head">Rk</th>
-          <th class="head">Rd</th>
-          <th class="head">Q</th>
+          <th class="head head_ml">П</th>
+          <th class="head">УН</th>
+          <th class="head">УП</th>
+          <th class="head">К</th>
+          <th class="head">И</th>
+          <th class="head">М</th>
+          <th class="head">Р</th>
+          <th class="head">К</th>
         </tr>
       </thead>
 
@@ -25,7 +25,7 @@
         <tr *ngFor="let row of view?.firstRoundViewRows; let i = index">
           <td class="info">
             <div class="info__flag">
-              <img src="assets/images/jor-flag.jpg" alt="jor flag">
+              <img [src]="'assets/images/flags/' + row.ath.participantForm.region!.toLowerCase() + '.png'" alt="jor flag">
               <h5>{{ row.ath.participantForm.region }}</h5>
             </div>
             <p>{{ row.ath.participantForm.surname }} {{ row.ath.participantForm.name }}</p>

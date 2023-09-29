@@ -4,11 +4,8 @@ import { IFightDEView } from "../../viewInterfaces/direct-elimination/fight-DE-v
 
 export function constructDEViews(bracketsInitial: IBracketInitial[]): IDEView[] {
   const views: IDEView[] = [];
-  bracketsInitial = bracketsInitial.filter((bracket) => bracket.tableauBr && bracket.tableauBr[0] === 'A');
-  console.log(bracketsInitial);
 
-  bracketsInitial = bracketsInitial.filter((bracket) => bracket.nickname !== undefined && bracket.nickname >= 0);
-  console.log(bracketsInitial);
+  bracketsInitial = bracketsInitial.filter((bracket) => bracket.tableauBr && bracket.tableauBr[0] === 'A');
 
   for (let bracket of bracketsInitial) {
 
@@ -16,6 +13,7 @@ export function constructDEViews(bracketsInitial: IBracketInitial[]): IDEView[] 
 
     if (view) {
       const fight = view.fights.find((fight) => fight.matchBr === bracket.matchBr);
+
 
       if (fight) {
         fight.rightParticipantNickname = bracket.nickname;

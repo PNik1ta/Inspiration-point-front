@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { IDEView } from '../../../core/viewInterfaces/direct-elimination/de-view.interface';
 import { IAthAndParticipant } from '../../../core/viewInterfaces/ath-and-participant.interface';
 import { Store, select } from '@ngrx/store';
@@ -8,6 +8,7 @@ import { constructAthList } from '../../../core/utils/constrict-ath-list';
 import { constructDEParticipantsInfo } from '../../../core/utils/direct-elimination/construct-de-participantsInfo';
 import { constructDEParticipantsScore } from '../../../core/utils/direct-elimination/construct-de-participantsScore';
 import { constructDEViews } from '../../../core/utils/direct-elimination/construct-de-view';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-direct-elimination',
@@ -15,7 +16,7 @@ import { constructDEViews } from '../../../core/utils/direct-elimination/constru
   styleUrls: ['./direct-elimination.component.scss']
 })
 export class DirectEliminationComponent implements OnInit {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
   views: IDEView[] = [];
   viewsForDesktop: IDEView[] = [];
   totalAthList: IAthAndParticipant[] = [];

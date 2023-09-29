@@ -1,10 +1,12 @@
-import { ICompetitionResult } from "../../interfaces/competition-result.interface";
+import { ICompetition } from "../../interfaces/competition.interface";
+import { IGroup } from "../../interfaces/group.interface";
 import { IFirstRoundViewRow } from "../../viewInterfaces/first-round/first-round-view-row.interface";
 import { IFirstRoundView } from "../../viewInterfaces/first-round/first-round-view.interface";
 
 
-export function constructFirstRoundViews(result: ICompetitionResult, firstRoundRows: IFirstRoundViewRow[]): IFirstRoundView[] {
+export function constructFirstRoundViews(result: ICompetition, firstRoundRows: IFirstRoundViewRow[]): IFirstRoundView[] {
   const firstRoundViews: IFirstRoundView[] = [];
+
 
   for (let group of result.groups) {
     const firstRoundView: IFirstRoundView = { group, firstRoundViewRows: [] }

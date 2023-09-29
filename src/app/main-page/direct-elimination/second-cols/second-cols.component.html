@@ -1,6 +1,6 @@
 <ng-container *ngIf="isLoaded; else loader;">
   <div class="info-block direct-elimination"
-    [style.grid-template-columns]="'repeat(' + viewsForDesktop.length + ', 1fr)'">
+    [style.grid-template-columns]="'repeat(' + viewsForDesktop.length + ', 1fr)'" data-aos="fade-up">
     <div class="col" *ngFor="let view of viewsForDesktop">
       <p class="number">
         <ng-container *ngIf="view.columnName === 'A4'">

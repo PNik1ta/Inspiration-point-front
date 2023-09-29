@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompetitionResult } from '../../../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../../../core/interfaces/competition.interface';
 import { Store, select } from '@ngrx/store';
 import { getCurrentCompetition } from '../../../../../core/reducers/currentCompetition/currentCompetition.selectors';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-first-round-layout',
@@ -9,11 +10,12 @@ import { getCurrentCompetition } from '../../../../../core/reducers/currentCompe
   styleUrls: ['./first-round-layout.component.scss']
 })
 export class FirstRoundLayoutComponent implements OnInit {
-  currentCompetition: ICompetitionResult | null = null;
+  currentCompetition: ICompetition | null = null;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.store.pipe(select(getCurrentCompetition)).subscribe({
       next: (res) => {
         if (res) {

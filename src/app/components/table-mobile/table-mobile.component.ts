@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { IAthAndParticipant } from '../../../core/viewInterfaces/ath-and-participant.interface';
-import { ICompetitionResult } from '../../../core/interfaces/competition-result.interface';
+import { ICompetition } from '../../../core/interfaces/competition.interface';
 import { IParticipantAndGroup } from '../../../core/viewInterfaces/participant-and-group.interface';
 import { IFirstRoundView } from '../../../core/viewInterfaces/first-round/first-round-view.interface';
 
@@ -9,9 +9,9 @@ import { IFirstRoundView } from '../../../core/viewInterfaces/first-round/first-
   templateUrl: './table-mobile.component.html',
   styleUrls: ['./table-mobile.component.scss']
 })
-export class TableMobileComponent implements AfterViewInit, OnInit, OnChanges {
+export class TableMobileComponent implements AfterViewInit, OnChanges {
   @Input('athList') athParticipants: IAthAndParticipant[] = [];
-  @Input('result') result: ICompetitionResult | null = null;
+  @Input('result') result: ICompetition | null = null;
   @Input('firstRoundView') view: IFirstRoundView | null = null;
   arrayOfQuantityParticipants: number[] = [];
   participantAndGroupList: IParticipantAndGroup[] = [];
@@ -24,38 +24,29 @@ export class TableMobileComponent implements AfterViewInit, OnInit, OnChanges {
   sliderBlocks: HTMLElement[] = [];
   currentIndex: number = 0;
 
-  constructor(private readonly renderer: Renderer2) { }
-
-  ngOnInit(): void {
-    this.arrayOfQuantityParticipants = [];
-    this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
-    this.sortByAthleteRankPool();
-    this.sortByInfoNumber();
-  }
+  constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      this.arrayOfQuantityParticipants = [];
+      this.zeroArrays();
       this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
       this.sortByAthleteRankPool();
       this.sortByInfoNumber();
+      this.sortByRank();
     }
+  }
+
+  zeroArrays(): void {
+    this.arrayOfQuantityParticipants = [];
+    this.participantAndGroupList = [];
+  }
+
+  sortByRank(): void {
+    this.participantAndGroupList.sort((a, b) => a.group.rankAfterPools! - b.group.rankAfterPools!);
   }
 
   constructArrayOfQuantityParticipants(view: IFirstRoundView): number[] {
     return Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
-  }
-
-  initializeParticipantAndGroupInfo(): void {
-    for (let group of this.result!.athList) {
-      for (let participant of this.result!.participantFormList) {
-        if (group.nickname === participant.nickname) {
-          let participantAndGroup: IParticipantAndGroup = { participant, group }
-          this.participantAndGroupList.push(participantAndGroup);
-          break;
-        }
-      }
-    }
   }
 
   adjustSliderHeight(): void {
