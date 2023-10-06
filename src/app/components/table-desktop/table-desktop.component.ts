@@ -20,8 +20,9 @@ export class TableDesktopComponent implements OnChanges {
   }
 
   sortByAthleteRankPool(): void {
-    this.view?.firstRoundViewRows.sort((a, b) => a.ath.groupInitial.athleteRankPool! - b.ath.groupInitial.athleteRankPool!)
+    this.view?.firstRoundViewRows.sort((a, b) => a.ath.groupInitial.athleteRankPool! - b.ath.groupInitial.athleteRankPool!);
   }
+
 
   sortByInfoNumber(): void {
     if (this.view?.firstRoundViewRows) {

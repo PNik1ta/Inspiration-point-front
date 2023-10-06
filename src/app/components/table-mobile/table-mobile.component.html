@@ -27,13 +27,13 @@
       <div class="slides" #slides>
         <div class="slide">
           <div class="countries">
-            <div class="country" *ngFor="let item of athParticipants; let i = index;">
+            <div class="country" *ngFor="let item of view?.firstRoundViewRows; let i = index;">
               <small>{{i + 1}}</small>
-              <h5>{{item.participant.surname}} {{item.participant.name}}</h5>
+              <h5>{{item.ath.participantForm.surname}} {{item.ath.participantForm.name}}</h5>
               <div class="flag">
-                <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'"
+                <img [src]="'assets/images/flags/' + item.ath.participantForm.region!.toLowerCase() + '.png'"
                   alt="country flag">
-                <p>{{item.participant.region}}</p>
+                <p>{{item.ath.participantForm.region}}</p>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
 
             <tbody>
               <tr *ngFor="let row of view?.firstRoundViewRows; let i = index">
-                <td class="number">{{i + 1}}</td>
+                <td class="number">{{row.ath.groupInitial.athleteRankPool}}</td>
                 <td class="data bordered" *ngFor="let info of row.infoArray"
                   [ngClass]="{'data_empty': info.position === -1, 'data_green': info.winner}">
                   <span>
@@ -77,7 +77,7 @@
 
             <tbody>
               <tr *ngFor="let row of view?.firstRoundViewRows; let i = index;">
-                <td class="number">{{i + 1}}</td>
+                <td class="number">{{row.ath.groupInitial.athleteRankPool}}</td>
                 <td class="data bordered"><span>{{row.result.wins}}</span></td>
                 <td class="data bordered"><span>{{row.result.td}}</span></td>
                 <td class="data bordered"><span>{{row.result.tr}}</span></td>
@@ -110,7 +110,7 @@
 
             <tbody>
               <tr *ngFor="let row of view?.firstRoundViewRows">
-                <td class="number">{{row.result.rankAfterPools}}</td>
+                <td class="number">{{row.ath.groupInitial.athleteRankPool}}</td>
                 <td class="data bordered"><span>{{row.result.wins}}</span></td>
                 <td class="data bordered"><span>{{row.result.bouts}}</span></td>
                 <td class="data bordered"><span>{{row.result.td}}</span></td>

@@ -34,11 +34,13 @@ export class SeedingComponent {
         this.currentCompetition = res;
         this.isEmpty = this.currentCompetition.athList.length === 0;
         this.totalAthList = [];
-        this.initializeAthList();
 
         if (this.currentCompetition) {
           this.zeroArrays();
           this.athAndGroupInitials = constructAthAndGroupInitials(this.currentCompetition);
+          this.sortByRank();
+          this.initializeAthList();
+
 
           for (let ath of this.athAndGroupInitials) {
             this.firstRoundRows.push(constructFirstRoundViewRow(this.currentCompetition, ath, this.athAndGroupInitials));
@@ -52,15 +54,18 @@ export class SeedingComponent {
   }
 
   initializeAthList(): void {
-    for (let ath of this.currentCompetition!.athList) {
-      for (let participant of this.currentCompetition!.participantFormList) {
-        if (ath.nickname === participant.nickname) {
-          let iAthAndParticipant: IAthAndParticipant = { ath, participant }
-          this.totalAthList.push(iAthAndParticipant);
-          break;
-        }
+    for (let ath of this.athAndGroupInitials) {
+      const participant = this.currentCompetition?.participantFormList.find((participant) => participant.nickname === ath.ath.nickname);
+
+      if (participant) {
+        let iAthAndParticipant: IAthAndParticipant = { ath: ath.ath, participant, groupInitial: ath.groupInitial }
+        this.totalAthList.push(iAthAndParticipant);
       }
     }
+  }
+
+  sortByRank(): void {
+    this.athAndGroupInitials.sort((a, b) => a.groupInitial.athleteRankPool! - b.groupInitial.athleteRankPool!);
   }
 
   zeroArrays(): void {

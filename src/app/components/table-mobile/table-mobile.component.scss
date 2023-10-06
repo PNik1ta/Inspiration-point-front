@@ -136,8 +136,8 @@ $table-country-color: #888c95;
               row-gap: 1rem;
 
               border-top: .1rem solid $table-rows-color;
-              padding-top: .6rem;
-              padding-bottom: .5rem;
+              padding-top: 1rem;
+              padding-bottom: 1rem;
               align-items: center;
 
               small {
@@ -176,7 +176,7 @@ $table-country-color: #888c95;
 
           .competition {
             width: 100%;
-            margin-top: -3rem;
+            margin-top: -2.7rem;
             border-collapse: collapse;
             height: fit-content;
 

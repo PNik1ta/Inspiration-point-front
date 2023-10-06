@@ -14,7 +14,7 @@
         <tbody>
           <ng-container *ngIf="!participantsAndGroups">
             <tr *ngFor="let ath of athParticipants; let i = index;">
-              <td *ngIf="!participantsAndGroups">{{i + 1}}</td>
+              <td *ngIf="!participantsAndGroups">{{ath.groupInitial?.athleteRankPool}}</td>
               <td class="main-data">
                 <div class="country">
                   <img [src]="'assets/images/flags/' + ath.participant.region!.toLowerCase() + '.png'" alt="country flag">

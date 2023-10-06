@@ -17,7 +17,7 @@
       <tbody>
         <tr *ngFor="let item of participantAndGroupList">
           <td class="main-data">
-            <p class="name">{{item.group.rankAfterPools}}</p>
+            <p class="name">{{item.group.placeInPool}}</p>
             <div class="country">
               <img [src]="'assets/images/flags/' + item.participant.region!.toLowerCase() + '.png'" alt="region flag">
               <p>{{item.participant.region}}</p>

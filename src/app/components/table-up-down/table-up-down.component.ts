@@ -15,6 +15,7 @@ export class TableUpDownComponent implements OnChanges {
     if (changes['result']) {
       this.participantAndGroupList = [];
       this.initializeParticipantAndGroupInfo();
+      this.addGroupInitialToGroups();
       this.sortByRank();
     }
   }
@@ -29,8 +30,18 @@ export class TableUpDownComponent implements OnChanges {
     }
   }
 
+  addGroupInitialToGroups(): void {
+    for (let group of this.result!.groupsInitial) {
+      const participantAndGroup = this.participantAndGroupList.find((participantAndGroup) => participantAndGroup.participant.nickname === group.nickname);
+
+      if (participantAndGroup) {
+        participantAndGroup.groupInitial = group;
+      }
+    }
+  }
+
   sortByRank(): void {
-    this.participantAndGroupList.filter((item) => item.group.rankAfterPools && item.group.rankAfterPools > 0);
-    this.participantAndGroupList.sort((a, b) => a.group.rankAfterPools! - b.group.rankAfterPools!);
+    this.participantAndGroupList.filter((item) => item.group.placeInPool && item.group.placeInPool > 0);
+    this.participantAndGroupList.sort((a, b) => a.group?.placeInPool! - b.group?.placeInPool!);
   }
 }

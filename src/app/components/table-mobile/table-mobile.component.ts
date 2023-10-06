@@ -32,17 +32,12 @@ export class TableMobileComponent implements AfterViewInit, OnChanges {
       this.arrayOfQuantityParticipants = Array.from({ length: this.view?.firstRoundViewRows.length ?? 0 }, (_, index) => index + 1);
       this.sortByAthleteRankPool();
       this.sortByInfoNumber();
-      this.sortByRank();
     }
   }
 
   zeroArrays(): void {
     this.arrayOfQuantityParticipants = [];
     this.participantAndGroupList = [];
-  }
-
-  sortByRank(): void {
-    this.participantAndGroupList.sort((a, b) => a.group.rankAfterPools! - b.group.rankAfterPools!);
   }
 
   constructArrayOfQuantityParticipants(view: IFirstRoundView): number[] {
